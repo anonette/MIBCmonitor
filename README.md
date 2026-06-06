@@ -161,6 +161,8 @@ Base URL: `http://127.0.0.1:8765` (local) or your ngrok HTTPS URL.
 
 Header on all routes except `/api/health`: `X-API-Key: <AGENT_API_KEY>`
 
+**API v1.4:** Data endpoints return `{ data, meta: { updated_at, source, api_version } }`. See `BACKEND_FEEDBACK.md` and `GET /api/contract`. Use `?legacy=1` for old shapes during migration.
+
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | `/api/health` | Health check (no auth) |

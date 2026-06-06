@@ -43,14 +43,80 @@ function agentStateValue(agent: AgentState["agent"]): AgentStatus {
   return (agent.state ?? agent.status ?? "idle") as AgentStatus;
 }
 
+export interface ApiMeta {
+  updated_at: string;
+  source: string;
+  api_version?: string;
+  count?: number;
+  updated?: string;
+}
+
+export interface ApiEnvelope<T> {
+  data: T;
+  meta: ApiMeta;
+}
+
+/** Canonical match_type values — see GET /api/contract */
+export const MATCH_TYPES = [
+  "by_design",
+  "published_subgroup",
+  "published_eligible",
+  "retrospective_cn_plus",
+  "wrong_setting",
+  "wrong_timing",
+  "wrong_population",
+  "none",
+  "indirect",
+] as const;
+
+export type MatchType = (typeof MATCH_TYPES)[number];
+
+/** Unwrap v1.5 envelope or pass through legacy / static JSON. */
+export function unwrapApi<T>(payload: unknown): T {
+  if (payload && typeof payload === "object" && "data" in payload) {
+    return (payload as ApiEnvelope<T>).data;
+  }
+  return payload as T;
+}
+
+/** Canonical list unwrap — always prefer data.items (v1.5). */
+export function unwrapList<T>(payload: unknown): T[] {
+  const data = unwrapApi<Record<string, unknown>>(payload);
+  if (Array.isArray(data)) return data as T[];
+  if (data && Array.isArray(data.items)) return data.items as T[];
+  // deprecated aliases (until 2026-09-01)
+  for (const key of ["trials", "papers", "rows", "charts"]) {
+    if (data && Array.isArray(data[key])) return data[key] as T[];
+  }
+  return [];
+}
+
+/** Singleton object unwrap — interpretations, patient_profile, etc. */
+export function unwrapObject<T>(payload: unknown): T {
+  const data = unwrapApi<Record<string, unknown>>(payload);
+  if (data && data.object !== undefined) return data.object as T;
+  return data as T;
+}
+
+export function unwrapMeta(payload: unknown): ApiMeta | null {
+  if (payload && typeof payload === "object" && "meta" in payload) {
+    return (payload as ApiEnvelope<unknown>).meta;
+  }
+  return null;
+}
+
 function normalizeTrials(data: unknown): unknown {
-  if (Array.isArray(data)) return { trials: data, meta: {} };
-  return data;
+  const raw = unwrapApi<Record<string, unknown>>(data);
+  const items = unwrapList<unknown>({ data: raw });
+  const categories = raw.categories;
+  const meta = raw.file_meta ?? {};
+  return { trials: items, categories, meta };
 }
 
 function normalizePapers(data: unknown): unknown {
-  if (Array.isArray(data)) return { papers: data, updated: "" };
-  return data;
+  const raw = unwrapApi<Record<string, unknown>>(data);
+  const items = unwrapList<unknown>({ data: raw });
+  return { papers: items, updated: raw.dataset_updated ?? "" };
 }
 
 async function agentFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
@@ -118,7 +184,7 @@ export interface ReviewQueueItem extends PendingPaper {
 }
 
 export async function fetchReviewQueue(): Promise<ReviewQueueItem[]> {
-  return agentFetch("/api/pending");
+  return unwrapList<ReviewQueueItem>(await agentFetch("/api/pending"));
 }
 
 export async function fetchPendingPapers(): Promise<PendingPaper[]> {
@@ -126,27 +192,47 @@ export async function fetchPendingPapers(): Promise<PendingPaper[]> {
 }
 
 export async function fetchLiveTrials(): Promise<unknown> {
-  return normalizeTrials(await agentFetch("/api/trials"));
+  return normalizeTrials(await agentFetch("/api/trials?wrap=1"));
 }
 
 export async function fetchLivePapers(): Promise<unknown> {
-  return normalizePapers(await agentFetch("/api/papers"));
+  return normalizePapers(await agentFetch("/api/papers?wrap=1"));
 }
 
-export async function fetchLiveInterpretations(): Promise<unknown> {
-  return agentFetch("/api/interpretations");
+export async function fetchLiveInterpretations(includeCopy = true): Promise<unknown> {
+  const q = includeCopy ? "" : "?include_copy=0";
+  return unwrapObject(await agentFetch(`/api/interpretations${q}`));
 }
 
 export async function fetchLivePatientProfile(): Promise<unknown> {
-  return agentFetch("/api/patient-profile");
+  return unwrapObject(await agentFetch("/api/patient-profile"));
 }
 
 export async function fetchGlossaryPathway(): Promise<unknown> {
-  return agentFetch("/api/glossary-pathway");
+  return unwrapObject(await agentFetch("/api/glossary-pathway"));
 }
 
 export async function fetchPatientsLikeYou(): Promise<unknown> {
-  return agentFetch("/api/patients-like-you");
+  return unwrapApi(await agentFetch("/api/patients-like-you"));
+}
+
+export async function fetchApiContract(): Promise<unknown> {
+  return unwrapObject(await agentFetch("/api/contract"));
+}
+
+export async function fetchJsonSchema(resource?: string): Promise<unknown> {
+  const path = resource ? `/api/schema/${resource}` : "/api/schema";
+  return unwrapApi(await agentFetch(path));
+}
+
+/** Load match_type labels from contract — single source of truth for badges. */
+export async function fetchMatchTypeLabels(): Promise<Record<string, string>> {
+  const contract = (await fetchApiContract()) as { match_type_enum?: Array<{ value: string; label: string }> };
+  const out: Record<string, string> = {};
+  for (const row of contract.match_type_enum ?? []) {
+    out[row.value] = row.label;
+  }
+  return out;
 }
 
 export interface DashboardChartSpec {
@@ -176,8 +262,15 @@ export interface DashboardChartsData {
   charts?: DashboardChartSpec[];
 }
 
-export async function fetchDashboardCharts(): Promise<DashboardChartsData> {
-  return agentFetch("/api/dashboard-charts");
+export async function fetchDashboardCharts(includeCopy = true): Promise<DashboardChartsData> {
+  const q = includeCopy ? "" : "?include_copy=0";
+  const data = unwrapApi<Record<string, unknown>>(await agentFetch(`/api/dashboard-charts${q}`));
+  const charts = (data.items ?? data.charts ?? []) as DashboardChartSpec[];
+  return {
+    page_title: data.page_title as string | undefined,
+    legend: data.legend as DashboardChartsData["legend"],
+    charts,
+  };
 }
 
 export interface GlossaryPathwayData {

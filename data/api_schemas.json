@@ -1,0 +1,107 @@
+{
+  "api_version": "1.5",
+  "bundle": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "MIBCmonitor API entities",
+    "definitions": {
+      "trial": {
+        "type": "object",
+        "required": ["id", "study_id", "fit_tier", "fit_score", "patient_match", "efficacy"],
+        "properties": {
+          "id": { "type": "string" },
+          "study_id": { "type": "string" },
+          "nct_id": { "type": "string" },
+          "phase": { "type": "string" },
+          "fit_tier": { "type": "string" },
+          "fit_score": { "type": "number" },
+          "total_n": { "type": ["number", "null"] },
+          "cn1_cn_plus_n": { "type": ["number", "null"] },
+          "patient_match": {
+            "type": "object",
+            "required": ["match_type", "n_like_profile", "pct_of_trial", "certainty"],
+            "properties": {
+              "match_type": {
+                "type": "string",
+                "enum": [
+                  "by_design",
+                  "published_subgroup",
+                  "published_eligible",
+                  "retrospective_cn_plus",
+                  "wrong_setting",
+                  "wrong_timing",
+                  "wrong_population",
+                  "none",
+                  "indirect"
+                ]
+              },
+              "n_like_profile": { "type": ["number", "string"] },
+              "pct_of_trial": { "type": ["number", "string", "null"] },
+              "certainty": { "type": "string", "enum": ["high", "moderate", "low"] }
+            }
+          },
+          "efficacy": {
+            "type": "object",
+            "required": ["primary", "subgroups"],
+            "properties": {
+              "primary": { "type": "array" },
+              "subgroups": { "type": "array" }
+            }
+          },
+          "treatment": {
+            "type": "object",
+            "properties": {
+              "experimental": { "type": "string" },
+              "control": { "type": "string" }
+            }
+          }
+        }
+      },
+      "paper": {
+        "type": "object",
+        "required": ["id", "ref", "topic"],
+        "properties": {
+          "id": { "type": "string" },
+          "ref": { "type": "string" },
+          "topic": { "type": "string" },
+          "year": { "type": ["integer", "null"] },
+          "n": { "type": ["number", "null"] },
+          "url": { "type": "string" },
+          "source_url": { "type": "string" },
+          "status": { "type": "string", "enum": ["needs_review", "approved", "rejected"] }
+        }
+      },
+      "listEnvelope": {
+        "type": "object",
+        "required": ["kind", "items"],
+        "properties": {
+          "kind": { "type": "string" },
+          "items": { "type": "array" }
+        }
+      },
+      "apiEnvelope": {
+        "type": "object",
+        "required": ["data", "meta"],
+        "properties": {
+          "data": { "type": "object" },
+          "meta": {
+            "type": "object",
+            "required": ["updated_at", "source", "api_version", "count"],
+            "properties": {
+              "updated_at": { "type": "string", "format": "date-time" },
+              "source": { "type": "string" },
+              "api_version": { "type": "string" },
+              "count": { "type": "integer" },
+              "etag": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "resources": {
+    "trial": { "$ref": "#/definitions/trial" },
+    "paper": { "$ref": "#/definitions/paper" },
+    "list": { "$ref": "#/definitions/listEnvelope" },
+    "envelope": { "$ref": "#/definitions/apiEnvelope" }
+  }
+}

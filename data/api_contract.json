@@ -1,0 +1,101 @@
+{
+  "api_version": "1.5",
+  "legacy_sunset": "2026-09-01",
+  "deprecated_fields_removal": "2026-09-01",
+  "labels_source_of_truth": "/api/contract",
+  "labels_note": "UI must load match_type labels from match_type_enum here — do not hardcode in MatchBadges.tsx",
+  "envelope": {
+    "applies_to": [
+      "GET /api/trials",
+      "GET /api/papers",
+      "GET /api/pending",
+      "GET /api/interpretations",
+      "GET /api/patient-profile",
+      "GET /api/glossary-pathway",
+      "GET /api/patients-like-you",
+      "GET /api/dashboard-charts",
+      "GET /api/contract",
+      "GET /api/schema",
+      "GET /api/schema/{name}",
+      "GET /api/validate"
+    ],
+    "does_not_apply_to": [
+      "GET /api/health — bare { ok: true }",
+      "GET /api/status — operational agent state (bare JSON)",
+      "POST /api/search — returns same shape as /api/status",
+      "POST /api/refresh — returns same shape as /api/status",
+      "POST /api/approve — bare action result",
+      "POST /api/reject — bare action result"
+    ],
+    "shape": {
+      "data": "<payload>",
+      "meta": {
+        "updated_at": "ISO-8601 UTC",
+        "source": "logical resource name (trials, papers, …)",
+        "api_version": "1.5",
+        "count": "integer — always present",
+        "etag": "md5 hex for If-None-Match / 304"
+      }
+    },
+    "legacy_opt_out": "?legacy=1 on GET data endpoints — removed 2026-09-01"
+  },
+  "list_shape": {
+    "canonical": "{ kind: string, items: T[], ...extra }",
+    "unwrap": "Always read data.items for list endpoints",
+    "deprecated_aliases": {
+      "trials": "data.trials — use data.items on /api/trials",
+      "papers": "data.papers — use data.items on /api/papers",
+      "rows": "data.rows — use data.items on /api/patients-like-you",
+      "charts": "data.charts — use data.items on /api/dashboard-charts"
+    },
+    "object_endpoints": {
+      "interpretations": "{ kind: interpretations, object: {...} }",
+      "patient_profile": "{ kind: patient_profile, object: {...} }",
+      "glossary_pathway": "{ kind: glossary_pathway, object: {...} }",
+      "validate": "{ kind: validate, object: {...} }"
+    }
+  },
+  "caching": {
+    "cache_control": "public, max-age=60",
+    "etag": "Send If-None-Match with meta.etag value — 304 when unchanged",
+    "ngrok_note": "ngrok-skip-browser-warning bypasses ngrok interstitial only — not required for CORS. CORS sends Access-Control-Allow-Origin per CORS_ORIGINS."
+  },
+  "query_flags": {
+    "legacy": "1 = pre-1.4 bare JSON (sunset 2026-09-01)",
+    "strict": "1 = omit deprecated field aliases (pct, comparator, type, rows, trials, papers, charts)",
+    "wrap": "1 = include categories/file_meta (trials) or dataset_updated (papers) alongside items",
+    "include_copy": "0 = strip UI copy from dashboard-charts and interpretations"
+  },
+  "json_schema": {
+    "bundle": "GET /api/schema",
+    "per_resource": "GET /api/schema/trial | paper | list | envelope"
+  },
+  "match_type_enum": [
+    { "value": "by_design", "label": "Trial built for node-positive M0", "since": "1.3" },
+    { "value": "published_subgroup", "label": "Published cN1/cN+ subgroup", "since": "1.3" },
+    { "value": "published_eligible", "label": "cN1 allowed; subgroup n pending", "since": "1.3" },
+    { "value": "retrospective_cn_plus", "label": "Retrospective cN+ series", "since": "1.3" },
+    { "value": "wrong_setting", "label": "Metastatic — wrong clinical pathway", "since": "1.3" },
+    { "value": "wrong_timing", "label": "Adjuvant pN+ — after surgery", "since": "1.3" },
+    { "value": "wrong_population", "label": "Wrong population (e.g. cis-unfit only)", "since": "1.3" },
+    { "value": "none", "label": "No node-positive patients", "since": "1.3" },
+    { "value": "indirect", "label": "Meta-analysis / indirect", "since": "1.3" }
+  ],
+  "field_dictionary": {
+    "data.items": "Canonical list — all list endpoints",
+    "data.kind": "Resource identifier matching meta.source",
+    "trial.patient_match.pct_of_trial": "Canonical percent",
+    "trial.patient_match.pct": "DEPRECATED — removed 2026-09-01",
+    "trial.treatment.control": "Canonical comparator",
+    "trial.treatment.comparator": "DEPRECATED — removed 2026-09-01",
+    "paper.ref": "Canonical citation short name",
+    "paper.topic": "Canonical study type",
+    "paper.type": "DEPRECATED — removed 2026-09-01",
+    "trial.phase": "Always string",
+    "trial.efficacy": "Never null"
+  },
+  "copy_endpoints": {
+    "dashboard_charts": "?include_copy=0 strips clinical copy — frontend owns captions",
+    "interpretations": "?include_copy=0 strips ui_copy"
+  }
+}

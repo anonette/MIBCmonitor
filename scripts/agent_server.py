@@ -19,7 +19,7 @@ import threading
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 WEB = ROOT / "web"
@@ -29,6 +29,17 @@ from env_config import agent_api_key, agent_host, agent_port, cors_origins, load
 
 load_dotenv()
 
+from api_schema import (  # noqa: E402
+    API_VERSION,
+    envelope,
+    list_data,
+    object_data,
+    normalize_patients_like_you,
+    normalize_papers_payload,
+    normalize_trials_payload,
+    strip_dashboard_copy,
+    strip_interpretation_copy,
+)
 from agent_core import (  # noqa: E402
     DATA,
     append_log,
@@ -139,14 +150,71 @@ class AgentHandler(BaseHTTPRequestHandler):
             provided = provided or auth[7:]
         return provided == API_KEY
 
-    def _send_json(self, data: dict | list, status: int = 200) -> None:
+    def _query_flags(self) -> dict[str, str]:
+        qs = parse_qs(urlparse(self.path).query)
+        return {k: (v[0] if v else "") for k, v in qs.items()}
+
+    def _legacy_response(self) -> bool:
+        return self._query_flags().get("legacy", "").lower() in ("1", "true", "yes")
+
+    def _include_copy(self) -> bool:
+        return self._query_flags().get("include_copy", "1").lower() not in ("0", "false", "no")
+
+    def _strict_schema(self) -> bool:
+        """?strict=1 omits deprecated field aliases (pct, comparator, type, rows, trials, papers)."""
+        return self._query_flags().get("strict", "").lower() in ("1", "true", "yes")
+
+    def _respond_data(self, data: object, source: str, path: Path, **meta_extra: object) -> None:
+        if self._legacy_response():
+            self._send_json(data, source_logical=source, path=path, **meta_extra)
+            return
+        wrapped = envelope(data, source, path, **meta_extra)
+        etag = f'"{wrapped["meta"]["etag"]}"'
+        inm = (self.headers.get("If-None-Match") or "").strip()
+        if inm and inm.strip('"') == wrapped["meta"]["etag"]:
+            self._send_not_modified(etag)
+            return
+        self._send_json(wrapped, etag=etag, source_logical=source, path=path, **meta_extra)
+
+    def _cors_headers(self) -> None:
+        self.send_header("Access-Control-Allow-Origin", self._cors_origin())
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header(
+            "Access-Control-Allow-Headers",
+            "Content-Type, X-API-Key, Authorization, If-None-Match, ngrok-skip-browser-warning",
+        )
+        self.send_header("Access-Control-Expose-Headers", "ETag, Cache-Control")
+        self.send_header("Access-Control-Max-Age", "86400")
+        self.send_header("Vary", "Origin")
+
+    def _send_not_modified(self, etag: str) -> None:
+        self.send_response(304)
+        self.send_header("ETag", etag)
+        self._cors_headers()
+        self.send_header("Cache-Control", "public, max-age=60")
+        self.end_headers()
+
+    def _send_json(
+        self,
+        data: dict | list,
+        status: int = 200,
+        cache_seconds: int = 60,
+        etag: str | None = None,
+        source_logical: str | None = None,
+        path: Path | None = None,
+        **meta_extra: object,
+    ) -> None:
         body = json.dumps(data, indent=2, ensure_ascii=False).encode("utf-8")
+        if etag is None and source_logical and path and isinstance(data, dict) and "meta" in data:
+            etag = f'"{data["meta"].get("etag", "")}"'
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Access-Control-Allow-Origin", self._cors_origin())
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-API-Key, Authorization")
+        self._cors_headers()
+        if etag:
+            self.send_header("ETag", etag)
+        if cache_seconds > 0:
+            self.send_header("Cache-Control", f"public, max-age={cache_seconds}")
         self.end_headers()
         self.wfile.write(body)
 
@@ -186,9 +254,7 @@ class AgentHandler(BaseHTTPRequestHandler):
 
     def do_OPTIONS(self) -> None:
         self.send_response(204)
-        self.send_header("Access-Control-Allow-Origin", self._cors_origin())
-        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-API-Key, Authorization")
+        self._cors_headers()
         self.end_headers()
 
     def do_GET(self) -> None:
@@ -211,51 +277,119 @@ class AgentHandler(BaseHTTPRequestHandler):
             return
 
         if path == "/api/trials":
-            data = load_json(DATA / "trials.json")
-            # Lovable contract: array of trials; ?wrap=1 returns full file
-            if urlparse(self.path).query == "wrap=1":
-                self._send_json(data)
-            else:
-                self._send_json(data.get("trials", []))
+            fpath = DATA / "trials.json"
+            raw = load_json(fpath)
+            normalized = normalize_trials_payload(raw, include_deprecated=not self._strict_schema())
+            legacy = "trials" if not self._strict_schema() else None
+            flags = self._query_flags()
+            extra = {}
+            if flags.get("wrap", "").lower() in ("1", "true", "yes"):
+                extra = {"categories": normalized["categories"], "file_meta": normalized["meta"]}
+            payload = list_data(normalized["trials"], "trials", legacy_key=legacy, **extra)
+            self._respond_data(payload, "trials", fpath, count=len(normalized["trials"]))
             return
 
         if path == "/api/papers":
-            data = load_json(DATA / "papers_index.json")
-            if urlparse(self.path).query == "wrap=1":
-                self._send_json(data)
-            else:
-                self._send_json(data.get("papers", []))
+            fpath = DATA / "papers_index.json"
+            raw = load_json(fpath)
+            normalized = normalize_papers_payload(raw, include_deprecated=not self._strict_schema())
+            legacy = "papers" if not self._strict_schema() else None
+            extra = {}
+            if self._query_flags().get("wrap", "").lower() in ("1", "true", "yes"):
+                extra["dataset_updated"] = normalized.get("updated")
+            payload = list_data(normalized["papers"], "papers", legacy_key=legacy, **extra)
+            self._respond_data(
+                payload,
+                "papers",
+                fpath,
+                count=len(normalized["papers"]),
+                updated=normalized.get("updated"),
+            )
             return
 
         if path == "/api/pending":
+            fpath = DATA / "papers_index.json"
             if urlparse(self.path).query == "simple=1":
-                self._send_json([_format_pending_item(p) for p in list_pending_papers()])
+                items = [_format_pending_item(p) for p in list_pending_papers()]
             else:
-                self._send_json(list_pending_for_review())
+                items = list_pending_for_review()
+            payload = list_data(items, "pending")
+            self._respond_data(payload, "pending", fpath, count=len(items))
             return
 
         if path == "/api/interpretations":
-            self._send_json(load_json(DATA / "interpretations.json"))
+            fpath = DATA / "interpretations.json"
+            data = load_json(fpath)
+            if not self._include_copy():
+                data = strip_interpretation_copy(data)
+            payload = object_data("interpretations", data)
+            self._respond_data(payload, "interpretations", fpath)
             return
 
         if path == "/api/patient-profile":
-            self._send_json(load_json(DATA / "patient_profile.json"))
+            fpath = DATA / "patient_profile.json"
+            profile = load_json(fpath)
+            payload = object_data("patient_profile", profile)
+            self._respond_data(payload, "patient_profile", fpath, count=1)
             return
 
         if path == "/api/glossary-pathway":
-            self._send_json(load_json(DATA / "glossary_pathway.json"))
+            fpath = DATA / "glossary_pathway.json"
+            data = load_json(fpath)
+            payload = object_data("glossary_pathway", data)
+            self._respond_data(payload, "glossary_pathway", fpath)
             return
 
         if path == "/api/patients-like-you":
-            self._send_json(load_json(DATA / "patients_like_you.json"))
+            fpath = DATA / "patients_like_you.json"
+            payload = normalize_patients_like_you(
+                load_json(fpath),
+                include_deprecated=not self._strict_schema(),
+            )
+            self._respond_data(payload, "patients_like_you", fpath, count=len(payload["items"]))
             return
 
         if path == "/api/dashboard-charts":
-            self._send_json(load_json(DATA / "dashboard_charts.json"))
+            fpath = DATA / "dashboard_charts.json"
+            data = load_json(fpath)
+            if not self._include_copy():
+                data = strip_dashboard_copy(data)
+            charts = data.get("charts", [])
+            legacy = "charts" if not self._strict_schema() else None
+            payload = list_data(
+                charts,
+                "dashboard_charts",
+                legacy_key=legacy,
+                page_title=data.get("page_title"),
+                scope=data.get("scope"),
+                legend=data.get("legend"),
+            )
+            self._respond_data(payload, "dashboard_charts", fpath, count=len(charts))
+            return
+
+        if path == "/api/contract":
+            fpath = DATA / "api_contract.json"
+            self._respond_data(load_json(fpath), "contract", fpath, count=1)
+            return
+
+        if path.startswith("/api/schema"):
+            fpath = DATA / "api_schemas.json"
+            schemas = load_json(fpath)
+            sub = path.removeprefix("/api/schema").strip("/")
+            if sub:
+                part = schemas.get("resources", {}).get(sub) or schemas.get("bundle", {}).get("definitions", {}).get(sub)
+                if not part:
+                    self.send_error(404)
+                    return
+                self._respond_data(part, f"schema/{sub}", fpath, count=1)
+                return
+            self._respond_data(schemas, "schema", fpath, count=len(schemas.get("resources", {})))
             return
 
         if path == "/api/validate":
-            self._send_json(validate_datasets())
+            result = validate_datasets()
+            payload = object_data("validate", result)
+            self._respond_data(payload, "validate", DATA / "trials.json", count=result.get("issue_count", 0))
             return
 
         self.send_error(404)
@@ -385,6 +519,7 @@ def main() -> None:
     print(f"  POST /api/approve  ({{\"paper_id\": \"...\"}})")
     print(f"  POST /api/reject   ({{\"paper_id\": \"...\", \"reason\": \"optional\"}})")
     print(f"  GET  /api/pending  (review queue with scope hints)")
+    print(f"  GET  /api/contract /api/schema  (API v{API_VERSION} contract + JSON Schema)")
     if API_KEY:
         print("  Auth: X-API-Key header required on /api/* (except /api/health)")
     else:

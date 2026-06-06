@@ -1,94 +1,94 @@
 {
-  "scope": "Regionally node-positive MIBC (cN1–N3, cM0) — perioperative systemic therapy before possible cystectomy",
-  "pathway": {
-    "title": "Typical curative pathway for cN+ M0 MIBC",
-    "steps": [
-      {
-        "id": "diagnosis",
-        "label": "Diagnosis & staging",
-        "detail": "TURBT confirms muscle-invasive urothelial carcinoma. CT/MRI + PET help stage nodes. cN1 = clinically involved regional pelvic node(s); cM0 = no distant metastases."
-      },
-      {
-        "id": "cisplatin_check",
-        "label": "Cisplatin eligibility",
-        "detail": "If fit for cisplatin: GC/ddMVAC, NIAGARA (durva+GC), or EV-304-type perioperative EV+pembro (if available). If unfit: KEYNOTE-905 / EV-ECLIPSE pathways."
-      },
-      {
-        "id": "systemic_first",
-        "label": "Systemic therapy first",
-        "detail": "Neoadjuvant or perioperative chemotherapy ± immunotherapy. Goal: shrink primary tumor and clear regional nodes (achieve pN0)."
-      },
-      {
-        "id": "restaging",
-        "label": "Restaging",
-        "detail": "Repeat imaging (CT/PET) after systemic therapy. Response in nodes guides surgery timing and prognosis."
-      },
-      {
-        "id": "local_treatment",
-        "label": "Curative local treatment",
-        "detail": "Radical cystectomy + pelvic lymph node dissection if operable. Radiation in selected unfit/refusing patients — not primary focus of this site."
-      },
-      {
-        "id": "pathology",
-        "label": "Surgical pathology",
-        "detail": "ypT and ypN stage after systemic therapy. pN0 (node-negative at surgery) is a strong surrogate for cure in cN1 disease."
-      },
-      {
-        "id": "adjuvant",
-        "label": "Adjuvant if high risk remains",
-        "detail": "If pathology shows pT3/pT4 or persistent pN+: adjuvant nivolumab (CheckMate 274) or pembrolizumab (AMBASSADOR) may be considered."
-      }
-    ],
-    "key_fork": "Your profile sits at: systemic therapy first → restaging → cystectomy, with strong interest in whether EV+pembro beats standard cisplatin NAC in cN1 M0."
-  },
-  "glossary": [
-    {
-      "term": "MIBC",
-      "definition": "Muscle-invasive bladder cancer — tumor invades the detrusor muscle (≥ cT2). This site covers MIBC with regional node involvement only."
-    },
-    {
-      "term": "cN1 cM0",
-      "definition": "Clinical stage: one regional pelvic lymph node involved on imaging/exam (cN1), no distant metastases (cM0). Your example: PET-positive external iliac node."
-    },
-    {
-      "term": "pN0 / ypN0",
-      "definition": "Pathologic node-negative at surgery. After neoadjuvant therapy, ypN0 means nodes cleared — strongly associated with better survival in cN+ disease."
-    },
-    {
-      "term": "pCR",
-      "definition": "Pathologic complete response — no viable tumor in bladder (ypT0) at cystectomy. Useful surrogate; nodal response (ypN0) may matter more in cN1."
-    },
-    {
-      "term": "Perioperative",
-      "definition": "Systemic therapy given before and/or after definitive local treatment (usually cystectomy). Includes neoadjuvant and adjuvant phases."
-    },
-    {
-      "term": "L1 / LVSI",
-      "definition": "Lymphovascular invasion seen on TURBT pathology. Associated with higher risk of nodal disease and worse prognosis."
-    },
-    {
-      "term": "EFS / DFS",
-      "definition": "Event-free or disease-free survival — time without recurrence, progression, or death (trial-specific definitions)."
-    },
-    {
-      "term": "HR (hazard ratio)",
-      "definition": "Compares event rates between arms. HR <1 favors experimental treatment. Subgroup HRs with wide CI crossing 1 are inconclusive."
-    },
-    {
-      "term": "LN-only (metastatic)",
-      "definition": "Metastatic disease limited to lymph nodes without visceral metastases — as in EV-302 subgroup. Different from curative perioperative cN1 M0."
-    },
-    {
-      "term": "Cisplatin-eligible",
-      "definition": "Adequate kidney function, hearing, performance status, and no neuropathy for cisplatin. Determines NIAGARA/EV-304 vs KEYNOTE-905 pathways."
-    },
-    {
-      "term": "Fit tier",
-      "definition": "How well a study matches this patient profile: A=direct perioperative cN+ match; B=partial; B−=nodal but wrong setting; C=wrong setting; D=indirect/retro."
-    },
-    {
-      "term": "Certainty badge",
-      "definition": "How confident we are in the patient-count match: high=published or by design; moderate=estimated or retro; low=tiny subgroup or indirect."
-    }
-  ]
+    "scope":  "Regionally node-positive MIBC (cN1–N3, cM0) — perioperative systemic therapy before possible cystectomy",
+    "pathway":  {
+                    "title":  "Typical curative pathway for cN+ M0 MIBC",
+                    "steps":  [
+                                  {
+                                      "id":  "diagnosis",
+                                      "label":  "Diagnosis \u0026 staging",
+                                      "detail":  "TURBT confirms muscle-invasive urothelial carcinoma. CT/MRI + PET help stage nodes. cN1 = clinically involved regional pelvic node(s); cM0 = no distant metastases."
+                                  },
+                                  {
+                                      "id":  "cisplatin_check",
+                                      "label":  "Cisplatin eligibility",
+                                      "detail":  "If fit for cisplatin: GC/ddMVAC, NIAGARA (durva+GC), or EV-304-type perioperative EV+pembro (if available). If unfit: KEYNOTE-905 / EV-ECLIPSE pathways."
+                                  },
+                                  {
+                                      "id":  "systemic_first",
+                                      "label":  "Systemic therapy first",
+                                      "detail":  "Neoadjuvant or perioperative chemotherapy ± immunotherapy. Goal: shrink primary tumor and clear regional nodes (achieve pN0)."
+                                  },
+                                  {
+                                      "id":  "restaging",
+                                      "label":  "Restaging",
+                                      "detail":  "Repeat imaging (CT/PET) after systemic therapy. Response in nodes guides surgery timing and prognosis."
+                                  },
+                                  {
+                                      "id":  "local_treatment",
+                                      "label":  "Curative local treatment",
+                                      "detail":  "Radical cystectomy + pelvic lymph node dissection if operable. Radiation in selected unfit/refusing patients — not primary focus of this site."
+                                  },
+                                  {
+                                      "id":  "pathology",
+                                      "label":  "Surgical pathology",
+                                      "detail":  "ypT and ypN stage after systemic therapy. pN0 (node-negative at surgery) is a strong surrogate for cure in cN1 disease."
+                                  },
+                                  {
+                                      "id":  "adjuvant",
+                                      "label":  "Adjuvant if high risk remains",
+                                      "detail":  "If pathology shows pT3/pT4 or persistent pN+: adjuvant nivolumab (CheckMate 274) or pembrolizumab (AMBASSADOR) may be considered."
+                                  }
+                              ],
+                    "key_fork":  "Your profile sits at: systemic therapy first → restaging → cystectomy, with strong interest in whether EV+pembro beats standard cisplatin NAC in cN1 M0."
+                },
+    "glossary":  [
+                     {
+                         "term":  "MIBC",
+                         "definition":  "Muscle-invasive bladder cancer — tumor invades the detrusor muscle (≥ cT2). This site covers MIBC with regional node involvement only."
+                     },
+                     {
+                         "term":  "cN1 cM0",
+                         "definition":  "Clinical stage: one regional pelvic lymph node involved on imaging/exam (cN1), no distant metastases (cM0). Your example: PET-positive external iliac node."
+                     },
+                     {
+                         "term":  "pN0 / ypN0",
+                         "definition":  "Pathologic node-negative at surgery. After neoadjuvant therapy, ypN0 means nodes cleared — strongly associated with better survival in cN+ disease."
+                     },
+                     {
+                         "term":  "pCR",
+                         "definition":  "Pathologic complete response — no viable tumor in bladder (ypT0) at cystectomy. Useful surrogate; nodal response (ypN0) may matter more in cN1."
+                     },
+                     {
+                         "term":  "Perioperative",
+                         "definition":  "Systemic therapy given before and/or after definitive local treatment (usually cystectomy). Includes neoadjuvant and adjuvant phases."
+                     },
+                     {
+                         "term":  "L1 / LVSI",
+                         "definition":  "Lymphovascular invasion seen on TURBT pathology. Associated with higher risk of nodal disease and worse prognosis."
+                     },
+                     {
+                         "term":  "EFS / DFS",
+                         "definition":  "Event-free or disease-free survival — time without recurrence, progression, or death (trial-specific definitions)."
+                     },
+                     {
+                         "term":  "HR (hazard ratio)",
+                         "definition":  "Compares event rates between arms. HR \u003c1 favors experimental treatment. Subgroup HRs with wide CI crossing 1 are inconclusive."
+                     },
+                     {
+                         "term":  "LN-only (metastatic)",
+                         "definition":  "Metastatic disease limited to lymph nodes without visceral metastases — as in EV-302 subgroup. Different from curative perioperative cN1 M0."
+                     },
+                     {
+                         "term":  "Cisplatin-eligible",
+                         "definition":  "Adequate kidney function, hearing, performance status, and no neuropathy for cisplatin. Determines NIAGARA/EV-304 vs KEYNOTE-905 pathways."
+                     },
+                     {
+                         "term":  "Fit tier",
+                         "definition":  "How well a study matches this patient profile: A=direct perioperative cN+ match; B=partial; B−=nodal but wrong setting; C=wrong setting; D=indirect/retro."
+                     },
+                     {
+                         "term":  "Certainty badge",
+                         "definition":  "How confident we are in the patient-count match: high=published or by design; moderate=estimated or retro; low=tiny subgroup or indirect."
+                     }
+                 ]
 }

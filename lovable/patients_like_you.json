@@ -1,149 +1,170 @@
 {
-  "profile_id": "target-patient",
-  "profile_summary": "pT2 HG, L1, PET+ external iliac node, cN1 cM0, perioperative intent",
-  "description": "Patients like you = enrolled or included in each study with clinically node-positive regional disease (cN1–N3) and M0, in perioperative/curative intent where applicable. Metastatic LN-only trials are labeled wrong setting.",
-  "columns": [
-    { "key": "study_id", "label": "Study" },
-    { "key": "total_n", "label": "Total N" },
-    { "key": "n_like_profile", "label": "Patients like you" },
-    { "key": "pct", "label": "% of trial" },
-    { "key": "certainty_label", "label": "Certainty" },
-    { "key": "match_type", "label": "Match type" },
-    { "key": "key_outcome", "label": "What we know in this subgroup" }
-  ],
-  "rows": [
-    {
-      "trial_id": "ev-eclipse",
-      "study_id": "EV-ECLIPSE",
-      "total_n": 23,
-      "n_like_profile": 23,
-      "pct": 100,
-      "certainty": "high",
-      "certainty_label": "By design",
-      "match_type": "by_design",
-      "fit_tier": "A",
-      "key_outcome": "No published results yet — pCR primary endpoint"
-    },
-    {
-      "trial_id": "ev-304",
-      "study_id": "EV-304 / KEYNOTE-B15",
-      "total_n": 808,
-      "n_like_profile": "~40 est.",
-      "pct": "~5%",
-      "certainty": "moderate",
-      "certainty_label": "cN1 n pending",
-      "match_type": "published_eligible",
-      "fit_tier": "A",
-      "key_outcome": "Overall EFS HR 0.53, pCR 55.8%; cN1 subgroup TBD"
-    },
-    {
-      "trial_id": "zargar-shoshtar-2016",
-      "study_id": "Zargar-Shoshtar 2016",
-      "total_n": 304,
-      "n_like_profile": 304,
-      "pct": 100,
-      "certainty": "moderate",
-      "certainty_label": "Retrospective",
-      "match_type": "retrospective_cn_plus",
-      "fit_tier": "D",
-      "key_outcome": "56% pN0 in cN1 with induction chemo"
-    },
-    {
-      "trial_id": "hermans-cn-plus-659",
-      "study_id": "Hermans cN+ (n=659)",
-      "total_n": 659,
-      "n_like_profile": 659,
-      "pct": 100,
-      "certainty": "moderate",
-      "certainty_label": "Population retro",
-      "match_type": "retrospective_cn_plus",
-      "fit_tier": "D",
-      "key_outcome": "cN1 3-y OS 66% NAC vs 37% upfront RC"
-    },
-    {
-      "trial_id": "ev-302",
-      "study_id": "EV-302 (LN-only)",
-      "total_n": 886,
-      "n_like_profile": 207,
-      "pct": 23,
-      "certainty": "high",
-      "certainty_label": "Published — wrong setting",
-      "match_type": "wrong_setting",
-      "fit_tier": "B-",
-      "key_outcome": "ORR 77.5%, PFS HR 0.47 — metastatic LN-only"
-    },
-    {
-      "trial_id": "niagara",
-      "study_id": "NIAGARA",
-      "total_n": 1063,
-      "n_like_profile": 58,
-      "pct": 5.5,
-      "certainty": "high",
-      "certainty_label": "Published cN1",
-      "match_type": "published_subgroup",
-      "fit_tier": "B",
-      "key_outcome": "cN1 EFS HR 0.75 (NS)"
-    },
-    {
-      "trial_id": "keynote-905",
-      "study_id": "KEYNOTE-905",
-      "total_n": 595,
-      "n_like_profile": 17,
-      "pct": 4.9,
-      "certainty": "low",
-      "certainty_label": "Tiny cN1; cis-unfit",
-      "match_type": "published_subgroup",
-      "fit_tier": "B-",
-      "key_outcome": "Overall EFS HR 0.40; cN1 data immature"
-    },
-    {
-      "trial_id": "ncdb-cn-plus-491",
-      "study_id": "NCDB cN+ NAC",
-      "total_n": 491,
-      "n_like_profile": 491,
-      "pct": 100,
-      "certainty": "moderate",
-      "certainty_label": "Retrospective",
-      "match_type": "retrospective_cn_plus",
-      "fit_tier": "D",
-      "key_outcome": "35% ypN0 after NAC"
-    },
-    {
-      "trial_id": "cn-plus-radiologic-130",
-      "study_id": "cN+ induction chemo (n=130)",
-      "total_n": 130,
-      "n_like_profile": 130,
-      "pct": 100,
-      "certainty": "moderate",
-      "certainty_label": "Retrospective",
-      "match_type": "retrospective_cn_plus",
-      "fit_tier": "D",
-      "key_outcome": "40.8% pN0 after chemo"
-    },
-    {
-      "trial_id": "checkmate-274",
-      "study_id": "CheckMate 274",
-      "total_n": 709,
-      "n_like_profile": 143,
-      "pct": 20,
-      "certainty": "high",
-      "certainty_label": "Adjuvant pN1",
-      "match_type": "wrong_timing",
-      "fit_tier": "C",
-      "key_outcome": "DFS HR 0.70 — after surgery, not neoadjuvant"
-    },
-    {
-      "trial_id": "swog-8710",
-      "study_id": "SWOG 8710",
-      "total_n": 307,
-      "n_like_profile": 0,
-      "pct": 0,
-      "certainty": "high",
-      "certainty_label": "cN0 only",
-      "match_type": "none",
-      "fit_tier": "C",
-      "key_outcome": "Foundational NAC — no cN1 patients"
-    }
-  ],
-  "chart_note": "Sort by n_like_profile descending for perioperative matches; flag wrong_setting and wrong_timing clearly."
+    "profile_id":  "target-patient",
+    "profile_summary":  "pT2 HG, L1, PET+ external iliac node, cN1 cM0, perioperative intent",
+    "description":  "Patients like you = enrolled or included in each study with clinically node-positive regional disease (cN1–N3) and M0, in perioperative/curative intent where applicable. Metastatic LN-only trials are labeled wrong setting.",
+    "columns":  [
+                    {
+                        "key":  "study_id",
+                        "label":  "Study"
+                    },
+                    {
+                        "key":  "total_n",
+                        "label":  "Total N"
+                    },
+                    {
+                        "key":  "n_like_profile",
+                        "label":  "Patients like you"
+                    },
+                    {
+                        "key":  "pct",
+                        "label":  "% of trial"
+                    },
+                    {
+                        "key":  "certainty_label",
+                        "label":  "Certainty"
+                    },
+                    {
+                        "key":  "match_type",
+                        "label":  "Match type"
+                    },
+                    {
+                        "key":  "key_outcome",
+                        "label":  "What we know in this subgroup"
+                    }
+                ],
+    "rows":  [
+                 {
+                     "trial_id":  "ev-eclipse",
+                     "study_id":  "EV-ECLIPSE",
+                     "total_n":  23,
+                     "n_like_profile":  23,
+                     "pct":  100,
+                     "certainty":  "high",
+                     "certainty_label":  "By design",
+                     "match_type":  "by_design",
+                     "fit_tier":  "A",
+                     "key_outcome":  "No published results yet — pCR primary endpoint"
+                 },
+                 {
+                     "trial_id":  "ev-304",
+                     "study_id":  "EV-304 / KEYNOTE-B15",
+                     "total_n":  808,
+                     "n_like_profile":  "~40 est.",
+                     "pct":  "~5%",
+                     "certainty":  "moderate",
+                     "certainty_label":  "cN1 n pending",
+                     "match_type":  "published_eligible",
+                     "fit_tier":  "A",
+                     "key_outcome":  "Overall EFS HR 0.53, pCR 55.8%; cN1 subgroup TBD"
+                 },
+                 {
+                     "trial_id":  "zargar-shoshtar-2016",
+                     "study_id":  "Zargar-Shoshtar 2016",
+                     "total_n":  304,
+                     "n_like_profile":  304,
+                     "pct":  100,
+                     "certainty":  "moderate",
+                     "certainty_label":  "Retrospective",
+                     "match_type":  "retrospective_cn_plus",
+                     "fit_tier":  "D",
+                     "key_outcome":  "56% pN0 in cN1 with induction chemo"
+                 },
+                 {
+                     "trial_id":  "hermans-cn-plus-659",
+                     "study_id":  "Hermans cN+ (n=659)",
+                     "total_n":  659,
+                     "n_like_profile":  659,
+                     "pct":  100,
+                     "certainty":  "moderate",
+                     "certainty_label":  "Population retro",
+                     "match_type":  "retrospective_cn_plus",
+                     "fit_tier":  "D",
+                     "key_outcome":  "cN1 3-y OS 66% NAC vs 37% upfront RC"
+                 },
+                 {
+                     "trial_id":  "ev-302",
+                     "study_id":  "EV-302 (LN-only)",
+                     "total_n":  886,
+                     "n_like_profile":  207,
+                     "pct":  23,
+                     "certainty":  "high",
+                     "certainty_label":  "Published — wrong setting",
+                     "match_type":  "wrong_setting",
+                     "fit_tier":  "B-",
+                     "key_outcome":  "ORR 77.5%, PFS HR 0.47 — metastatic LN-only"
+                 },
+                 {
+                     "trial_id":  "niagara",
+                     "study_id":  "NIAGARA",
+                     "total_n":  1063,
+                     "n_like_profile":  58,
+                     "pct":  5.5,
+                     "certainty":  "high",
+                     "certainty_label":  "Published cN1",
+                     "match_type":  "published_subgroup",
+                     "fit_tier":  "B",
+                     "key_outcome":  "cN1 EFS HR 0.75 (NS)"
+                 },
+                 {
+                     "trial_id":  "keynote-905",
+                     "study_id":  "KEYNOTE-905",
+                     "total_n":  595,
+                     "n_like_profile":  17,
+                     "pct":  4.9,
+                     "certainty":  "low",
+                     "certainty_label":  "Tiny cN1; cis-unfit",
+                     "match_type":  "published_subgroup",
+                     "fit_tier":  "B-",
+                     "key_outcome":  "Overall EFS HR 0.40; cN1 data immature"
+                 },
+                 {
+                     "trial_id":  "ncdb-cn-plus-491",
+                     "study_id":  "NCDB cN+ NAC",
+                     "total_n":  491,
+                     "n_like_profile":  491,
+                     "pct":  100,
+                     "certainty":  "moderate",
+                     "certainty_label":  "Retrospective",
+                     "match_type":  "retrospective_cn_plus",
+                     "fit_tier":  "D",
+                     "key_outcome":  "35% ypN0 after NAC"
+                 },
+                 {
+                     "trial_id":  "cn-plus-radiologic-130",
+                     "study_id":  "cN+ induction chemo (n=130)",
+                     "total_n":  130,
+                     "n_like_profile":  130,
+                     "pct":  100,
+                     "certainty":  "moderate",
+                     "certainty_label":  "Retrospective",
+                     "match_type":  "retrospective_cn_plus",
+                     "fit_tier":  "D",
+                     "key_outcome":  "40.8% pN0 after chemo"
+                 },
+                 {
+                     "trial_id":  "checkmate-274",
+                     "study_id":  "CheckMate 274",
+                     "total_n":  709,
+                     "n_like_profile":  143,
+                     "pct":  20,
+                     "certainty":  "high",
+                     "certainty_label":  "Adjuvant pN1",
+                     "match_type":  "wrong_timing",
+                     "fit_tier":  "C",
+                     "key_outcome":  "DFS HR 0.70 — after surgery, not neoadjuvant"
+                 },
+                 {
+                     "trial_id":  "swog-8710",
+                     "study_id":  "SWOG 8710",
+                     "total_n":  307,
+                     "n_like_profile":  0,
+                     "pct":  0,
+                     "certainty":  "high",
+                     "certainty_label":  "cN0 only",
+                     "match_type":  "none",
+                     "fit_tier":  "C",
+                     "key_outcome":  "Foundational NAC — no cN1 patients"
+                 }
+             ],
+    "chart_note":  "Sort by n_like_profile descending for perioperative matches; flag wrong_setting and wrong_timing clearly."
 }
