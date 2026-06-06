@@ -1,0 +1,47 @@
+Fix Tumor Board page — shows "No tumor board questions loaded".
+
+ROOT CAUSE: page only calls live agent with no static fallback. interpretations.json has tumor_board_questions (12 items).
+
+=== STEP 1 — Upload static fallback ===
+Upload interpretations.json to src/data/ (if not already there).
+
+=== STEP 2 — Fix page load ===
+On Tumor Board page mount:
+
+```
+import interpretationsStatic from "@/data/interpretations.json";
+import { fetchLiveInterpretations, isLiveDataEnabled } from "@/lib/agentApi";
+
+let interpretations = interpretationsStatic;
+if (isLiveDataEnabled()) {
+  try {
+    interpretations = await fetchLiveInterpretations();
+  } catch (e) {
+    console.warn("Live interpretations failed, using static", e);
+  }
+}
+
+const questions = interpretations.tumor_board_questions ?? [];
+```
+
+If questions.length === 0 AND static file exists, that is a bug — static always has 12.
+
+=== STEP 3 — Render ===
+- Group questions by category (Eligibility, Staging, Treatment, Trials, Outcomes, Pathway, Surgery, Contingency, Evidence, Standard of care, Process)
+- Each item: expandable card with question text
+- Header: "Tumor board checklist (12 questions)"
+- Export/print button for checked items
+- Scope reminder from interpretations.ui_copy.scope_banner or patient profile
+
+Data shape per question:
+{ "id": "cisplatin", "category": "Eligibility", "question": "Is she cisplatin-eligible..." }
+
+=== STEP 4 — App init ===
+fetchAllLiveData() already returns interpretations. Store in Zustand/context on app load and pass to Tumor Board page — do NOT fetch only on this page if global store already has it.
+
+"Refresh evidence" must reload interpretations too.
+
+=== STEP 5 — Live agent env ===
+VITE_AGENT_API_URL + VITE_AGENT_API_KEY set, republish. PC running: python scripts/agent_server.py + ngrok http 8765.
+
+Show banner only when BOTH live fails AND static interpretations.json missing — not when static is available.

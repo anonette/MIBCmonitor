@@ -1,0 +1,197 @@
+{
+  "page_title": "Visual dashboard",
+  "page_intro": "Each chart answers one specific question for regionally node-positive MIBC (cN1–N3 cM0). Read the caption beside every chart before interpreting bars or hazard ratios.",
+  "profile_reminder": "Target profile: pT2 HG, L1, PET+ external iliac node, cN1 cM0 — perioperative systemic therapy before possible cystectomy.",
+  "legend": {
+    "fit_tier": {
+      "A": "Direct match — perioperative cN+ M0 by design or strong subgroup",
+      "B": "Partial — some cN1 data in perioperative setting",
+      "B-": "Nodal biology relevant but wrong clinical setting (e.g. metastatic)",
+      "C": "Wrong setting or timing for this pathway",
+      "D": "Indirect — retrospective or meta-analysis"
+    },
+    "hr_note": "Hazard ratio < 1 favors experimental arm. If 95% CI crosses 1.0, result is not statistically significant (NS).",
+    "certainty_note": "Patient counts may be published, estimated, or retrospective — check certainty badge on Trial Explorer."
+  },
+  "charts": [
+    {
+      "id": "patients_like_you",
+      "order": 1,
+      "title": "Patients like you — count per trial",
+      "question": "In each study, how many enrolled patients actually match my cN1 cM0 perioperative profile?",
+      "what_it_shows": "Bar height = number of patients with regional node involvement (cN1–N3) and no distant metastases, in a perioperative/curative-intent trial where applicable. Not the same as total trial enrollment.",
+      "chart_type": "bar",
+      "x_axis": "Trial name",
+      "y_axis": "Patients matching profile (n)",
+      "color_meaning": "Bar color = fit tier (A=best match for your pathway, C/D=wrong setting or indirect)",
+      "data_source": "trials.json → patient_match.n_like_profile or cn1_cn_plus_n; patients_like_you.json rows",
+      "tooltip_fields": ["study_id", "total_n", "n_like_profile", "pct", "certainty_label", "match_type", "key_outcome"],
+      "caveats": [
+        "EV-304 cN1 n is estimated (~5% of 808) until subgroup published",
+        "EV-302 counts are metastatic LN-only — wrong setting for perioperative decisions",
+        "Retrospective series (Zargar, NCDB) are not randomized trials"
+      ],
+      "takeaway": "EV-ECLIPSE is smallest but 100% node-positive by design. EV-304 and Zargar-Shoshtar offer the largest relevant evidence bases for perioperative cN+ M0."
+    },
+    {
+      "id": "fit_scores",
+      "order": 2,
+      "title": "Trial relevance scores",
+      "question": "How well does each study fit my specific clinical situation?",
+      "what_it_shows": "Horizontal bars = evidence fit score (0–100) for the target profile. Combines setting (perioperative vs metastatic vs adjuvant), node-positive data quality, and directness of evidence.",
+      "chart_type": "horizontal_bar",
+      "x_axis": "Fit score (0–100)",
+      "y_axis": "Trial",
+      "color_meaning": "Color = fit tier letter (see legend)",
+      "data_source": "trials.json → fit_score, fit_tier, study_id",
+      "caveats": [
+        "High score does not mean proven superiority — only relevance to your profile",
+        "Metastatic trials can score moderately on biology but are wrong-setting for surgery-first pathway"
+      ],
+      "takeaway": "Prioritize tier A/B trials for perioperative decisions; use tier B−/C for biological rationale or cross-setting context only."
+    },
+    {
+      "id": "pcr_rates",
+      "order": 3,
+      "title": "Pathologic complete response (pCR) rates",
+      "question": "How often does systemic therapy eliminate visible tumor in the bladder at surgery?",
+      "what_it_shows": "Grouped bars = pCR % in perioperative trials (ypT0 at cystectomy). Labels show experimental % and control % underneath.",
+      "chart_type": "bar",
+      "x_axis": "Trial / regimen",
+      "y_axis": "pCR rate (%)",
+      "color_meaning": "Blue = EV+pembro arms; green = other perioperative IO; grey = chemo-IO comparators",
+      "data_source": "trials.json → efficacy.pcr_pct or subgroup_outcomes.outcomes.pcr",
+      "series": [
+        { "label": "EV-304 / KEYNOTE-B15", "experimental": 55.8, "control": 32.5, "note": "vs GC, cisplatin-eligible" },
+        { "label": "KEYNOTE-905", "experimental": 57.1, "control": 8.6, "note": "vs RC alone, cisplatin-ineligible" },
+        { "label": "NIAGARA", "experimental": 37.3, "control": 27.5, "note": "vs GC alone" }
+      ],
+      "caveats": [
+        "pCR is a surrogate — nodal response (ypN0) may matter more in cN1 disease",
+        "KEYNOTE-905 is cisplatin-ineligible population — different from EV-304"
+      ],
+      "takeaway": "EV-304 shows the largest pCR gain vs GC in cisplatin-eligible MIBC; compare against expected pN0 rates from chemo retrospectives."
+    },
+    {
+      "id": "retro_pn0_rates",
+      "order": 4,
+      "title": "Nodal clearance after standard chemotherapy (retrospective)",
+      "question": "If I get standard cisplatin NAC, what are realistic chances of node-negative pathology at surgery?",
+      "what_it_shows": "Bars = published pN0/ypN0 rates after neoadjuvant chemotherapy in clinically node-positive MIBC. Benchmark for standard NAC without EV or IO.",
+      "chart_type": "bar",
+      "x_axis": "Study / subgroup",
+      "y_axis": "Pathologic nodal response (%)",
+      "data_source": "trials.json → zargar-shoshtar-2016, hermans-cn-plus-659, cn-plus-radiologic-130, ncdb-cn-plus-491",
+      "series": [
+        { "label": "Zargar-Shoshtar (all cN+)", "rate": 48 },
+        { "label": "Zargar cN1 subset", "rate": 56 },
+        { "label": "cN+ radiologic (n=76 chemo)", "rate": 40.8 },
+        { "label": "NCDB ypN0", "rate": 35 }
+      ],
+      "caveats": [
+        "Retrospective — not randomized",
+        "Mixed regimens (GC, MVAC); no EV+pembro",
+        "Institutional selection bias possible"
+      ],
+      "takeaway": "~56% cN1 → pN0 with induction chemo is a useful comparator when weighing EV-304 pCR 55.8%."
+    },
+    {
+      "id": "hazard_ratio_forest",
+      "order": 5,
+      "title": "Hazard ratios — key efficacy endpoints",
+      "question": "How much do outcomes improve on experimental arms vs control?",
+      "what_it_shows": "Forest plot: each row = one endpoint. Dot = point estimate HR; horizontal line = 95% CI. Vertical dashed line at HR=1.0 = no difference.",
+      "chart_type": "forest",
+      "x_axis": "Hazard ratio (log scale or 0–2)",
+      "y_axis": "Endpoint / trial",
+      "color_meaning": "Blue = EV+pembro; green = perioperative durva/chemo; purple = adjuvant nivo",
+      "data_source": "trials.json efficacy + published subgroup data",
+      "series": [
+        { "label": "EV-304 EFS (cis-eligible)", "hr": 0.53, "ci_low": 0.41, "ci_high": 0.70, "category": "ev_pembro" },
+        { "label": "EV-304 OS (cis-eligible)", "hr": 0.65, "ci_low": 0.48, "ci_high": 0.89, "category": "ev_pembro" },
+        { "label": "EV-302 LN-only PFS", "hr": 0.47, "ci_low": 0.32, "ci_high": 0.70, "category": "ev_pembro", "warning": "wrong_setting" },
+        { "label": "EV-302 LN-only OS", "hr": 0.51, "ci_low": 0.33, "ci_high": 0.79, "category": "ev_pembro", "warning": "wrong_setting" },
+        { "label": "NIAGARA overall EFS", "hr": 0.68, "ci_low": 0.56, "ci_high": 0.82, "category": "perioperative" },
+        { "label": "NIAGARA cN1 EFS", "hr": 0.75, "ci_low": 0.22, "ci_high": 1.64, "category": "perioperative", "note": "NS — CI crosses 1" },
+        { "label": "KEYNOTE-905 EFS", "hr": 0.40, "ci_low": 0.28, "ci_high": 0.57, "category": "ev_pembro" },
+        { "label": "KEYNOTE-905 OS", "hr": 0.50, "ci_low": 0.33, "ci_high": 0.74, "category": "ev_pembro" },
+        { "label": "CheckMate 274 DFS", "hr": 0.70, "ci_low": 0.55, "ci_high": 0.90, "category": "adjuvant", "warning": "wrong_timing" }
+      ],
+      "caveats": [
+        "Subgroup HRs (cN1, LN-only) are underpowered — wide CIs",
+        "EV-302 is metastatic 1L — not perioperative SOC",
+        "CheckMate 274 is post-cystectomy adjuvant — different decision point"
+      ],
+      "takeaway": "EV-304 overall EFS is strongest perioperative signal for cisplatin-eligible MIBC; NIAGARA cN1 subgroup did not reach significance."
+    },
+    {
+      "id": "ev302_ln_only_orr",
+      "order": 6,
+      "title": "EV-302 lymph-node-only ORR (cross-setting)",
+      "question": "Does EV+pembro work in nodal disease? (metastatic context)",
+      "what_it_shows": "Side-by-side bars = objective response rate (ORR) and complete response in EV-302 patients with metastasis limited to lymph nodes (n≈207). Compared to chemotherapy alone.",
+      "chart_type": "grouped_bar",
+      "x_axis": "Endpoint",
+      "y_axis": "Response rate (%)",
+      "color_meaning": "Blue = EV+pembro (n=103); grey = chemotherapy (n=104)",
+      "data_source": "trials.json → ev-302 efficacy LN-only subgroup",
+      "wrong_setting_banner": "METASTATIC SETTING — supports biological rationale for nodal disease, NOT perioperative standard of care for cN1 M0 before cystectomy.",
+      "series": {
+        "labels": ["ORR", "Complete response"],
+        "experimental": [77.5, 50.0],
+        "control": [53.4, 26.2]
+      },
+      "caveats": [
+        "First-line metastatic trial — patients are not curative-intent perioperative MIBC",
+        "Do not use ORR alone to choose pre-cystectomy regimen"
+      ],
+      "takeaway": "Biological proof-of-concept for EV+pembro in nodal UC; pair with EV-304/EV-ECLIPSE for the correct clinical pathway."
+    },
+    {
+      "id": "category_distribution",
+      "order": 7,
+      "title": "Evidence base by treatment category",
+      "question": "What types of studies make up this dataset?",
+      "what_it_shows": "Pie slices = share of 20 tracked trials in each category (EV+pembro, standard NAC, perioperative IO, adjuvant, metastatic, retrospective).",
+      "chart_type": "pie",
+      "data_source": "trials.json → category field",
+      "categories": {
+        "ev_pembro": "EV + Pembrolizumab",
+        "standard_nac": "Standard neoadjuvant chemotherapy",
+        "perioperative_io": "Perioperative IO + chemo (e.g. NIAGARA)",
+        "adjuvant_io": "Adjuvant IO after surgery",
+        "metastatic": "Metastatic / wrong-setting context",
+        "retrospective": "Retrospective / meta-analysis"
+      },
+      "caveats": [
+        "Counts trials in database, not patients in real world",
+        "Metastatic and adjuvant trials included for context — flagged elsewhere"
+      ],
+      "takeaway": "Dataset is weighted toward perioperative and EV+pembro evidence, with explicit wrong-setting trials kept for comparison."
+    },
+    {
+      "id": "pathway_evidence",
+      "order": 8,
+      "title": "Treatment scenario strength",
+      "question": "For each realistic treatment path, how strong is the evidence for my profile?",
+      "what_it_shows": "Horizontal bars = qualitative evidence strength score (0–100) per treatment scenario — not a clinical recommendation.",
+      "chart_type": "horizontal_bar",
+      "x_axis": "Evidence strength score",
+      "y_axis": "Scenario",
+      "data_source": "interpretations.json + fit scores aggregated by pathway",
+      "series": [
+        { "label": "Cisplatin-eligible: NIAGARA (approved)", "score": 72, "color": "green" },
+        { "label": "Cisplatin-eligible: EV+pembro (EV-ECLIPSE / EV-304)", "score": 75, "color": "blue" },
+        { "label": "Cisplatin-eligible: Standard NAC (SWOG/meta)", "score": 35, "color": "grey" },
+        { "label": "Cisplatin-ineligible: KEYNOTE-905 EV+pembro", "score": 58, "color": "blue" },
+        { "label": "Any: EV-302 LN-only (metastatic activity)", "score": 55, "color": "amber", "warning": "wrong_setting" },
+        { "label": "Post-surgery: CheckMate 274 adjuvant", "score": 30, "color": "purple", "warning": "wrong_timing" }
+      ],
+      "caveats": [
+        "Scores reflect evidence fit, not efficacy magnitude",
+        "Institutional access and reimbursement not modeled"
+      ],
+      "takeaway": "For cisplatin-eligible cN1 M0, EV-304 and NIAGARA are the main perioperative options; standard NAC evidence is mostly from N0 RCTs and retrospectives."
+    }
+  ]
+}

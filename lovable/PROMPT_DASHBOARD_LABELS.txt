@@ -1,0 +1,44 @@
+Redesign Visual Dashboard page — charts are hard to follow. Add clear "what is what" context beside EVERY chart.
+
+Load chart specs LIVE via fetchDashboardCharts() from agentApi.ts (GET /api/dashboard-charts).
+On failure, fall back to static import from src/data/dashboard_charts.json.
+fetchAllLiveData() includes dashboardCharts — reload on app init and after Refresh evidence.
+
+=== PAGE LAYOUT ===
+- Top: page_intro from dashboard_charts.json + profile_reminder
+- Collapsible "How to read these charts" panel with legend (fit_tier, hr_note, certainty_note)
+- Each chart in a Card with TWO columns on desktop (chart left 60%, explanation panel right 40%; stack on mobile)
+
+=== EXPLANATION PANEL (required per chart) ===
+For each chart in dashboard_charts.charts[], render beside the Recharts component:
+
+1. **Title** — chart.title (large)
+2. **Question** — chart.question (italic, "This chart answers: …")
+3. **What it shows** — chart.what_it_shows (plain language paragraph)
+4. **Axes** — small text: X = chart.x_axis · Y = chart.y_axis
+5. **Colors** — chart.color_meaning
+6. **Data source** — muted text: chart.data_source
+7. **Caveats** — amber callout box, bullet list chart.caveats[]
+8. **Takeaway** — teal callout: chart.takeaway
+9. If chart.wrong_setting_banner or series item has warning=wrong_setting: red banner at top of card
+10. If warning=wrong_timing: purple banner "Adjuvant — after surgery, not your current decision"
+
+=== CHARTS (in order field) ===
+1. patients_like_you — bar, data from patients_like_you.json or trials patient_match
+2. fit_scores — horizontal bar, trials fit_score
+3. pcr_rates — bar, use chart.series for values
+4. retro_pn0_rates — bar, retrospective pN0 benchmark
+5. hazard_ratio_forest — Recharts custom forest, HR<1 favors experimental, mark NS if CI crosses 1
+6. ev302_ln_only_orr — grouped bar WITH mandatory wrong_setting_banner
+7. category_distribution — pie from trials category counts
+8. pathway_evidence — horizontal bar scenarios
+
+=== TOOLTIPS ===
+Rich tooltips using chart.tooltip_fields where defined. Example patients chart: "EV-304: ~40 of 808 patients (est. 5%) match cN1 M0 · certainty: moderate"
+
+=== DO NOT ===
+- Bare chart with only a title
+- Mix perioperative and metastatic bars without warning labels
+- Hide fit tier legend
+
+Static fallback: import dashboard_charts.json. Live: optional merge with trials.json from fetchAllLiveData().

@@ -250,6 +250,10 @@ class AgentHandler(BaseHTTPRequestHandler):
             self._send_json(load_json(DATA / "patients_like_you.json"))
             return
 
+        if path == "/api/dashboard-charts":
+            self._send_json(load_json(DATA / "dashboard_charts.json"))
+            return
+
         if path == "/api/validate":
             self._send_json(validate_datasets())
             return

@@ -149,11 +149,51 @@ export async function fetchPatientsLikeYou(): Promise<unknown> {
   return agentFetch("/api/patients-like-you");
 }
 
+export interface DashboardChartSpec {
+  id: string;
+  order: number;
+  title: string;
+  question: string;
+  what_it_shows: string;
+  chart_type: string;
+  x_axis?: string;
+  y_axis?: string;
+  color_meaning?: string;
+  data_source?: string;
+  caveats?: string[];
+  takeaway?: string;
+  wrong_setting_banner?: string;
+  tooltip_fields?: string[];
+  series?: unknown;
+  categories?: Record<string, string>;
+}
+
+export interface DashboardChartsData {
+  page_title?: string;
+  page_intro?: string;
+  profile_reminder?: string;
+  legend?: Record<string, unknown>;
+  charts?: DashboardChartSpec[];
+}
+
+export async function fetchDashboardCharts(): Promise<DashboardChartsData> {
+  return agentFetch("/api/dashboard-charts");
+}
+
+export interface GlossaryPathwayData {
+  scope?: string;
+  pathway?: { title?: string; steps?: Array<{ id: string; label: string; detail: string }>; key_fork?: string };
+  glossary?: Array<{ term: string; definition: string }>;
+}
+
 export interface LiveDataset {
   trials: unknown;
   papers: unknown;
   interpretations: unknown;
   patientProfile: unknown;
+  glossaryPathway: GlossaryPathwayData;
+  patientsLikeYou: unknown;
+  dashboardCharts: DashboardChartsData;
 }
 
 /** True when Lovable env has a backend URL configured. */
@@ -161,15 +201,19 @@ export function isLiveDataEnabled(): boolean {
   return Boolean(BASE);
 }
 
-/** Load all 4 JSON files from your local PC via ngrok (always current). */
+/** Load all datasets from your local PC via ngrok (always current). */
 export async function fetchAllLiveData(): Promise<LiveDataset> {
-  const [trials, papers, interpretations, patientProfile] = await Promise.all([
-    fetchLiveTrials(),
-    fetchLivePapers(),
-    fetchLiveInterpretations(),
-    fetchLivePatientProfile(),
-  ]);
-  return { trials, papers, interpretations, patientProfile };
+  const [trials, papers, interpretations, patientProfile, glossaryPathway, patientsLikeYou, dashboardCharts] =
+    await Promise.all([
+      fetchLiveTrials(),
+      fetchLivePapers(),
+      fetchLiveInterpretations(),
+      fetchLivePatientProfile(),
+      fetchGlossaryPathway(),
+      fetchPatientsLikeYou(),
+      fetchDashboardCharts(),
+    ]);
+  return { trials, papers, interpretations, patientProfile, glossaryPathway, patientsLikeYou, dashboardCharts };
 }
 
 /** Poll until agent finishes a scan (max ~3 min). */

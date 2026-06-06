@@ -7,6 +7,9 @@ Upload these files to your Lovable project under `src/data/`:
 | `patient_profile.json` | Target patient clinical profile |
 | `trials.json` | 12 trials with efficacy, patient counts, fit scores |
 | `interpretations.json` | Narrative text, talking points, UI copy |
+| `dashboard_charts.json` | Chart titles, captions, caveats, takeaways for Visual Dashboard |
+| `glossary_pathway.json` | Pathway steps + glossary terms |
+| `patients_like_you.json` | Overview / dashboard patient-count table |
 
 Reference charts in `../visualizations/` — recreate interactively in Lovable with Recharts using values from `trials.json`.
 

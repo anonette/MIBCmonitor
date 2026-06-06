@@ -172,6 +172,7 @@ Header on all routes except `/api/health`: `X-API-Key: <AGENT_API_KEY>`
 | GET | `/api/patient-profile` | Target profile + website scope |
 | GET | `/api/patients-like-you` | Overview hero table data |
 | GET | `/api/glossary-pathway` | Pathway steps + glossary |
+| GET | `/api/dashboard-charts` | Visual dashboard chart labels, captions, caveats |
 | GET | `/api/validate` | Dataset validation report |
 | POST | `/api/search` | Full PubMed + CT.gov scan |
 | POST | `/api/refresh` | Refresh watched NCT trial statuses |

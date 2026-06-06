@@ -1,0 +1,57 @@
+Fix Glossary & Pathway page — data shows "No pathway data loaded" and "Glossary (0)".
+
+ROOT CAUSE: page only tries live API and has no static fallback. glossary_pathway.json exists with 7 pathway steps and 12 glossary terms.
+
+=== STEP 1 — Upload static fallback ===
+Upload glossary_pathway.json to src/data/ (and patients_like_you.json for Overview).
+
+=== STEP 2 — Fix page load logic ===
+On Glossary & Pathway page mount:
+
+```
+import glossaryStatic from "@/data/glossary_pathway.json";
+import { fetchGlossaryPathway, isLiveDataEnabled } from "@/lib/agentApi";
+
+// try live first, fall back to static import
+let data = glossaryStatic;
+if (isLiveDataEnabled()) {
+  try {
+    data = await fetchGlossaryPathway();
+  } catch (e) {
+    console.warn("Live glossary failed, using static", e);
+  }
+}
+```
+
+Render:
+- pathway.steps[] — vertical stepper (7 steps: diagnosis → cisplatin check → systemic → restaging → local → pathology → adjuvant)
+- pathway.key_fork — callout box at bottom
+- glossary[] — searchable list; show count in header "Glossary (12)"
+- scope — subtitle under page title
+
+NEVER show empty state if static import exists. Only show "Connect live agent" banner when BOTH live fails AND static is missing.
+
+=== STEP 3 — App-wide data store ===
+If using Zustand/context, extend fetchAllLiveData() result to include glossaryPathway and patientsLikeYou (agentApi.ts already exports these). On app init:
+
+```
+const live = await fetchAllLiveData();
+setGlossaryPathway(live.glossaryPathway);
+setPatientsLikeYou(live.patientsLikeYou);
+```
+
+"Refresh evidence" on Overview should reload glossary + patients-like-you too, not just trials/papers.
+
+=== STEP 4 — Env vars (required for live) ===
+Lovable Settings → republish after change:
+VITE_AGENT_API_URL = current ngrok HTTPS URL
+VITE_AGENT_API_KEY = same as AGENT_API_KEY in backend .env
+
+User must run on PC: python scripts/agent_server.py + ngrok http 8765
+
+=== DATA SHAPE (glossary_pathway.json) ===
+{
+  "scope": "Regionally node-positive MIBC...",
+  "pathway": { "title": "...", "steps": [{ "id", "label", "detail" }], "key_fork": "..." },
+  "glossary": [{ "term": "MIBC", "definition": "..." }, ...]  // 12 terms
+}

@@ -92,6 +92,9 @@ fetchAllLiveData() hits:
 - GET /api/papers
 - GET /api/interpretations
 - GET /api/patient-profile
+- GET /api/glossary-pathway
+- GET /api/patients-like-you
+- GET /api/dashboard-charts
 
 User must keep running on PC: python scripts/agent_server.py + ngrok http 8765
 
@@ -125,7 +128,7 @@ DESIGN: Clean medical UI (Flatiron/OncoKB style). White #FAFBFC, teal #0F766E, I
 3. TRIAL EXPLORER — sortable table with columns: Study, Total N, **N like you**, certainty badge, fit tier, match_type badge. Filters by match_type and certainty.
 4. TRIAL DETAIL — **Subgroup outcomes panel** (trial.subgroup_outcomes): headline, n_like_profile, certainty, what_we_know, what_we_dont_know, outcomes grid (pCR/pN0/EFS/OS/ORR). Match meter. Efficacy tabs. Limitations. Wrong-setting warning banner if match_type=wrong_setting or wrong_timing.
 5. GLOSSARY & PATHWAY — from glossary_pathway.json (or fetchGlossaryPathway()): vertical pathway steps + searchable glossary terms. Scoped to cN+ M0 only.
-6. VISUAL DASHBOARD — Recharts: patient counts, fit scores, ORR, HR forest, pCR, pie, pathway
+6. VISUAL DASHBOARD — Recharts charts with explanation panel beside each (upload dashboard_charts.json). Per chart: title, question, what_it_shows, axes, color legend, caveats, takeaway. Red banner on wrong-setting charts (EV-302). Page intro + "How to read these charts" legend.
 7. INTERPRETATION & ARGUMENT BUILDER — accordion sections from interpretations.json
 8. TUMOR BOARD — expandable checklist from interpretations.tumor_board_questions (12 questions by category). Export/print button.
 9. COMPARISON TOOL — side-by-side 2-4 trials with patient_match row at top

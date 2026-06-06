@@ -69,6 +69,11 @@ Add a **Refresh evidence** button on the Overview page that:
 | GET | `/api/status` | Yes | Agent state + pending papers |
 | GET | `/api/trials` | Yes | Full trials.json |
 | GET | `/api/papers` | Yes | Full papers_index.json |
+| GET | `/api/interpretations` | Yes | interpretations.json (tumor board, UI copy) |
+| GET | `/api/patient-profile` | Yes | patient_profile.json |
+| GET | `/api/glossary-pathway` | Yes | glossary_pathway.json |
+| GET | `/api/patients-like-you` | Yes | patients_like_you.json |
+| GET | `/api/dashboard-charts` | Yes | dashboard_charts.json (chart labels & captions) |
 | POST | `/api/search` | Yes | Run full scan |
 | POST | `/api/refresh` | Yes | Refresh watched NCT trials |
 | POST | `/api/approve` | Yes | `{"paper_id": "..."}` |
