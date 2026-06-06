@@ -1,0 +1,235 @@
+{
+  "updated": "2026-06-06",
+  "papers": [
+    {
+      "id": "ev-304",
+      "title": "KEYNOTE-B15/EV-304 ASCO GU 2026 LBA630",
+      "type": "phase 3 RCT",
+      "n": 808,
+      "raw": "raw/bladder-cancer/2026-06-07-ev-304-keynote-b15-asco-gu.md",
+      "url": "https://www.asco.org/abstracts-presentations/216863"
+    },
+    {
+      "id": "keynote-905",
+      "title": "KEYNOTE-905/EV-303 NEJM 2025",
+      "type": "phase 3 RCT",
+      "n": 344,
+      "raw": "raw/bladder-cancer/2026-06-06-keynote-905-nejm.md",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41707170/"
+    },
+    {
+      "id": "ev-302",
+      "title": "EV-302 LN-only subgroup ESMO Open 2025",
+      "type": "phase 3 RCT subgroup",
+      "n": 207,
+      "raw": "raw/bladder-cancer/2026-06-06-ev-302-ln-only-subgroup.md",
+      "url": "https://www.esmoopen.com/article/S2059-7029(25)01413-9/fulltext"
+    },
+    {
+      "id": "ev-eclipse",
+      "title": "EV-ECLIPSE NCT05239624",
+      "type": "phase 2 trial registry",
+      "n": 23,
+      "raw": "raw/bladder-cancer/2026-06-06-ev-eclipse-trial.md",
+      "url": "https://clinicaltrials.gov/study/NCT05239624"
+    },
+    {
+      "id": "niagara-nejm",
+      "title": "NIAGARA NEJM 2024",
+      "type": "phase 3 RCT",
+      "n": 1063,
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2408154"
+    },
+    {
+      "id": "niagara-asco-gu-2025",
+      "title": "NIAGARA post-hoc pCR subgroup ASCO GU 2025",
+      "type": "post-hoc analysis",
+      "n": 1063,
+      "url": "https://www.astrazeneca.com/content/az-us/media/press-releases/2025/imfinzi-durvalumab-perioperative-regimen-improved-event-free-survival-and-overall-survival-across-muscle-invasive-bladder-cancer-patients-regardless-of-complete-pathology-response-status-in-post-hoc-exploratory-analysis-of-niagara-phase-iii-trial.html"
+    },
+    {
+      "id": "zargar-2016",
+      "title": "Zargar-Shoshtar multi-institutional cN+ NAC",
+      "type": "retrospective",
+      "n": 304,
+      "raw": "raw/bladder-cancer/2026-06-07-zargar-shoshtar-cn-positive-nac.md",
+      "url": "https://www.auajournals.org/doi/10.1016/j.juro.2015.02.2296"
+    },
+    {
+      "id": "cn-plus-radiologic",
+      "title": "cN+ induction chemo radiologic predictors",
+      "type": "retrospective",
+      "n": 130,
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S1078143920303860"
+    },
+    {
+      "id": "cn-plus-pmc-review",
+      "title": "RC and lymphadenectomy in cN+ bladder cancer review",
+      "type": "review",
+      "n": null,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11617270/"
+    },
+    {
+      "id": "pure-01",
+      "title": "PURE-01 5-year update",
+      "type": "phase 2 single-arm",
+      "n": 155,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41633898/"
+    },
+    {
+      "id": "abacus",
+      "title": "ABACUS neoadjuvant atezolizumab final",
+      "type": "phase 2 single-arm",
+      "n": 95,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35577646/"
+    },
+    {
+      "id": "checkmate-274",
+      "title": "CheckMate 274 NEJM",
+      "type": "phase 3 RCT adjuvant",
+      "n": 709,
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2034442"
+    },
+    {
+      "id": "swog-8710",
+      "title": "SWOG 8710 NEJM",
+      "type": "phase 3 RCT",
+      "n": 307,
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa022148"
+    },
+    {
+      "id": "ev-103-k",
+      "title": "EV-103 Cohort K JCO",
+      "type": "phase 1b/2",
+      "n": 76,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37369081/"
+    },
+    {
+      "id": "pt0-vs-pn0-biomarker",
+      "title": "Is pT0 a reliable endpoint? JU Open Plus 2024",
+      "type": "biomarker analysis",
+      "n": 26,
+      "url": "https://journals.lww.com/juop/fulltext/2024/12000/is_pt0_a_reliable_end_point_for_biomarker.5.aspx"
+    },
+    {
+      "id": "pmid-42154126",
+      "title": "Perioperative Treatment Patterns for Muscle-Invasive Bladder Cancer Patients Undergoing Radical Cystectomy in the Adjuvant Immunotherapy Era: A Retrospective Analysis of US Community Oncology Practice.",
+      "type": "auto-discovered",
+      "n": null,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42154126/",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 48,
+      "source": "pubmed",
+      "status": "needs_review",
+      "pmid": "42154126"
+    },
+    {
+      "id": "pmid-41759397",
+      "title": "Combined and individual effects of neoadjuvant chemotherapy and lymph node dissection on survival in non-muscle-invasive bladder cancer undergoing radical cystectomy.",
+      "type": "auto-discovered",
+      "n": null,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41759397/",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 48,
+      "source": "pubmed",
+      "status": "needs_review",
+      "pmid": "41759397"
+    },
+    {
+      "id": "nct06133517",
+      "title": "PeRioperative Immunotherapy Combined With Sacituzumab Govitecan in Muscle Invasive blAdder Cancer",
+      "type": "auto-discovered",
+      "n": 70,
+      "url": "https://clinicaltrials.gov/study/NCT06133517",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 43,
+      "source": "clinicaltrials.gov",
+      "status": "needs_review",
+      "nct_id": "NCT06133517"
+    },
+    {
+      "id": "nct07624201",
+      "title": "Trastuzumab Rezetecan and Adebrelimab as Neoadjuvant Therapy for HER2-Positive Muscle-Invasive Bladder Cancer",
+      "type": "auto-discovered",
+      "n": 58,
+      "url": "https://clinicaltrials.gov/study/NCT07624201",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 43,
+      "source": "clinicaltrials.gov",
+      "status": "needs_review",
+      "nct_id": "NCT07624201"
+    },
+    {
+      "id": "nct05406713",
+      "title": "Pembrolizumab in Muscle-invasive Bladder Cancer",
+      "type": "auto-discovered",
+      "n": 46,
+      "url": "https://clinicaltrials.gov/study/NCT05406713",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 38,
+      "source": "clinicaltrials.gov",
+      "status": "needs_review",
+      "nct_id": "NCT05406713"
+    },
+    {
+      "id": "pmid-42212670",
+      "title": "Addition of Intravesical Recombinant Bacillus Calmette-Guérin to Perioperative Chemoimmunotherapy in Muscle-Invasive Bladder Cancer: Primary Analysis of the Single-Arm Phase II Trial SAKK 06/19.",
+      "type": "auto-discovered",
+      "n": null,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42212670/",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 38,
+      "source": "pubmed",
+      "status": "needs_review",
+      "pmid": "42212670"
+    },
+    {
+      "id": "pmid-41954691",
+      "title": "Perioperative outcomes following open radical cystectomy in the setting of locally advanced bladder cancer.",
+      "type": "auto-discovered",
+      "n": null,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41954691/",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 33,
+      "source": "pubmed",
+      "status": "needs_review",
+      "pmid": "41954691"
+    },
+    {
+      "id": "pmid-41936674",
+      "title": "Comprehensive analysis of oncological outcomes of radical cystectomy for non-muscle invasive bladder cancer.",
+      "type": "auto-discovered",
+      "n": null,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41936674/",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 33,
+      "source": "pubmed",
+      "status": "needs_review",
+      "pmid": "41936674"
+    },
+    {
+      "id": "pmid-41439156",
+      "title": "Consolidative Radical Cystectomy Following Neoadjuvant Tislelizumab Plus Gemcitabine and Cisplatin in Clinically Lymph Node-positive Bladder Cancer: A Prospective Study.",
+      "type": "auto-discovered",
+      "n": null,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41439156/",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 33,
+      "source": "pubmed",
+      "status": "needs_review",
+      "pmid": "41439156"
+    },
+    {
+      "id": "nct05839119",
+      "title": "Targeting Androgen Signaling in Urothelial Cell Carcinoma - Neoadjuvant",
+      "type": "auto-discovered",
+      "n": 2,
+      "url": "https://clinicaltrials.gov/study/NCT05839119",
+      "discovered_at": "2026-06-06T16:35:23Z",
+      "relevance_score": 28,
+      "source": "clinicaltrials.gov",
+      "status": "needs_review",
+      "nct_id": "NCT05839119"
+    }
+  ]
+}

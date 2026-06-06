@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MIBC Evidence Agent</title>
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card: #fff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --teal: #0f766e;
+      --teal-light: #ccfbf1;
+      --amber: #d97706;
+      --red: #dc2626;
+      --green: #16a34a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    h1 { font-size: 1.5rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    button {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover { filter: brightness(1.08); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    button.secondary { background: #fff; color: var(--teal); border: 1px solid var(--border); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .stat .n { font-size: 1.6rem; font-weight: 700; color: var(--teal); }
+    .stat .l { font-size: 0.8rem; color: var(--muted); }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .panel h2 { font-size: 1rem; margin: 0 0 10px; }
+    .status-running { color: var(--amber); }
+    .status-done { color: var(--green); }
+    .status-error { color: var(--red); }
+    pre {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 12px;
+      overflow: auto;
+      font-size: 0.8rem;
+      max-height: 360px;
+    }
+    .hit {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+    }
+    .hit:last-child { border: none; }
+    .hit a { color: var(--teal); }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--teal-light);
+      color: var(--teal);
+      margin-left: 6px;
+    }
+    .issue-error { color: var(--red); }
+    .issue-warn { color: var(--amber); }
+    .issue-info { color: var(--muted); }
+    #feedback {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      background: var(--teal-light);
+      color: var(--teal);
+    }
+    #feedback.error { background: #fef2f2; color: var(--red); border-color: #fecaca; }
+    #feedback.running { background: #fffbeb; color: var(--amber); border-color: #fde68a; }
+    .panel.flash { box-shadow: 0 0 0 2px var(--teal); }
+    .review-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+    .review-card.strong { border-left: 4px solid var(--green); }
+    .review-card.mixed { border-left: 4px solid var(--amber); }
+    .review-card.exclude { border-left: 4px solid #94a3b8; }
+    .review-title { font-weight: 600; margin-bottom: 6px; }
+    .review-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+    .review-verdict { font-size: 0.9rem; margin: 8px 0; }
+    .review-lists { font-size: 0.85rem; margin: 8px 0; }
+    .review-lists li { margin: 2px 0; }
+    .review-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .btn-approve { background: var(--green); }
+    .btn-reject { background: #fff; color: var(--red); border: 1px solid #fecaca; }
+    .btn-reject:hover { background: #fef2f2; filter: none; }
+    .empty-queue { color: var(--muted); font-style: italic; }
+  </style>
+</head>
+<body>
+  <h1>MIBC Evidence Watch Agent</h1>
+  <p class="sub">cT2 cN1 cM0 · perioperative systemic therapy · validates data and searches PubMed + ClinicalTrials.gov</p>
+
+  <div class="panel" id="keyPanel" style="display:none">
+    <h2>API key required</h2>
+    <p class="sub" style="margin-bottom:8px">Use <strong>http://127.0.0.1:8765</strong> for local access without a key. Via ngrok, paste the same key as <code>AGENT_API_KEY</code> (run <code>python scripts\show_agent_config.py</code>).</p>
+    <div class="actions" style="margin-bottom:0">
+      <input id="apiKeyInput" type="password" placeholder="X-API-Key" style="flex:1;min-width:200px;padding:10px;border:1px solid var(--border);border-radius:8px" />
+      <button onclick="saveApiKey()">Save key</button>
+    </div>
+  </div>
+
+  <div id="feedback"></div>
+
+  <div class="actions">
+    <button id="btnSearch" onclick="runSearch()">Search for new studies</button>
+    <button class="secondary" id="btnValidate" onclick="runValidate()">Validate existing data</button>
+    <button class="secondary" id="btnRefresh" onclick="runRefresh()">Refresh watched trials</button>
+    <button class="secondary" id="btnReload" onclick="loadStatus(true)">Reload status</button>
+  </div>
+
+  <div class="grid" id="stats"></div>
+
+  <div class="panel" id="reviewPanel">
+    <h2>Review queue — include in evidence?</h2>
+    <p class="sub" style="margin-top:0">
+      Auto-discovered studies waiting for your decision. Scope: <strong>cN+ M0 perioperative MIBC</strong> only.
+      <strong>Approve</strong> = keep in papers_index (trusted). <strong>Reject</strong> = exclude. Neither adds to trials.json automatically yet.
+    </p>
+    <div id="reviewQueue"><p class="empty-queue">Loading queue...</p></div>
+  </div>
+
+  <div class="panel">
+    <h2>Agent status</h2>
+    <p id="agentStatus">Loading...</p>
+  </div>
+
+  <div class="panel" id="validationPanel" style="display:none">
+    <h2>Validation report</h2>
+    <p class="sub" style="margin-top:0">Checks trials.json and papers_index.json for missing fields, bad counts, and gaps. Does not search PubMed or change files.</p>
+    <div id="validationOut"></div>
+  </div>
+
+  <div class="panel" id="newPanel" style="display:none">
+    <h2>New studies added (needs review)</h2>
+    <div id="newOut"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Last run</h2>
+    <div id="logSummary" class="sub">—</div>
+    <button class="secondary" id="btnToggleLog" onclick="toggleRawLog()" style="margin-top:8px;display:none">Show raw JSON</button>
+    <pre id="logOut" style="display:none;margin-top:10px">—</pre>
+  </div>
+
+  <script>
+    let pollTimer = null;
+    const KEY_STORAGE = "mibc_agent_api_key";
+
+    function getApiKey() {
+      return sessionStorage.getItem(KEY_STORAGE) || "";
+    }
+
+    function saveApiKey() {
+      const v = document.getElementById("apiKeyInput").value.trim();
+      if (v) sessionStorage.setItem(KEY_STORAGE, v);
+      document.getElementById("keyPanel").style.display = "none";
+      loadStatus();
+    }
+
+    function showKeyPanel() {
+      document.getElementById("keyPanel").style.display = "block";
+      const saved = getApiKey();
+      if (saved) document.getElementById("apiKeyInput").value = saved;
+    }
+
+    async function api(path, method = "GET", body = null) {
+      const headers = { "Content-Type": "application/json" };
+      const key = getApiKey();
+      if (key) headers["X-API-Key"] = key;
+      const opts = { method, headers };
+      if (body) opts.body = JSON.stringify(body);
+      const r = await fetch(path, opts);
+      const data = await r.json();
+      if (r.status === 401) {
+        showKeyPanel();
+        return { error: data.error || "Unauthorized. Set X-API-Key header." };
+      }
+      if (!r.ok) return { error: data.error || `HTTP ${r.status}` };
+      return data;
+    }
+
+    function agentState(a) {
+      return a?.state || a?.status || "idle";
+    }
+
+    function setFeedback(msg, kind = "ok") {
+      const el = document.getElementById("feedback");
+      el.style.display = "block";
+      el.className = kind === "error" ? "error" : kind === "running" ? "running" : "";
+      el.innerHTML = msg;
+    }
+
+    function clearFeedback() {
+      document.getElementById("feedback").style.display = "none";
+    }
+
+    function flashPanel(id) {
+      const el = document.getElementById(id);
+      el.classList.add("flash");
+      el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      setTimeout(() => el.classList.remove("flash"), 1500);
+    }
+
+    function setBusy(busy) {
+      document.getElementById("btnSearch").disabled = busy;
+      document.getElementById("btnValidate").disabled = busy;
+      document.getElementById("btnRefresh").disabled = busy;
+      document.getElementById("btnReload").disabled = busy;
+    }
+
+    function formatWhen(iso) {
+      if (!iso) return "unknown time";
+      try {
+        return new Date(iso).toLocaleString();
+      } catch {
+        return iso;
+      }
+    }
+
+    function formatLastRun(run) {
+      if (!run) return "<p>No runs yet. Click <strong>Search for new studies</strong>.</p>";
+      const type = run.type || "run";
+      const when = formatWhen(run.finished_at || run.started_at);
+      if (type === "full_scan") {
+        const added = (run.added_to_papers_index || []).length;
+        const candidates = run.new_candidates ?? "?";
+        const refreshed = (run.trial_refresh || []).length;
+        const v = run.validation || {};
+        return `<p><strong>Evidence search</strong> — ${when}</p>
+          <ul>
+            <li>Validated ${v.trial_count ?? "?"} trials, ${v.paper_count ?? "?"} papers at start</li>
+            <li>Found ${candidates} new candidates, added <strong>${added}</strong> to papers (needs review)</li>
+            <li>Refreshed ${refreshed} watched trials on ClinicalTrials.gov</li>
+          </ul>`;
+      }
+      if (type === "approve") {
+        return `<p><strong>Paper approved</strong> — ${when}<br>${esc(run.title || run.paper_id)}</p>`;
+      }
+      if (type === "error") {
+        return `<p class="status-error"><strong>Error</strong> — ${when}<br>${esc(run.error)}</p>`;
+      }
+      return `<p><strong>${esc(type)}</strong> — ${when}</p>`;
+    }
+
+    function showLastRun(run, rawObj) {
+      document.getElementById("logSummary").innerHTML = formatLastRun(run);
+      const pre = document.getElementById("logOut");
+      const btn = document.getElementById("btnToggleLog");
+      if (rawObj) {
+        pre.textContent = JSON.stringify(rawObj, null, 2);
+        btn.style.display = "inline-block";
+        btn.textContent = "Show raw JSON";
+        pre.style.display = "none";
+      } else {
+        pre.textContent = "—";
+        btn.style.display = "none";
+      }
+    }
+
+    function toggleRawLog() {
+      const pre = document.getElementById("logOut");
+      const btn = document.getElementById("btnToggleLog");
+      const show = pre.style.display === "none";
+      pre.style.display = show ? "block" : "none";
+      btn.textContent = show ? "Hide raw JSON" : "Show raw JSON";
+    }
+
+    function renderStats(data) {
+      const trials = data.counts?.trials ?? data.trial_count ?? "—";
+      const papers = data.counts?.papers ?? data.paper_count ?? "—";
+      const pending = data.counts?.pending ?? data.pending_review_count ?? 0;
+      const version = data.meta?.version || "?";
+      const refreshed = data.meta?.last_agent_refresh || data.last_run || "never";
+      const refreshedLabel = refreshed === "never" ? "never" : String(refreshed).slice(0, 10);
+      document.getElementById("stats").innerHTML = `
+        <div class="stat"><div class="n">${trials}</div><div class="l">Trials in dataset</div></div>
+        <div class="stat"><div class="n">${papers}</div><div class="l">Papers indexed</div></div>
+        <div class="stat"><div class="n">${pending}</div><div class="l">Pending review</div></div>
+        <div class="stat"><div class="n">v${version}</div><div class="l">Dataset version</div></div>
+        <div class="stat"><div class="n">${refreshedLabel}</div><div class="l">Last trial refresh</div></div>
+      `;
+    }
+
+    async function loadStatus(manual = false) {
+      try {
+        if (manual) {
+          setBusy(true);
+          setFeedback("Reloading status from server...", "running");
+        }
+        const data = await api("/api/status");
+        if (data.error) {
+          document.getElementById("agentStatus").innerHTML = `<span class="status-error">${esc(data.error)}</span>`;
+          setFeedback(esc(data.error), "error");
+          if (data.error.toLowerCase().includes("unauthorized")) showKeyPanel();
+          setBusy(false);
+          return;
+        }
+        renderStats(data);
+        const a = data.agent || {};
+        const st = agentState(a);
+        const cls = st === "running" ? "status-running" : st === "error" ? "status-error" : (st === "done" || st === "complete") ? "status-done" : "";
+        const progress = a.progress != null ? ` (${Math.round(a.progress * 100)}%)` : "";
+        document.getElementById("agentStatus").innerHTML = `<span class="${cls}">${esc(a.message || st)}${progress}</span>`;
+
+        if (a.result) {
+          document.getElementById("newPanel").style.display = "block";
+          const added = a.result.added_to_papers_index || [];
+          document.getElementById("newOut").innerHTML = added.length
+            ? added.map(h => `
+              <div class="hit">
+                <strong>${esc(h.title || h.ref)}</strong>
+                <span class="badge">score ${h.relevance_score ?? "?"}</span>
+                <span class="badge">${esc(h.status)}</span><br>
+                <a href="${esc(h.url || h.source_url)}" target="_blank">${esc(h.url || h.source_url)}</a>
+              </div>`).join("")
+            : "<p>No new studies met relevance threshold this run.</p>";
+          showLastRun({ type: "full_scan", ...a.result }, a.result);
+        } else if (data.last_runs?.length) {
+          document.getElementById("newPanel").style.display = "none";
+          showLastRun(data.last_runs[0], data.last_runs[0]);
+        } else {
+          showLastRun(null, null);
+        }
+
+        if (st === "running") {
+          if (!pollTimer) pollTimer = setInterval(() => loadStatus(false), 2000);
+          setBusy(true);
+        } else {
+          clearInterval(pollTimer);
+          pollTimer = null;
+          setBusy(false);
+          if (manual) {
+            const c = data.counts || {};
+            setFeedback(
+              `Status updated ${new Date().toLocaleTimeString()} — ${c.trials ?? data.trial_count} trials, ${c.papers ?? data.paper_count} papers, ${c.pending ?? data.pending_review_count} pending review.`
+            );
+          }
+        }
+      } catch (err) {
+        document.getElementById("agentStatus").innerHTML = `<span class="status-error">Failed to load status: ${esc(err.message)}</span>`;
+        setFeedback(`Failed to load status: ${esc(err.message)}`, "error");
+        setBusy(false);
+      }
+    }
+
+    function esc(s) {
+      return String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+    }
+
+    async function runSearch() {
+      setBusy(true);
+      setFeedback("Starting evidence search (PubMed + ClinicalTrials.gov)...", "running");
+      document.getElementById("agentStatus").innerHTML = '<span class="status-running">Starting scan...</span>';
+      const r = await api("/api/search", "POST", {});
+      if (r.error) {
+        setFeedback(esc(r.error), "error");
+        setBusy(false);
+        return;
+      }
+      setFeedback("Search started — polling for progress...", "running");
+      loadStatus(false);
+    }
+
+    async function runValidate() {
+      setBusy(true);
+      setFeedback("Validating trials.json and papers_index.json...", "running");
+      document.getElementById("agentStatus").innerHTML = '<span class="status-running">Running validation checks...</span>';
+      const v = await api("/api/validate");
+      setBusy(false);
+      if (v.error) {
+        document.getElementById("agentStatus").innerHTML = `<span class="status-error">${esc(v.error)}</span>`;
+        setFeedback(esc(v.error), "error");
+        return;
+      }
+      const issues = v.issues || [];
+      const errors = issues.filter(i => i.severity === "error").length;
+      const warnings = issues.filter(i => i.severity === "warning").length;
+      const infos = issues.filter(i => i.severity === "info").length;
+      const summary = v.ok
+        ? `Validation passed — ${v.trial_count} trials, ${v.paper_count} papers, ${infos} minor notes.`
+        : `Validation found problems — ${errors} error(s), ${warnings} warning(s), ${infos} info note(s).`;
+      document.getElementById("agentStatus").innerHTML = `<span class="${v.ok ? "status-done" : "status-error"}">${esc(summary)}</span>`;
+      setFeedback(`${summary} See report below.`, v.ok ? "ok" : "error");
+      document.getElementById("validationPanel").style.display = "block";
+      document.getElementById("validationOut").innerHTML = `
+        <p><strong>Checked at:</strong> ${formatWhen(v.checked_at)}</p>
+        <p>${v.ok ? "✓" : "⚠"} ${v.issue_count} issue(s) across ${v.trial_count} trials and ${v.paper_count} papers</p>
+        <ul>${issues.map(i => `<li class="issue-${i.severity}"><strong>[${i.severity}]</strong> ${esc(i.trial || "dataset")} — ${esc(i.message)}</li>`).join("") || "<li>No issues found.</li>"}</ul>
+      `;
+      flashPanel("validationPanel");
+    }
+
+    async function runRefresh() {
+      setBusy(true);
+      setFeedback("Refreshing 9 watched NCT trials from ClinicalTrials.gov...", "running");
+      document.getElementById("agentStatus").innerHTML = '<span class="status-running">Refreshing watched NCT trials...</span>';
+      const r = await api("/api/refresh", "POST", {});
+      if (r.error) {
+        setFeedback(esc(r.error), "error");
+        setBusy(false);
+        return;
+      }
+      setFeedback("Trial refresh started — polling for completion...", "running");
+      loadStatus(false);
+    }
+
+    function reviewCardClass(suggestion) {
+      if (suggestion === "strong_candidate" || suggestion === "worth_review") return "strong";
+      if (suggestion === "likely_exclude") return "exclude";
+      return "mixed";
+    }
+
+    function renderReviewQueue(items) {
+      const el = document.getElementById("reviewQueue");
+      if (!items.length) {
+        el.innerHTML = '<p class="empty-queue">No items pending review. Run <strong>Search for new studies</strong> to find more.</p>';
+        return;
+      }
+      el.innerHTML = items.map(p => {
+        const r = p.review || {};
+        const pros = (r.pros || []).map(x => `<li>+ ${esc(x)}</li>`).join("");
+        const cons = (r.cons || []).map(x => `<li>− ${esc(x)}</li>`).join("");
+        const src = p.source === "clinicaltrials.gov" ? "ClinicalTrials.gov" : p.source === "pubmed" ? "PubMed" : esc(p.source);
+        return `
+          <div class="review-card ${reviewCardClass(r.suggestion)}" id="review-${esc(p.id)}">
+            <div class="review-title">${esc(p.title)}</div>
+            <div class="review-meta">
+              <span class="badge">score ${p.relevance_score ?? r.relevance_score ?? "?"}</span>
+              <span class="badge">${src}</span>
+              ${p.nct_id ? `<span class="badge">${esc(p.nct_id)}</span>` : ""}
+              ${p.pmid ? `<span class="badge">PMID ${esc(p.pmid)}</span>` : ""}
+              ${p.n ? `<span class="badge">n=${p.n}</span>` : ""}
+            </div>
+            <div class="review-verdict"><strong>Assessment:</strong> ${esc(r.scope_verdict || "Review manually")}</div>
+            ${pros || cons ? `<ul class="review-lists">${pros}${cons}</ul>` : ""}
+            <div><a href="${esc(p.url)}" target="_blank">Open source ↗</a></div>
+            <div class="review-actions">
+              <button class="btn-approve" onclick="reviewDecision('${esc(p.id)}','approve')">Approve — include</button>
+              <button class="btn-reject" onclick="reviewDecision('${esc(p.id)}','reject')">Reject — exclude</button>
+            </div>
+          </div>`;
+      }).join("");
+    }
+
+    async function loadReviewQueue() {
+      const items = await api("/api/pending");
+      if (items.error) {
+        document.getElementById("reviewQueue").innerHTML = `<p class="status-error">${esc(items.error)}</p>`;
+        return;
+      }
+      renderReviewQueue(Array.isArray(items) ? items : []);
+    }
+
+    async function reviewDecision(paperId, action) {
+      setBusy(true);
+      let reason = "";
+      if (action === "reject") {
+        reason = window.prompt("Optional reason for rejecting (e.g. NMIBC, bladder-sparing, wrong setting):") || "";
+      }
+      const path = action === "approve" ? "/api/approve" : "/api/reject";
+      const body = action === "approve" ? { paper_id: paperId } : { paper_id: paperId, reason };
+      const r = await api(path, "POST", body);
+      setBusy(false);
+      if (r.error || r.ok === false) {
+        setFeedback(esc(r.error || "Action failed"), "error");
+        return;
+      }
+      const card = document.getElementById(`review-${paperId}`);
+      if (card) {
+        card.style.opacity = "0.4";
+        card.querySelector(".review-actions").innerHTML = action === "approve"
+          ? '<span class="status-done">Approved — kept in papers_index</span>'
+          : '<span class="status-error">Rejected — excluded</span>';
+      }
+      setFeedback(action === "approve"
+        ? `Approved "${paperId}" — marked trusted in papers_index.json`
+        : `Rejected "${paperId}" — will not appear in pending queue`);
+      setTimeout(() => { loadReviewQueue(); loadStatus(false); }, 600);
+    }
+
+    if (location.hostname.includes("ngrok")) {
+      showKeyPanel();
+    }
+    loadStatus();
+    loadReviewQueue();
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+Add these UI features using updated trials.json (v1.3 with patient_match on every trial):
+
+1. OVERVIEW HERO — "Patients like you" table from patients_like_you.json or fetchPatientsLikeYou(). Show Study, Total N, Patients like you, %, certainty badge, match_type badge, key outcome. Bar chart of matching patient counts.
+
+2. CERTAINTY BADGES on all trial rows: high=green "Published/by design", moderate=amber "Estimated/retro", low=slate "Tiny/indirect".
+
+3. GLOSSARY & PATHWAY page — glossary_pathway.json: 7-step pathway diagram + glossary tooltips.
+
+4. TRIAL DETAIL — subgroup_outcomes panel: what_we_know, what_we_dont_know, outcomes grid. Red banner if wrong_setting or wrong_timing.
+
+5. TUMOR BOARD page — interpretations.tumor_board_questions: 12 expandable questions by category, export checklist.
+
+Upload patients_like_you.json and glossary_pathway.json to src/data/. Use fetchGlossaryPathway() and fetchPatientsLikeYou() when live API connected.

@@ -1,0 +1,169 @@
+{
+  "sections": [
+    {
+      "id": "headline",
+      "title": "One-sentence summary",
+      "text": "EV-304 (n=808, ASCO GU 2026) is now the strongest perioperative EV+pembro evidence in cisplatin-eligible MIBC including cN1 M0 — EFS HR 0.53, pCR 55.8% vs 32.5%. EV-ECLIPSE remains the only node-focused prospective EV+pembro trial (~23 patients). Retrospective cN+ NAC data (304-659 patients) supports chemotherapy before RC with 48-56% pN0 rates in cN1."
+    },
+    {
+      "id": "game_changer",
+      "title": "New: EV-304 / KEYNOTE-B15 (cisplatin-eligible)",
+      "trial_id": "ev-304",
+      "text": "Published February 2026: 808 patients with T2-T4aN0M0 or T1-T4aN1M0 randomized to perioperative EV+pembro vs neoadjuvant gemcitabine/cisplatin. 2-year EFS 79.4% vs 66.2% (HR 0.53); pCR 55.8% vs 32.5%. FDA priority review pending. This directly addresses the prior gap — perioperative EV+pembro in cisplatin-FIT patients with allowed cN1 disease."
+    },
+    {
+      "id": "best_match",
+      "title": "Best design match for node-positive",
+      "trial_id": "ev-eclipse",
+      "text": "EV-ECLIPSE is still the only trial designed specifically for node-positive MIBC before cystectomy with EV+pembro (~23 patients, phase 2, no published results). Near-perfect match for cT2 cN1 cM0 with PET-positive external iliac node."
+    },
+    {
+      "id": "strongest_efficacy",
+      "title": "Strongest EV+pembro activity data",
+      "trial_id": "ev-302",
+      "text": "EV-302 lymph-node-only subgroup (n=207): ORR 77.5% vs 53.4%, PFS HR 0.47, OS HR 0.51. Metastatic/unresectable setting — supports biological rationale but not the curative perioperative pathway."
+    },
+    {
+      "id": "approved_alternative",
+      "title": "Approved perioperative alternative (durvalumab)",
+      "trial_id": "niagara",
+      "text": "NIAGARA: 1,063 patients; perioperative durvalumab + GC. FDA approved. cN1 subgroup n=58 with EFS HR 0.75 (NS). 2025 post-hoc: benefit in both pCR and non-pCR patients; DFS HR 0.69 post-RC."
+    },
+    {
+      "id": "cisplatin_ineligible",
+      "title": "If cisplatin-ineligible",
+      "trial_id": "keynote-905",
+      "text": "KEYNOTE-905: perioperative EV+pembro FDA-approved Nov 2025 for cis-ineligible MIBC. EFS HR 0.40, pCR 57.1%. Only ~17 cN1 patients (4.9%)."
+    },
+    {
+      "id": "retrospective_cn_plus",
+      "title": "Retrospective cN+ NAC evidence (standard chemo)",
+      "trial_id": "zargar-shoshtar-2016",
+      "text": "Zargar-Shoshtar 2016: 304 cN1-N3 patients — 48% pN0 after induction chemo (56% in cN1). Hermans population study (n=659): cN1 3-y OS 66% with NAC vs 37% upfront RC. These underpin the standard NAC-before-RC argument for node-positive disease — but with chemotherapy, not EV+pembro."
+    },
+    {
+      "id": "czech_standard",
+      "title": "Foundational RCT comparator",
+      "trial_id": "swog-8710",
+      "text": "SWOG 8710 and BA06 enrolled cN0 only (0 node-positive patients). Meta-analyses support NAC in MIBC broadly; cN+ evidence is retrospective."
+    },
+    {
+      "id": "adjuvant_backup",
+      "title": "After surgery",
+      "trial_id": "checkmate-274",
+      "text": "If cystectomy pathology shows pN+: CheckMate 274 (143 pN1) and AMBASSADOR support adjuvant immunotherapy."
+    },
+    {
+      "id": "pathologic_nodal_response",
+      "title": "Why nodal response matters",
+      "text": "PURE-01: 5-y OS only 41.9% for ypN+ vs 89.5% for ypT0N0. JU Open Plus biomarker study: pN0 response predicted survival better than pT0 alone after NAC. Achieving pN0 after systemic therapy is a critical surrogate for cure in cN1 disease."
+    }
+  ],
+  "tumor_board_questions": [
+    {
+      "id": "cisplatin",
+      "category": "Eligibility",
+      "question": "Is she cisplatin-eligible by Galsky criteria? How does that change the choice between NIAGARA/EV-304 vs KEYNOTE-905?"
+    },
+    {
+      "id": "nodal_confirmation",
+      "category": "Staging",
+      "question": "Was the external iliac node biopsy-proven cN1, or imaging-only (PET ≥1.0 cm)? Would EUS-FNA or repeat PET change staging?"
+    },
+    {
+      "id": "ev304_access",
+      "category": "Treatment",
+      "question": "Is perioperative EV+pembro (EV-304 data: EFS HR 0.53, pCR 55.8%) available/reimbursable here, or only durvalumab+GC (NIAGARA)?"
+    },
+    {
+      "id": "eclipse",
+      "category": "Trials",
+      "question": "Is EV-ECLIPSE or another node-positive perioperative trial accessible if standard SOC is chosen first?"
+    },
+    {
+      "id": "nodal_endpoint",
+      "category": "Outcomes",
+      "question": "What is the realistic pN0 rate with GC/ddMVAC in cN1 (retro data ~56%) vs expected with EV+pembro (EV-304 pCR 55.8% overall)?"
+    },
+    {
+      "id": "restaging",
+      "category": "Pathway",
+      "question": "What restaging (CT, PET, MRI) is planned after neoadjuvant cycles, and what nodal response would still proceed to cystectomy?"
+    },
+    {
+      "id": "surgery_timing",
+      "category": "Surgery",
+      "question": "Optimal timing of radical cystectomy + PLND after systemic therapy? Is the external iliac node in the standard PLND template?"
+    },
+    {
+      "id": "adjuvant_backup",
+      "category": "Contingency",
+      "question": "If pathology after RC shows persistent pN+: adjuvant nivolumab (CheckMate 274) or pembrolizumab (AMBASSADOR) — eligibility and duration?"
+    },
+    {
+      "id": "ev302_role",
+      "category": "Evidence",
+      "question": "How should we weigh EV-302 LN-only efficacy (n=207, ORR 77.5%) — biological rationale only, not perioperative SOC?"
+    },
+    {
+      "id": "niagara_cn1",
+      "category": "Evidence",
+      "question": "NIAGARA cN1 subgroup n=58 had NS benefit (EFS HR 0.75) — is durva+GC still justified in cN1 given EV-304?"
+    },
+    {
+      "id": "standard_nac",
+      "category": "Standard of care",
+      "question": "If no IO/EV access: is induction GC/ddMVAC the institutional standard for cN1 M0 before RC (Zargar 56% cN1 pN0)?"
+    },
+    {
+      "id": "mdt_documentation",
+      "category": "Process",
+      "question": "Document EAU/NCCN-aligned rationale, patient fitness, and shared decision on perioperative regimen before cycle 1."
+    }
+  ],
+  "talking_points_for_oncologist": [
+    "EV-304 (n=808): perioperative EV+pembro beats GC in cisplatin-eligible MIBC — EFS HR 0.53, pCR 55.8%; includes cN1 M0",
+    "EV-ECLIPSE (n≈23): only trial designed for node-positive perioperative EV+pembro — phase 2, no results yet",
+    "EV-302 LN-only (n=207): proves EV+pembro activity in nodal disease — metastatic setting",
+    "NIAGARA (n=58 cN1): approved durva+GC alternative; cN1 subgroup statistically inconclusive",
+    "Zargar-Shoshtar (n=304 cN+): 56% cN1 patients achieve pN0 with induction chemo — standard NAC evidence",
+    "SWOG 8710: 0 cN1 patients — foundational but not directly applicable to nodes",
+    "CheckMate 274 / AMBASSADOR: adjuvant backup if surgery leaves pN+"
+  ],
+  "ui_copy": {
+    "site_title": "Node-Positive MIBC Evidence Explorer",
+    "site_subtitle": "Regionally node-positive muscle-invasive bladder cancer · cN1–N3 M0",
+    "scope_banner": "This website covers ONE situation only: MIBC with involved pelvic lymph nodes and no distant metastases (cN1–N3 cM0). It does not cover node-negative MIBC, bladder-sparing treatment, or metastatic disease.",
+    "scope_hero": "For patients whose cancer has spread to regional lymph nodes — but not elsewhere — and who may receive systemic therapy before surgery.",
+    "not_this_site": "Not for: cN0 M0 localized MIBC · trimodality bladder preservation · M1 metastatic disease",
+    "disclaimer": "This tool summarizes published clinical trial evidence for educational and decision-support purposes. It is not medical advice. All treatment decisions require qualified oncology consultation. Scope: regionally node-positive MIBC (cN1–N3 cM0) only.",
+    "profile_banner": "Example profile: pT2 HG · L1 · PET+ external iliac node · cN1 cM0 · perioperative intent",
+    "patients_like_you_title": "Patients like you — how many per trial?",
+    "patients_like_you_subtitle": "cN1–N3 cM0 perioperative profile · certainty badges show published vs estimated counts",
+    "glossary_pathway_title": "Glossary & treatment pathway",
+    "subgroup_panel_title": "Subgroup outcomes for your profile",
+    "tumor_board_title": "Questions for tumor board / MDT",
+    "certainty_badges": {
+      "high": "Published count or by trial design",
+      "moderate": "Estimated or retrospective data",
+      "low": "Tiny subgroup or indirect evidence"
+    },
+    "match_type_badges": {
+      "by_design": "Trial built for node-positive M0",
+      "published_subgroup": "Published cN1/cN+ subgroup",
+      "published_eligible": "cN1 allowed; subgroup n pending",
+      "retrospective_cn_plus": "Retrospective cN+ series",
+      "wrong_setting": "Metastatic — wrong clinical pathway",
+      "wrong_timing": "Adjuvant pN+ — after surgery",
+      "none": "No node-positive patients",
+      "indirect": "Meta-analysis / indirect"
+    },
+    "tier_legend": {
+      "A": "Direct match — perioperative cN1 M0 MIBC",
+      "B": "Partial — perioperative with some cN1 data",
+      "B-": "Nodal biology relevant but wrong clinical setting",
+      "C": "Different setting (metastatic, N0-only, adjuvant)",
+      "D": "Indirect (meta-analysis, retrospective cN+)"
+    }
+  }
+}

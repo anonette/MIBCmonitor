@@ -1,0 +1,1688 @@
+{
+  "meta": {
+    "version": "1.3",
+    "updated": "2026-06-07",
+    "trial_count": 20,
+    "patient_profile_id": "target-patient",
+    "last_agent_refresh": "2026-06-06T17:46:27Z",
+    "patient_match_enriched": true
+  },
+  "categories": [
+    {
+      "id": "ev_pembro",
+      "label": "EV + Pembrolizumab",
+      "color": "#2563eb"
+    },
+    {
+      "id": "standard_nac",
+      "label": "Standard Chemotherapy NAC",
+      "color": "#64748b"
+    },
+    {
+      "id": "perioperative_io",
+      "label": "Perioperative Immunotherapy + Chemo",
+      "color": "#059669"
+    },
+    {
+      "id": "adjuvant_io",
+      "label": "Adjuvant Immunotherapy",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "metastatic",
+      "label": "Metastatic / Advanced",
+      "color": "#d97706"
+    },
+    {
+      "id": "retrospective",
+      "label": "Retrospective / Meta-analysis",
+      "color": "#94a3b8"
+    }
+  ],
+  "fit_tiers": {
+    "A": {
+      "label": "Direct match",
+      "description": "Perioperative cN1 M0 MIBC, cystectomy planned",
+      "score_range": [
+        90,
+        100
+      ]
+    },
+    "B": {
+      "label": "Partial perioperative match",
+      "description": "Perioperative MIBC with some cN1 or strong nodal subgroup",
+      "score_range": [
+        60,
+        89
+      ]
+    },
+    "B-": {
+      "label": "Nodal but wrong setting",
+      "description": "LN-only metastatic or perioperative wrong population",
+      "score_range": [
+        40,
+        59
+      ]
+    },
+    "C": {
+      "label": "Wrong setting",
+      "description": "Metastatic 1L, N0-only foundational, or adjuvant-only",
+      "score_range": [
+        10,
+        39
+      ]
+    },
+    "D": {
+      "label": "Indirect evidence",
+      "description": "Meta-analysis or retrospective cN+ data",
+      "score_range": [
+        20,
+        50
+      ]
+    }
+  },
+  "trials": [
+    {
+      "id": "ev-eclipse",
+      "study_id": "EV-ECLIPSE",
+      "nct_id": "NCT05239624",
+      "aliases": [
+        "MSK 21-316"
+      ],
+      "category": "ev_pembro",
+      "phase": 2,
+      "priority": 1,
+      "setting": "Neoadjuvant EV+pembro → radical cystectomy → adjuvant pembro",
+      "population": "Locally advanced and/or node-positive MIBC (cT2-T4 N1-N3 M0)",
+      "total_n": 23,
+      "cn1_cn_plus_n": 23,
+      "match_pct": 100,
+      "fit_tier": "A",
+      "fit_score": 98,
+      "treatment": {
+        "experimental": "Enfortumab vedotin + pembrolizumab",
+        "comparator": null
+      },
+      "endpoints": {
+        "primary": "Pathologic complete response (pCR)",
+        "published_results": false
+      },
+      "efficacy": null,
+      "safety": null,
+      "eligibility_highlights": [
+        "cT2-T4 N1-N3 M0 or cT1 N2-N3 M0",
+        "Cisplatin eligible AND ineligible",
+        "Node positivity: biopsy preferred; imaging ≥1.0 cm if no biopsy",
+        "Candidate for radical cystectomy"
+      ],
+      "limitation_for_patient": "Phase 2 only; no published efficacy; reimbursement uncertain",
+      "status": "RECRUITING",
+      "completion_est": "2027-06",
+      "source_url": "https://clinicaltrials.gov/study/NCT05239624",
+      "interpretation": "Only prospective trial designed specifically for node-positive perioperative EV+pembro. Best conceptual match but immature evidence.",
+      "last_refreshed": "2026-06-06T16:35:24Z",
+      "patient_match": {
+        "match_type": "by_design",
+        "staging_basis": "clinical_cN1_M0",
+        "n_like_profile": 23,
+        "n_label": "cN1–N3 cM0, perioperative before RC",
+        "pct_of_trial": 100,
+        "certainty": "high",
+        "certainty_label": "By trial design",
+        "what_we_know": [
+          "Only prospective trial built for node-positive MIBC with EV+pembro before cystectomy",
+          "Allows cT2–T4 N1–N3 M0; cisplatin-eligible and -ineligible",
+          "Primary endpoint pCR; recruiting, no published efficacy yet"
+        ],
+        "what_we_dont_know": [
+          "Exact cN1-only count vs cN2/N3",
+          "External iliac node subset",
+          "EFS/OS in node-positive cohort"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "cN1–N3 cM0, perioperative before RC",
+        "certainty": "high",
+        "certainty_label": "By trial design",
+        "n_like_profile": 23,
+        "pct_of_trial": 100,
+        "staging_basis": "clinical_cN1_M0",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "Only prospective trial built for node-positive MIBC with EV+pembro before cystectomy",
+          "Allows cT2–T4 N1–N3 M0; cisplatin-eligible and -ineligible",
+          "Primary endpoint pCR; recruiting, no published efficacy yet"
+        ],
+        "what_we_dont_know": [
+          "Exact cN1-only count vs cN2/N3",
+          "External iliac node subset",
+          "EFS/OS in node-positive cohort"
+        ]
+      }
+    },
+    {
+      "id": "ev-302",
+      "study_id": "EV-302 / KEYNOTE-A39",
+      "nct_id": "NCT04223856",
+      "category": "ev_pembro",
+      "phase": 3,
+      "priority": 2,
+      "setting": "First-line locally advanced or metastatic urothelial carcinoma",
+      "population": "Previously untreated la/mUC, platinum-eligible",
+      "total_n": 886,
+      "cn1_cn_plus_n": 207,
+      "cn1_cn_plus_label": "Lymph-node-only disease (no visceral metastases)",
+      "match_pct": 23,
+      "fit_tier": "B-",
+      "fit_score": 55,
+      "treatment": {
+        "experimental": "EV 1.25 mg/kg d1+d8 + pembrolizumab 200mg Q3W",
+        "comparator": "Gemcitabine + cisplatin or carboplatin"
+      },
+      "endpoints": {
+        "primary": [
+          "PFS",
+          "OS"
+        ],
+        "published_results": true
+      },
+      "efficacy": {
+        "overall": {
+          "experimental_n": 442,
+          "comparator_n": 444,
+          "pfs_months": {
+            "exp": 12.5,
+            "ctrl": 6.3,
+            "hr": 0.48,
+            "ci": [
+              0.41,
+              0.57
+            ]
+          },
+          "os_months": {
+            "exp": 33.8,
+            "ctrl": 15.9,
+            "hr": 0.51,
+            "ci": [
+              0.43,
+              0.61
+            ]
+          },
+          "orr_pct": {
+            "exp": 67.5,
+            "ctrl": 44.2
+          },
+          "cr_pct": {
+            "exp": 30.4,
+            "ctrl": 14.5
+          }
+        },
+        "ln_only_subgroup": {
+          "n_exp": 103,
+          "n_ctrl": 104,
+          "pfs_months": {
+            "exp": 22.1,
+            "ctrl": 8.3,
+            "hr": 0.47,
+            "ci": [
+              0.32,
+              0.7
+            ]
+          },
+          "os_months": {
+            "exp": null,
+            "ctrl": 24.4,
+            "hr": 0.51,
+            "ci": [
+              0.33,
+              0.79
+            ]
+          },
+          "orr_pct": {
+            "exp": 77.5,
+            "ctrl": 53.4
+          },
+          "cr_pct": {
+            "exp": 50.0,
+            "ctrl": 26.2
+          }
+        }
+      },
+      "limitation_for_patient": "Metastatic/unresectable setting — not perioperative curative pathway before cystectomy",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "source_url": "https://www.esmoopen.com/article/S2059-7029(25)01413-9/fulltext",
+      "interpretation": "Strongest proof EV+pembro beats chemotherapy in nodal urothelial disease (n=207), but wrong clinical setting for curative cN1 M0 pre-cystectomy.",
+      "last_refreshed": "2026-06-06T16:35:24Z",
+      "patient_match": {
+        "match_type": "wrong_setting",
+        "staging_basis": "metastatic_LN_only",
+        "n_like_profile": 207,
+        "n_label": "LN-only metastatic/unresectable (not perioperative cN1 M0)",
+        "pct_of_trial": 23,
+        "certainty": "high",
+        "certainty_label": "Published subgroup",
+        "what_we_know": [
+          "207 patients with lymph-node-only advanced disease",
+          "ORR 77.5% vs 53.4%; PFS HR 0.47; OS HR 0.51",
+          "Strongest EV+pembro vs chemo data in nodal urothelial cancer"
+        ],
+        "what_we_dont_know": [
+          "Applicability to curative perioperative cN1 M0 pathway",
+          "pN0 or pCR after cystectomy — wrong treatment paradigm"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": 0.51,
+          "orr": "77.5%"
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "LN-only metastatic/unresectable (not perioperative cN1 M0)",
+        "certainty": "high",
+        "certainty_label": "Published subgroup",
+        "n_like_profile": 207,
+        "pct_of_trial": 23,
+        "staging_basis": "metastatic_LN_only",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": 0.51,
+          "orr": "77.5%"
+        },
+        "what_we_know": [
+          "207 patients with lymph-node-only advanced disease",
+          "ORR 77.5% vs 53.4%; PFS HR 0.47; OS HR 0.51",
+          "Strongest EV+pembro vs chemo data in nodal urothelial cancer"
+        ],
+        "what_we_dont_know": [
+          "Applicability to curative perioperative cN1 M0 pathway",
+          "pN0 or pCR after cystectomy — wrong treatment paradigm"
+        ],
+        "published_subgroup": {
+          "n_exp": 103,
+          "n_ctrl": 104,
+          "pfs_months": {
+            "exp": 22.1,
+            "ctrl": 8.3,
+            "hr": 0.47,
+            "ci": [
+              0.32,
+              0.7
+            ]
+          },
+          "os_months": {
+            "exp": null,
+            "ctrl": 24.4,
+            "hr": 0.51,
+            "ci": [
+              0.33,
+              0.79
+            ]
+          },
+          "orr_pct": {
+            "exp": 77.5,
+            "ctrl": 53.4
+          },
+          "cr_pct": {
+            "exp": 50.0,
+            "ctrl": 26.2
+          }
+        }
+      }
+    },
+    {
+      "id": "niagara",
+      "study_id": "NIAGARA",
+      "nct_id": "NCT03732677",
+      "category": "perioperative_io",
+      "phase": 3,
+      "priority": 3,
+      "setting": "Neoadjuvant durvalumab+GC → RC → adjuvant durvalumab",
+      "population": "Cisplatin-eligible MIBC cT2-T4a N0/1 M0",
+      "total_n": 1063,
+      "cn1_cn_plus_n": 58,
+      "cn1_cn_plus_label": "cN1 at baseline",
+      "match_pct": 5.5,
+      "fit_tier": "B",
+      "fit_score": 72,
+      "treatment": {
+        "experimental": "Durvalumab + gemcitabine/cisplatin (perioperative)",
+        "comparator": "Gemcitabine/cisplatin alone"
+      },
+      "endpoints": {
+        "primary": [
+          "pCR",
+          "EFS"
+        ],
+        "key_secondary": [
+          "OS"
+        ],
+        "published_results": true
+      },
+      "efficacy": {
+        "overall": {
+          "experimental_n": 533,
+          "comparator_n": 530,
+          "efs_2yr_pct": {
+            "exp": 67.8,
+            "ctrl": 59.8,
+            "hr": 0.68,
+            "ci": [
+              0.56,
+              0.82
+            ]
+          },
+          "os_2yr_pct": {
+            "exp": 82.2,
+            "ctrl": 75.2,
+            "hr": 0.75,
+            "ci": [
+              0.59,
+              0.93
+            ]
+          },
+          "pcr_pct": {
+            "exp": 37.3,
+            "ctrl": 27.5
+          }
+        },
+        "cn1_subgroup": {
+          "n": 58,
+          "efs_hr": 0.75,
+          "efs_ci": [
+            0.22,
+            1.64
+          ],
+          "statistically_significant": false,
+          "note": "CI crosses 1 — likely underpowered"
+        }
+      },
+      "limitation_for_patient": "Durvalumab+chemo not EV+pembro; cN1 subgroup benefit not proven",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "source_url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2408154",
+      "interpretation": "Strongest approved perioperative alternative if cisplatin-fit. EAU Category 1. cN1 n=58 with NS subgroup result.",
+      "last_refreshed": "2026-06-06T16:35:24Z",
+      "patient_match": {
+        "match_type": "published_subgroup",
+        "staging_basis": "clinical_cN1",
+        "n_like_profile": 58,
+        "n_label": "cN1 at baseline (cisplatin-eligible perioperative)",
+        "pct_of_trial": 5.5,
+        "certainty": "high",
+        "certainty_label": "Published cN1 subgroup",
+        "what_we_know": [
+          "Approved perioperative durvalumab + GC; n=1063 total",
+          "cN1 subgroup n=58: EFS HR 0.75 (95% CI 0.22–1.64) — not significant",
+          "Overall EFS HR 0.68, pCR 37.3% vs 27.5%"
+        ],
+        "what_we_dont_know": [
+          "Powered cN1 benefit — CI crosses 1",
+          "pN0 rate specifically in cN1 patients"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": "37.3% overall",
+          "pn0_rate": null,
+          "efs_hr": 0.75,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "cN1 at baseline (cisplatin-eligible perioperative)",
+        "certainty": "high",
+        "certainty_label": "Published cN1 subgroup",
+        "n_like_profile": 58,
+        "pct_of_trial": 5.5,
+        "staging_basis": "clinical_cN1",
+        "outcomes": {
+          "pcr": "37.3% overall",
+          "pn0_rate": null,
+          "efs_hr": 0.75,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "Approved perioperative durvalumab + GC; n=1063 total",
+          "cN1 subgroup n=58: EFS HR 0.75 (95% CI 0.22–1.64) — not significant",
+          "Overall EFS HR 0.68, pCR 37.3% vs 27.5%"
+        ],
+        "what_we_dont_know": [
+          "Powered cN1 benefit — CI crosses 1",
+          "pN0 rate specifically in cN1 patients"
+        ],
+        "published_subgroup": {
+          "n": 58,
+          "efs_hr": 0.75,
+          "efs_ci": [
+            0.22,
+            1.64
+          ],
+          "statistically_significant": false,
+          "note": "CI crosses 1 — likely underpowered"
+        }
+      }
+    },
+    {
+      "id": "keynote-905",
+      "study_id": "KEYNOTE-905 / EV-303",
+      "nct_id": "NCT03924895",
+      "category": "ev_pembro",
+      "phase": 3,
+      "priority": 4,
+      "setting": "Perioperative EV+pembro → RC (cisplatin-ineligible MIBC)",
+      "population": "T2-T4aN0M0 or T1-T4aN1M0; cisplatin-ineligible or declined",
+      "total_n": 595,
+      "cn1_cn_plus_n": 17,
+      "cn1_cn_plus_label": "T1-T4aN1 (4.9% of cohort)",
+      "match_pct": 4.9,
+      "fit_tier": "B-",
+      "fit_score": 58,
+      "treatment": {
+        "experimental": "EV+pembro perioperative + RC",
+        "comparator": "RC + PLND alone"
+      },
+      "endpoints": {
+        "primary": "EFS",
+        "key_secondary": [
+          "OS",
+          "pCR"
+        ],
+        "published_results": true
+      },
+      "efficacy": {
+        "overall": {
+          "experimental_n": 170,
+          "comparator_n": 174,
+          "efs_2yr_pct": {
+            "exp": 74.7,
+            "ctrl": 39.4,
+            "hr": 0.4,
+            "ci": [
+              0.28,
+              0.57
+            ]
+          },
+          "os_2yr_pct": {
+            "exp": 79.7,
+            "ctrl": 63.1,
+            "hr": 0.5,
+            "ci": [
+              0.33,
+              0.74
+            ]
+          },
+          "pcr_pct": {
+            "exp": 57.1,
+            "ctrl": 8.6,
+            "difference": 48.3
+          }
+        },
+        "baseline_staging": {
+          "T2N0": 18,
+          "T3_T4aN0": 77,
+          "T1_T4aN1": 4.9
+        },
+        "population_note": ">80% cisplatin-ineligible per Galsky criteria; median age ~74"
+      },
+      "limitation_for_patient": "Cisplatin-ineligible population; cN1 only ~17 patients; not applicable if cisplatin-fit",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/41707170/",
+      "interpretation": "Definitive perioperative EV+pembro phase 3, but wrong population if she is cisplatin-eligible. Tiny cN1 subset.",
+      "last_refreshed": "2026-06-06T16:35:24Z",
+      "patient_match": {
+        "match_type": "published_subgroup",
+        "staging_basis": "clinical_cN1_M0",
+        "n_like_profile": 17,
+        "n_label": "T1–T4aN1 (4.9%); cisplatin-INELIGIBLE population",
+        "pct_of_trial": 4.9,
+        "certainty": "low",
+        "certainty_label": "Tiny cN1 subset; wrong population if cis-fit",
+        "what_we_know": [
+          "Phase 3 perioperative EV+pembro vs RC alone in cis-ineligible MIBC",
+          "Overall EFS HR 0.40, pCR 57.1%",
+          "~17 cN1 patients — insufficient for subgroup conclusions"
+        ],
+        "what_we_dont_know": [
+          "cN1-specific EFS, pCR, pN0",
+          "Applicability if patient is cisplatin-eligible"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": "57.1% overall",
+          "pn0_rate": null,
+          "efs_hr": 0.4,
+          "os_hr": 0.5,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "T1–T4aN1 (4.9%); cisplatin-INELIGIBLE population",
+        "certainty": "low",
+        "certainty_label": "Tiny cN1 subset; wrong population if cis-fit",
+        "n_like_profile": 17,
+        "pct_of_trial": 4.9,
+        "staging_basis": "clinical_cN1_M0",
+        "outcomes": {
+          "pcr": "57.1% overall",
+          "pn0_rate": null,
+          "efs_hr": 0.4,
+          "os_hr": 0.5,
+          "orr": null
+        },
+        "what_we_know": [
+          "Phase 3 perioperative EV+pembro vs RC alone in cis-ineligible MIBC",
+          "Overall EFS HR 0.40, pCR 57.1%",
+          "~17 cN1 patients — insufficient for subgroup conclusions"
+        ],
+        "what_we_dont_know": [
+          "cN1-specific EFS, pCR, pN0",
+          "Applicability if patient is cisplatin-eligible"
+        ]
+      }
+    },
+    {
+      "id": "swog-8710",
+      "study_id": "SWOG 8710",
+      "category": "standard_nac",
+      "phase": 3,
+      "priority": 5,
+      "setting": "Neoadjuvant MVAC → cystectomy vs cystectomy alone",
+      "population": "T2N0-T4aN0 MIBC",
+      "total_n": 307,
+      "cn1_cn_plus_n": 0,
+      "match_pct": 0,
+      "fit_tier": "C",
+      "fit_score": 15,
+      "treatment": {
+        "experimental": "MVAC x3 + RC",
+        "comparator": "RC alone"
+      },
+      "efficacy": {
+        "note": "5-year OS benefit with NAC in N0 MIBC — foundational trial"
+      },
+      "limitation_for_patient": "Enrolled cN0 only — no direct cN1 evidence",
+      "status": "Published NEJM 2003",
+      "source_url": "https://www.nejm.org/doi/full/10.1056/NEJMoa022148",
+      "interpretation": "Czech doctors' historical standard. Cannot directly support or refute cN1 NAC from this RCT.",
+      "patient_match": {
+        "match_type": "none",
+        "staging_basis": "clinical_cN0_only",
+        "n_like_profile": 0,
+        "n_label": "cN0 only — no node-positive patients enrolled",
+        "pct_of_trial": 0,
+        "certainty": "high",
+        "certainty_label": "Zero match by design",
+        "what_we_know": [
+          "Foundational NAC RCT in MIBC (MVAC → RC)",
+          "Established OS benefit for NAC in N0 MIBC"
+        ],
+        "what_we_dont_know": [
+          "Any direct evidence for cN1 M0 — not enrolled"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "cN0 only — no node-positive patients enrolled",
+        "certainty": "high",
+        "certainty_label": "Zero match by design",
+        "n_like_profile": 0,
+        "pct_of_trial": 0,
+        "staging_basis": "clinical_cN0_only",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "Foundational NAC RCT in MIBC (MVAC → RC)",
+          "Established OS benefit for NAC in N0 MIBC"
+        ],
+        "what_we_dont_know": [
+          "Any direct evidence for cN1 M0 — not enrolled"
+        ]
+      }
+    },
+    {
+      "id": "ba06",
+      "study_id": "BA06 / EORTC 30894",
+      "category": "standard_nac",
+      "phase": 3,
+      "priority": 5,
+      "setting": "Neoadjuvant CMV before definitive local treatment",
+      "population": "Muscle-invasive bladder cancer N0",
+      "total_n": 976,
+      "cn1_cn_plus_n": 0,
+      "match_pct": 0,
+      "fit_tier": "C",
+      "fit_score": 15,
+      "interpretation": "Second foundational NAC trial; no cN+ patients.",
+      "patient_match": {
+        "match_type": "none",
+        "staging_basis": "clinical_cN0_only",
+        "n_like_profile": 0,
+        "n_label": "N0 only",
+        "pct_of_trial": 0,
+        "certainty": "high",
+        "certainty_label": "Zero match",
+        "what_we_know": [
+          "Second foundational NAC trial (CMV); n=976 N0"
+        ],
+        "what_we_dont_know": [
+          "cN+ outcomes"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "N0 only",
+        "certainty": "high",
+        "certainty_label": "Zero match",
+        "n_like_profile": 0,
+        "pct_of_trial": 0,
+        "staging_basis": "clinical_cN0_only",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "Second foundational NAC trial (CMV); n=976 N0"
+        ],
+        "what_we_dont_know": [
+          "cN+ outcomes"
+        ]
+      }
+    },
+    {
+      "id": "nac-meta",
+      "study_id": "NAC Meta-analyses (ABC/Hermans)",
+      "category": "retrospective",
+      "phase": "meta-analysis",
+      "priority": 5,
+      "setting": "Neoadjuvant cisplatin-based chemotherapy in MIBC",
+      "total_n": 3005,
+      "cn1_cn_plus_n": null,
+      "cn1_cn_plus_label": "cN+ from retrospective series within reviews",
+      "fit_tier": "D",
+      "fit_score": 35,
+      "efficacy": {
+        "os_hr_range": [
+          0.82,
+          0.87
+        ]
+      },
+      "interpretation": "Underpins standard NAC recommendation. cN+ data indirect.",
+      "patient_match": {
+        "match_type": "indirect",
+        "staging_basis": "mixed_MIBC",
+        "n_like_profile": null,
+        "n_label": "Meta-analysis — cN+ not isolated",
+        "pct_of_trial": null,
+        "certainty": "low",
+        "certainty_label": "Indirect",
+        "what_we_know": [
+          "OS HR ~0.82–0.87 for NAC in MIBC broadly"
+        ],
+        "what_we_dont_know": [
+          "Dedicated cN1 M0 perioperative counts"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": "0.82-0.87",
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "Meta-analysis — cN+ not isolated",
+        "certainty": "low",
+        "certainty_label": "Indirect",
+        "n_like_profile": null,
+        "pct_of_trial": null,
+        "staging_basis": "mixed_MIBC",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": "0.82-0.87",
+          "orr": null
+        },
+        "what_we_know": [
+          "OS HR ~0.82–0.87 for NAC in MIBC broadly"
+        ],
+        "what_we_dont_know": [
+          "Dedicated cN1 M0 perioperative counts"
+        ]
+      }
+    },
+    {
+      "id": "ev-103-k",
+      "study_id": "EV-103 Cohort K",
+      "nct_id": "NCT03288545",
+      "source_url": "https://clinicaltrials.gov/study/NCT03288545",
+      "category": "ev_pembro",
+      "phase": "1b/2",
+      "priority": 6,
+      "setting": "First-line la/mUC cisplatin-ineligible",
+      "total_n": 348,
+      "cn1_cn_plus_n": 0,
+      "fit_tier": "C",
+      "fit_score": 20,
+      "efficacy": {
+        "orr_pct": {
+          "exp": 64.5,
+          "ctrl": 45.2
+        }
+      },
+      "interpretation": "Led to EV-302; activity/tolerability background only.",
+      "status": "TERMINATED",
+      "last_refreshed": "2026-06-06T16:35:25Z",
+      "patient_match": {
+        "match_type": "wrong_setting",
+        "staging_basis": "metastatic",
+        "n_like_profile": 0,
+        "n_label": "Metastatic cis-ineligible — not perioperative cN1",
+        "pct_of_trial": 0,
+        "certainty": "high",
+        "certainty_label": "Background only",
+        "what_we_know": [
+          "Led to EV-302; ORR 64.5% in la/mUC"
+        ],
+        "what_we_dont_know": [
+          "Perioperative cN1 relevance"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": "64.5%"
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "Metastatic cis-ineligible — not perioperative cN1",
+        "certainty": "high",
+        "certainty_label": "Background only",
+        "n_like_profile": 0,
+        "pct_of_trial": 0,
+        "staging_basis": "metastatic",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": "64.5%"
+        },
+        "what_we_know": [
+          "Led to EV-302; ORR 64.5% in la/mUC"
+        ],
+        "what_we_dont_know": [
+          "Perioperative cN1 relevance"
+        ]
+      }
+    },
+    {
+      "id": "checkmate-274",
+      "study_id": "CheckMate 274",
+      "nct_id": "NCT02632409",
+      "source_url": "https://clinicaltrials.gov/study/NCT02632409",
+      "category": "adjuvant_io",
+      "phase": 3,
+      "priority": 7,
+      "setting": "Adjuvant nivolumab post-radical cystectomy",
+      "total_n": 709,
+      "cn1_cn_plus_n": 143,
+      "cn1_cn_plus_label": "pN1 at surgery (20%)",
+      "match_pct": 20,
+      "fit_tier": "C",
+      "fit_score": 30,
+      "efficacy": {
+        "dfs_hr": 0.7,
+        "dfs_median_months": {
+          "exp": 20.8,
+          "ctrl": 10.8
+        }
+      },
+      "interpretation": "Backup plan after surgery if pN+ persists. Not neoadjuvant argument.",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "last_refreshed": "2026-06-06T16:35:25Z",
+      "patient_match": {
+        "match_type": "wrong_timing",
+        "staging_basis": "pathologic_pN1",
+        "n_like_profile": 143,
+        "n_label": "pN1 after surgery (adjuvant, not neoadjuvant)",
+        "pct_of_trial": 20,
+        "certainty": "high",
+        "certainty_label": "Adjuvant setting",
+        "what_we_know": [
+          "Adjuvant nivolumab post-RC; DFS HR 0.70",
+          "143 patients with pN1 at surgery"
+        ],
+        "what_we_dont_know": [
+          "Neoadjuvant cN1 M0 pathway — different clinical question"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "dfs_hr": 0.7
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "pN1 after surgery (adjuvant, not neoadjuvant)",
+        "certainty": "high",
+        "certainty_label": "Adjuvant setting",
+        "n_like_profile": 143,
+        "pct_of_trial": 20,
+        "staging_basis": "pathologic_pN1",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "dfs_hr": 0.7
+        },
+        "what_we_know": [
+          "Adjuvant nivolumab post-RC; DFS HR 0.70",
+          "143 patients with pN1 at surgery"
+        ],
+        "what_we_dont_know": [
+          "Neoadjuvant cN1 M0 pathway — different clinical question"
+        ]
+      }
+    },
+    {
+      "id": "ambassador",
+      "study_id": "AMBASSADOR",
+      "nct_id": "NCT03244384",
+      "source_url": "https://clinicaltrials.gov/study/NCT03244384",
+      "category": "adjuvant_io",
+      "phase": 3,
+      "priority": 7,
+      "setting": "Adjuvant pembrolizumab post-surgery",
+      "total_n": 739,
+      "cn1_cn_plus_n": null,
+      "cn1_cn_plus_label": "pN+ eligible — exact n not in primary",
+      "fit_tier": "C",
+      "fit_score": 28,
+      "interpretation": "Adjuvant pembro option; DFS benefit, OS immature.",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "last_refreshed": "2026-06-06T16:35:25Z",
+      "patient_match": {
+        "match_type": "wrong_timing",
+        "staging_basis": "pathologic_pN_plus",
+        "n_like_profile": null,
+        "n_label": "pN+ eligible post-surgery; exact pN1 n not in primary",
+        "pct_of_trial": null,
+        "certainty": "moderate",
+        "certainty_label": "Adjuvant only",
+        "what_we_know": [
+          "Adjuvant pembrolizumab; DFS benefit in high-risk MIBC"
+        ],
+        "what_we_dont_know": [
+          "Exact pN1 count; neoadjuvant cN1 data"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "dfs_hr": "~benefit"
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "pN+ eligible post-surgery; exact pN1 n not in primary",
+        "certainty": "moderate",
+        "certainty_label": "Adjuvant only",
+        "n_like_profile": null,
+        "pct_of_trial": null,
+        "staging_basis": "pathologic_pN_plus",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "dfs_hr": "~benefit"
+        },
+        "what_we_know": [
+          "Adjuvant pembrolizumab; DFS benefit in high-risk MIBC"
+        ],
+        "what_we_dont_know": [
+          "Exact pN1 count; neoadjuvant cN1 data"
+        ]
+      }
+    },
+    {
+      "id": "ev-304",
+      "study_id": "KEYNOTE-B15 / EV-304",
+      "nct_id": "NCT04700124",
+      "category": "ev_pembro",
+      "phase": 3,
+      "priority": 1,
+      "setting": "Perioperative EV+pembro vs neoadjuvant GC → RC (cisplatin-ELIGIBLE)",
+      "population": "T2-T4aN0M0 or T1-T4aN1M0; cisplatin-eligible MIBC",
+      "total_n": 808,
+      "cn1_cn_plus_n": null,
+      "cn1_cn_plus_n_estimated": 40,
+      "cn1_cn_plus_label": "cN1 included; subgroup n not yet reported (~5% of 808 estimated)",
+      "match_pct": null,
+      "fit_tier": "A",
+      "fit_score": 96,
+      "treatment": {
+        "experimental": "EV 1.25 mg/kg + pembrolizumab perioperative",
+        "comparator": "Gemcitabine + cisplatin x4"
+      },
+      "endpoints": {
+        "primary": "EFS",
+        "key_secondary": [
+          "OS",
+          "pCR"
+        ],
+        "published_results": true
+      },
+      "efficacy": {
+        "overall": {
+          "experimental_n": 405,
+          "comparator_n": 403,
+          "efs_2yr_pct": {
+            "exp": 79.4,
+            "ctrl": 66.2,
+            "hr": 0.53,
+            "ci": [
+              0.41,
+              0.7
+            ]
+          },
+          "os_2yr_pct": {
+            "exp": 86.9,
+            "ctrl": 81.3,
+            "hr": 0.65,
+            "ci": [
+              0.48,
+              0.89
+            ]
+          },
+          "pcr_pct": {
+            "exp": 55.8,
+            "ctrl": 32.5,
+            "difference": 23.4
+          },
+          "median_efs_months": {
+            "exp": null,
+            "ctrl": 48.5
+          }
+        },
+        "subgroup_note": "EFS, OS, pCR benefits consistent across pre-specified subgroups including clinical stage; granular cN1 data pending"
+      },
+      "limitation_for_patient": "cN1 subgroup size not yet published; FDA priority review pending (action date Aug 2026)",
+      "status": "COMPLETED",
+      "source_url": "https://www.asco.org/abstracts-presentations/216863",
+      "interpretation": "First phase 3 perioperative EV+pembro vs standard GC in CISPLATIN-ELIGIBLE MIBC including cN1 M0. Game-changer if she is cisplatin-fit — directly addresses prior evidence gap.",
+      "last_refreshed": "2026-06-06T16:35:24Z",
+      "patient_match": {
+        "match_type": "published_eligible",
+        "staging_basis": "clinical_cN1_M0",
+        "n_like_profile": 40,
+        "n_label": "cN1 M0 included (~5% estimated; not yet reported)",
+        "pct_of_trial": 5,
+        "certainty": "moderate",
+        "certainty_label": "Estimated — subgroup n pending",
+        "what_we_know": [
+          "Phase 3 perioperative EV+pembro vs GC in cisplatin-ELIGIBLE MIBC",
+          "Eligibility: T2–T4aN0M0 or T1–T4aN1M0",
+          "Overall n=808: EFS HR 0.53, pCR 55.8% vs 32.5%",
+          "Benefits reported consistent across pre-specified subgroups including stage"
+        ],
+        "what_we_dont_know": [
+          "Exact cN1 patient count and dedicated cN1 EFS/OS/pCR",
+          "pN0 rate in cN1 subset"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": "55.8% overall (cN1 subgroup pending)",
+          "pn0_rate": null,
+          "efs_hr": 0.53,
+          "os_hr": 0.65,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "cN1 M0 included (~5% estimated; not yet reported)",
+        "certainty": "moderate",
+        "certainty_label": "Estimated — subgroup n pending",
+        "n_like_profile": 40,
+        "pct_of_trial": 5,
+        "staging_basis": "clinical_cN1_M0",
+        "outcomes": {
+          "pcr": "55.8% overall (cN1 subgroup pending)",
+          "pn0_rate": null,
+          "efs_hr": 0.53,
+          "os_hr": 0.65,
+          "orr": null
+        },
+        "what_we_know": [
+          "Phase 3 perioperative EV+pembro vs GC in cisplatin-ELIGIBLE MIBC",
+          "Eligibility: T2–T4aN0M0 or T1–T4aN1M0",
+          "Overall n=808: EFS HR 0.53, pCR 55.8% vs 32.5%",
+          "Benefits reported consistent across pre-specified subgroups including stage"
+        ],
+        "what_we_dont_know": [
+          "Exact cN1 patient count and dedicated cN1 EFS/OS/pCR",
+          "pN0 rate in cN1 subset"
+        ]
+      }
+    },
+    {
+      "id": "zargar-shoshtar-2016",
+      "study_id": "Zargar-Shoshtar 2016 (multi-institutional cN+)",
+      "category": "retrospective",
+      "phase": "retrospective",
+      "priority": 4,
+      "setting": "Induction MVAC or GC → RC in clinically node-positive MIBC",
+      "population": "cT1-T4a cN1-N3 M0 urothelial carcinoma",
+      "total_n": 304,
+      "cn1_cn_plus_n": 304,
+      "cn1_cn_plus_label": "All cN1-N3; cN1-specific pN0 rate 56%",
+      "match_pct": 100,
+      "fit_tier": "D",
+      "fit_score": 62,
+      "treatment": {
+        "experimental": "Induction chemotherapy (MVAC 42%, GC 43%) + RC",
+        "comparator": null
+      },
+      "efficacy": {
+        "pn0_rate_pct": 48,
+        "cn1_pn0_rate_pct": 56,
+        "cn2_pn0_rate_pct": 39,
+        "cn3_pn0_rate_pct": 39,
+        "pcr_pct": 14.5,
+        "median_os_months": {
+          "pT1_or_less_N0": null,
+          "pT2_4a_N0": 45,
+          "pN_positive": 14
+        }
+      },
+      "limitation_for_patient": "Retrospective; chemotherapy not EV+pembro; no randomization",
+      "status": "Published J Urol 2016",
+      "source_url": "https://www.auajournals.org/doi/10.1016/j.juro.2015.02.2296",
+      "interpretation": "Largest multi-institutional cN+ NAC series. 48% achieve pN0 after chemo; cN1 patients 56% pN0. Supports NAC before RC in node-positive disease.",
+      "patient_match": {
+        "match_type": "retrospective_cn_plus",
+        "staging_basis": "clinical_cN1_M0",
+        "n_like_profile": 304,
+        "n_label": "All cN1–N3 M0; cN1-specific pN0 56%",
+        "pct_of_trial": 100,
+        "certainty": "moderate",
+        "certainty_label": "Retrospective — standard chemo",
+        "what_we_know": [
+          "304 clinically node-positive patients; induction MVAC/GC → RC",
+          "48% overall pN0; 56% in cN1 subgroup",
+          "Median OS longer in downstaged patients"
+        ],
+        "what_we_dont_know": [
+          "Randomized comparison; EV+pembro outcomes",
+          "External iliac node subset"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": "14.5%",
+          "pn0_rate": "56% in cN1",
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "All cN1–N3 M0; cN1-specific pN0 56%",
+        "certainty": "moderate",
+        "certainty_label": "Retrospective — standard chemo",
+        "n_like_profile": 304,
+        "pct_of_trial": 100,
+        "staging_basis": "clinical_cN1_M0",
+        "outcomes": {
+          "pcr": "14.5%",
+          "pn0_rate": "56% in cN1",
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "304 clinically node-positive patients; induction MVAC/GC → RC",
+          "48% overall pN0; 56% in cN1 subgroup",
+          "Median OS longer in downstaged patients"
+        ],
+        "what_we_dont_know": [
+          "Randomized comparison; EV+pembro outcomes",
+          "External iliac node subset"
+        ],
+        "nodal_outcomes": {
+          "pn0_rate_pct": 48,
+          "cn1_pn0_rate_pct": 56,
+          "cn2_pn0_rate_pct": 39,
+          "cn3_pn0_rate_pct": 39,
+          "pcr_pct": 14.5
+        }
+      }
+    },
+    {
+      "id": "hermans-cn-plus-659",
+      "study_id": "Hermans et al. population cN+ (n=659)",
+      "category": "retrospective",
+      "phase": "retrospective",
+      "priority": 4,
+      "setting": "NAC vs upfront RC in cN+ MIBC (population-based)",
+      "population": "cT1-T4a cN+ M0 MIBC",
+      "total_n": 659,
+      "cn1_cn_plus_n": 659,
+      "match_pct": 100,
+      "fit_tier": "D",
+      "fit_score": 58,
+      "efficacy": {
+        "cn1_pcd_nac_pct": 39,
+        "cn1_pcd_upfront_rc_pct": 5,
+        "cn1_3yr_os_nac_pct": 66,
+        "cn1_3yr_os_upfront_rc_pct": 37,
+        "os_hr_nac": 0.47
+      },
+      "interpretation": "Population data: NAC associated with 53% lower death risk in cN+ MIBC; cN1 3-y OS 66% vs 37% with upfront RC.",
+      "patient_match": {
+        "match_type": "retrospective_cn_plus",
+        "staging_basis": "clinical_cN_plus_M0",
+        "n_like_profile": 659,
+        "n_label": "cN+ M0 population-based cohort",
+        "pct_of_trial": 100,
+        "certainty": "moderate",
+        "certainty_label": "Retrospective population data",
+        "what_we_know": [
+          "NAC associated with lower death risk (HR 0.47) in cN+ MIBC",
+          "cN1: 3-year OS 66% with NAC vs 37% upfront RC"
+        ],
+        "what_we_dont_know": [
+          "RCT-level evidence; modern IO/EV regimens"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": 0.47,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "cN+ M0 population-based cohort",
+        "certainty": "moderate",
+        "certainty_label": "Retrospective population data",
+        "n_like_profile": 659,
+        "pct_of_trial": 100,
+        "staging_basis": "clinical_cN_plus_M0",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": 0.47,
+          "orr": null
+        },
+        "what_we_know": [
+          "NAC associated with lower death risk (HR 0.47) in cN+ MIBC",
+          "cN1: 3-year OS 66% with NAC vs 37% upfront RC"
+        ],
+        "what_we_dont_know": [
+          "RCT-level evidence; modern IO/EV regimens"
+        ]
+      }
+    },
+    {
+      "id": "cn-plus-radiologic-130",
+      "study_id": "cN+ induction chemo radiologic predictors (n=130)",
+      "category": "retrospective",
+      "phase": "retrospective",
+      "setting": "Induction chemotherapy in clinically node-positive bladder cancer",
+      "population": "Clinically node-positive MIBC",
+      "total_n": 130,
+      "cn1_cn_plus_n": 130,
+      "fit_tier": "D",
+      "fit_score": 55,
+      "efficacy": {
+        "received_chemo_n": 76,
+        "pn0_after_chemo_pct": 40.8,
+        "pn0_surgery_alone_pct": 11.1,
+        "median_os_years": {
+          "pN0": 12.8,
+          "pN_positive": 1.9
+        }
+      },
+      "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S1078143920303860",
+      "interpretation": "40.8% complete nodal response after induction chemo vs 11% surgery alone. Post-chemo node size on CT predicts residual nodal disease.",
+      "patient_match": {
+        "match_type": "retrospective_cn_plus",
+        "staging_basis": "clinical_cN_plus",
+        "n_like_profile": 130,
+        "n_label": "Clinically node-positive MIBC",
+        "pct_of_trial": 100,
+        "certainty": "moderate",
+        "certainty_label": "Retrospective",
+        "what_we_know": [
+          "40.8% pN0 after induction chemo vs 11.1% surgery alone",
+          "Median OS 12.8 y if pN0 vs 1.9 y if residual pN+"
+        ],
+        "what_we_dont_know": [
+          "EV+pembro; prospective validation"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": "40.8%",
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "Clinically node-positive MIBC",
+        "certainty": "moderate",
+        "certainty_label": "Retrospective",
+        "n_like_profile": 130,
+        "pct_of_trial": 100,
+        "staging_basis": "clinical_cN_plus",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": "40.8%",
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "40.8% pN0 after induction chemo vs 11.1% surgery alone",
+          "Median OS 12.8 y if pN0 vs 1.9 y if residual pN+"
+        ],
+        "what_we_dont_know": [
+          "EV+pembro; prospective validation"
+        ]
+      }
+    },
+    {
+      "id": "ncdb-cn-plus-491",
+      "study_id": "NCDB cN+ NAC + RC (n=491)",
+      "category": "retrospective",
+      "phase": "retrospective",
+      "setting": "NAC + RC in cTanyN1-3M0 bladder cancer",
+      "total_n": 491,
+      "cn1_cn_plus_n": 491,
+      "fit_tier": "D",
+      "fit_score": 52,
+      "efficacy": {
+        "ypT0_pct": 10,
+        "ypN0_pct": 35,
+        "os_5yr_pct": 34
+      },
+      "interpretation": "35% ypN0 at RC after NAC in cN+ patients; 5-y OS 34% overall.",
+      "patient_match": {
+        "match_type": "retrospective_cn_plus",
+        "staging_basis": "clinical_cN1_N3_M0",
+        "n_like_profile": 491,
+        "n_label": "cTany N1–N3 M0 with NAC + RC",
+        "pct_of_trial": 100,
+        "certainty": "moderate",
+        "certainty_label": "NCDB retrospective",
+        "what_we_know": [
+          "35% ypN0 at RC; 5-year OS 34% overall"
+        ],
+        "what_we_dont_know": [
+          "cN1-only breakdown; modern perioperative IO"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": "35%",
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "cTany N1–N3 M0 with NAC + RC",
+        "certainty": "moderate",
+        "certainty_label": "NCDB retrospective",
+        "n_like_profile": 491,
+        "pct_of_trial": 100,
+        "staging_basis": "clinical_cN1_N3_M0",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": "35%",
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "35% ypN0 at RC; 5-year OS 34% overall"
+        ],
+        "what_we_dont_know": [
+          "cN1-only breakdown; modern perioperative IO"
+        ]
+      }
+    },
+    {
+      "id": "pure-01",
+      "study_id": "PURE-01",
+      "nct_id": "NCT02736266",
+      "category": "ev_pembro",
+      "phase": 2,
+      "priority": 8,
+      "setting": "Neoadjuvant pembrolizumab → RC (single-arm)",
+      "population": "cT2-4a N0 M0 MIBC (cis-ineligible/refused); 2 patients cN1 in initial cohort",
+      "total_n": 174,
+      "cn1_cn_plus_n": 0,
+      "cn1_cn_plus_label": "Predominantly cN0; not designed for cN+",
+      "fit_tier": "C",
+      "fit_score": 25,
+      "efficacy": {
+        "pcr_pct": 42,
+        "efs_5yr_pct": 68.3,
+        "os_5yr_pct": 77.4,
+        "os_5yr_ypTanyN_plus_pct": 41.9
+      },
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/41633898/",
+      "interpretation": "Pembro monotherapy neoadjuvant benchmark. ypN+ patients had only 41.9% 5-y OS — underscores nodal response importance.",
+      "status": "COMPLETED",
+      "last_refreshed": "2026-06-06T16:35:26Z",
+      "patient_match": {
+        "match_type": "wrong_population",
+        "staging_basis": "clinical_cN0",
+        "n_like_profile": 0,
+        "n_label": "Predominantly cN0; not designed for cN+",
+        "pct_of_trial": 0,
+        "certainty": "high",
+        "certainty_label": "Wrong population",
+        "what_we_know": [
+          "Neoadjuvant pembro monotherapy; pCR 42%",
+          "ypN+ patients: 5-y OS only 41.9% — nodal response critical"
+        ],
+        "what_we_dont_know": [
+          "cN1 perioperative pembro efficacy"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": "42%",
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "Predominantly cN0; not designed for cN+",
+        "certainty": "high",
+        "certainty_label": "Wrong population",
+        "n_like_profile": 0,
+        "pct_of_trial": 0,
+        "staging_basis": "clinical_cN0",
+        "outcomes": {
+          "pcr": "42%",
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "Neoadjuvant pembro monotherapy; pCR 42%",
+          "ypN+ patients: 5-y OS only 41.9% — nodal response critical"
+        ],
+        "what_we_dont_know": [
+          "cN1 perioperative pembro efficacy"
+        ]
+      }
+    },
+    {
+      "id": "abacus",
+      "study_id": "ABACUS",
+      "category": "perioperative_io",
+      "phase": 2,
+      "priority": 8,
+      "setting": "Neoadjuvant atezolizumab → RC (cis-ineligible, N0 only)",
+      "total_n": 95,
+      "cn1_cn_plus_n": 0,
+      "fit_tier": "C",
+      "fit_score": 18,
+      "efficacy": {
+        "pcr_pct": 31,
+        "dfs_2yr_pct": 68,
+        "os_2yr_pct": 77
+      },
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/35577646/",
+      "interpretation": "IO monotherapy neoadjuvant precedent; N0 only, not EV+pembro.",
+      "patient_match": {
+        "match_type": "none",
+        "staging_basis": "clinical_cN0",
+        "n_like_profile": 0,
+        "n_label": "cN0 cis-ineligible only",
+        "pct_of_trial": 0,
+        "certainty": "high",
+        "certainty_label": "No node-positive patients",
+        "what_we_know": [
+          "Atezo neoadjuvant; pCR 31%"
+        ],
+        "what_we_dont_know": [
+          "cN1 relevance"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": "31%",
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "cN0 cis-ineligible only",
+        "certainty": "high",
+        "certainty_label": "No node-positive patients",
+        "n_like_profile": 0,
+        "pct_of_trial": 0,
+        "staging_basis": "clinical_cN0",
+        "outcomes": {
+          "pcr": "31%",
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": null,
+          "orr": null
+        },
+        "what_we_know": [
+          "Atezo neoadjuvant; pCR 31%"
+        ],
+        "what_we_dont_know": [
+          "cN1 relevance"
+        ]
+      }
+    },
+    {
+      "id": "checkmate-901-ln-only",
+      "study_id": "CheckMate 901 (LN-only subgroup)",
+      "nct_id": "NCT03036098",
+      "source_url": "https://clinicaltrials.gov/study/NCT03036098",
+      "category": "metastatic",
+      "phase": 3,
+      "setting": "1L nivo + GC vs GC in metastatic UC",
+      "total_n": 608,
+      "cn1_cn_plus_n": 110,
+      "cn1_cn_plus_label": "LN-only disease ~110 (54 per arm in post-hoc)",
+      "match_pct": 18,
+      "fit_tier": "C",
+      "fit_score": 22,
+      "efficacy": {
+        "ln_only": {
+          "n_gc_nivo": 54,
+          "n_gc": 56,
+          "pfs_months": {
+            "exp": 30.5,
+            "ctrl": 8.8,
+            "hr": 0.38
+          },
+          "os_months": {
+            "exp": 46.3,
+            "ctrl": 24.9,
+            "hr": 0.58
+          }
+        }
+      },
+      "interpretation": "Chemo-IO also active in LN-only metastatic disease; superseded by EV-302 in 1L.",
+      "patient_match": {
+        "match_type": "wrong_setting",
+        "staging_basis": "metastatic_LN_only",
+        "n_like_profile": 110,
+        "n_label": "LN-only metastatic (nivo+GC)",
+        "pct_of_trial": 18,
+        "certainty": "moderate",
+        "certainty_label": "Metastatic — superseded by EV-302",
+        "what_we_know": [
+          "LN-only: PFS HR 0.38, OS HR 0.58 with nivo+GC"
+        ],
+        "what_we_dont_know": [
+          "Perioperative curative pathway"
+        ],
+        "outcomes_in_subgroup": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": 0.58,
+          "orr": null
+        }
+      },
+      "subgroup_outcomes": {
+        "headline": "LN-only metastatic (nivo+GC)",
+        "certainty": "moderate",
+        "certainty_label": "Metastatic — superseded by EV-302",
+        "n_like_profile": 110,
+        "pct_of_trial": 18,
+        "staging_basis": "metastatic_LN_only",
+        "outcomes": {
+          "pcr": null,
+          "pn0_rate": null,
+          "efs_hr": null,
+          "os_hr": 0.58,
+          "orr": null
+        },
+        "what_we_know": [
+          "LN-only: PFS HR 0.38, OS HR 0.58 with nivo+GC"
+        ],
+        "what_we_dont_know": [
+          "Perioperative curative pathway"
+        ]
+      }
+    },
+    {
+      "id": "javelin-100",
+      "study_id": "JAVELIN 100",
+      "nct_id": "NCT02603432",
+      "source_url": "https://clinicaltrials.gov/study/NCT02603432",
+      "category": "metastatic",
+      "phase": 3,
+      "total_n": 700,
+      "cn1_cn_plus_n": 0,
+      "fit_tier": "C",
+      "fit_score": 10,
+      "interpretation": "Maintenance avelumab post-platinum; metastatic pathway only.",
+      "patient_match": {
+        "match_type": "wrong_setting",
+        "staging_basis": "metastatic",
+        "n_like_profile": 0,
+        "n_label": "Metastatic maintenance — not perioperative cN1",
+        "pct_of_trial": 0,
+        "certainty": "high",
+        "certainty_label": "Wrong setting",
+        "what_we_know": [
+          "Maintenance avelumab post-platinum"
+        ],
+        "what_we_dont_know": [
+          "cN1 M0 perioperative relevance"
+        ],
+        "outcomes_in_subgroup": {}
+      },
+      "subgroup_outcomes": {
+        "headline": "Metastatic maintenance — not perioperative cN1",
+        "certainty": "high",
+        "certainty_label": "Wrong setting",
+        "n_like_profile": 0,
+        "pct_of_trial": 0,
+        "staging_basis": "metastatic",
+        "outcomes": {},
+        "what_we_know": [
+          "Maintenance avelumab post-platinum"
+        ],
+        "what_we_dont_know": [
+          "cN1 M0 perioperative relevance"
+        ]
+      }
+    },
+    {
+      "id": "checkmate-901",
+      "study_id": "CheckMate 901 (overall)",
+      "nct_id": "NCT03036098",
+      "source_url": "https://clinicaltrials.gov/study/NCT03036098",
+      "category": "metastatic",
+      "phase": 3,
+      "total_n": 608,
+      "cn1_cn_plus_n": 0,
+      "fit_tier": "C",
+      "fit_score": 10,
+      "interpretation": "Advanced disease; superseded by EV-302.",
+      "patient_match": {
+        "match_type": "wrong_setting",
+        "staging_basis": "metastatic",
+        "n_like_profile": 0,
+        "n_label": "Advanced/metastatic overall",
+        "pct_of_trial": 0,
+        "certainty": "high",
+        "certainty_label": "Wrong setting",
+        "what_we_know": [
+          "1L metastatic chemo-IO trial"
+        ],
+        "what_we_dont_know": [
+          "Perioperative cN1"
+        ],
+        "outcomes_in_subgroup": {}
+      },
+      "subgroup_outcomes": {
+        "headline": "Advanced/metastatic overall",
+        "certainty": "high",
+        "certainty_label": "Wrong setting",
+        "n_like_profile": 0,
+        "pct_of_trial": 0,
+        "staging_basis": "metastatic",
+        "outcomes": {},
+        "what_we_know": [
+          "1L metastatic chemo-IO trial"
+        ],
+        "what_we_dont_know": [
+          "Perioperative cN1"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,718 @@
+{
+  "runs": [
+    {
+      "type": "approve",
+      "paper_id": "pmid-41724648",
+      "title": "Optimal Management of Muscle-invasive Bladder Cancer: Recommendations from the International Bladder Cancer Group."
+    },
+    {
+      "type": "approve",
+      "paper_id": "pmid-41217011",
+      "title": "Prognostic Significance of Achieving the Radical Cystectomy-Pentafecta After Neoadjuvant Chemotherapy and Robot-Assisted Radical Cystectomy."
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct06537154",
+      "title": "NEO-BLAST: Neoadjuvant Therapy for Bladder Cancer Followed by Active Surveillance vs Treatment"
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct07296705",
+      "title": "Neoadjuvant Zanidatamab + Tislelizumab + Chemotherapy for Selective Bladder Preservation in HER2-Positive MIBC"
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct07356791",
+      "title": "Phase II Prospective Cohort Study of Intravesical Recombinant Human Type 5 Adenovirus Injection for Treatment of High-Risk Non-Muscle Invasive Bladder Cancer: Evaluating Efficacy and Safety"
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct03558087",
+      "title": "Gemcitabine, Cisplatin, Plus Nivolumab in Patients With Muscle-invasive Bladder Cancer With Selective Bladder Sparing"
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct05779631",
+      "title": "Multi-parametric MRI in Patients Suspected for Muscle Invasive Bladder Cancer: a New Local Staging Paradigm"
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct05839119",
+      "title": "Targeting Androgen Signaling in Urothelial Cell Carcinoma - Neoadjuvant"
+    },
+    {
+      "type": "approve",
+      "paper_id": "pmid-41439156",
+      "title": "Consolidative Radical Cystectomy Following Neoadjuvant Tislelizumab Plus Gemcitabine and Cisplatin in Clinically Lymph Node-positive Bladder Cancer: A Prospective Study."
+    },
+    {
+      "type": "approve",
+      "paper_id": "pmid-41936674",
+      "title": "Comprehensive analysis of oncological outcomes of radical cystectomy for non-muscle invasive bladder cancer."
+    },
+    {
+      "type": "approve",
+      "paper_id": "pmid-41954691",
+      "title": "Perioperative outcomes following open radical cystectomy in the setting of locally advanced bladder cancer."
+    },
+    {
+      "type": "approve",
+      "paper_id": "pmid-42212670",
+      "title": "Addition of Intravesical Recombinant Bacillus Calmette-Guérin to Perioperative Chemoimmunotherapy in Muscle-Invasive Bladder Cancer: Primary Analysis of the Single-Arm Phase II Trial SAKK 06/19."
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct05406713",
+      "title": "Pembrolizumab in Muscle-invasive Bladder Cancer"
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct07624201",
+      "title": "Trastuzumab Rezetecan and Adebrelimab as Neoadjuvant Therapy for HER2-Positive Muscle-Invasive Bladder Cancer"
+    },
+    {
+      "type": "approve",
+      "paper_id": "nct06133517",
+      "title": "PeRioperative Immunotherapy Combined With Sacituzumab Govitecan in Muscle Invasive blAdder Cancer"
+    },
+    {
+      "type": "approve",
+      "paper_id": "pmid-41759397",
+      "title": "Combined and individual effects of neoadjuvant chemotherapy and lymph node dissection on survival in non-muscle-invasive bladder cancer undergoing radical cystectomy."
+    },
+    {
+      "type": "approve",
+      "paper_id": "pmid-42154126",
+      "title": "Perioperative Treatment Patterns for Muscle-Invasive Bladder Cancer Patients Undergoing Radical Cystectomy in the Adjuvant Immunotherapy Era: A Retrospective Analysis of US Community Oncology Practice."
+    },
+    {
+      "type": "full_scan",
+      "started_at": "2026-06-06T17:33:23Z",
+      "finished_at": "2026-06-06T17:33:30Z",
+      "validation": {
+        "ok": true,
+        "trial_count": 20,
+        "paper_count": 25,
+        "issue_count": 6,
+        "issues": [
+          {
+            "severity": "info",
+            "trial": "ev-103-k",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "checkmate-274",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "ambassador",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "checkmate-901-ln-only",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "javelin-100",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "checkmate-901",
+            "message": "Has NCT but no source_url"
+          }
+        ],
+        "checked_at": "2026-06-06T17:33:23Z"
+      },
+      "searched_queries": [
+        "muscle invasive bladder cancer node positive neoadjuvant",
+        "enfortumab vedotin pembrolizumab muscle invasive bladder perioperative",
+        "cN1 bladder cancer radical cystectomy chemotherapy",
+        "urothelial carcinoma clinical node positive M0 cystectomy",
+        "(muscle invasive bladder cancer[Title/Abstract]) AND (node positive[Title/Abstra..."
+      ],
+      "total_search_hits": 37,
+      "new_candidates": 7,
+      "added_to_papers_index": [
+        {
+          "id": "nct05779631",
+          "title": "Multi-parametric MRI in Patients Suspected for Muscle Invasive Bladder Cancer: a New Local Staging Paradigm",
+          "type": "auto-discovered",
+          "n": 360,
+          "url": "https://clinicaltrials.gov/study/NCT05779631",
+          "discovered_at": "2026-06-06T17:33:27Z",
+          "relevance_score": 28,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT05779631",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-multi-parametric-mri-in-patients-suspected-for-muscle-invasi.md"
+        },
+        {
+          "id": "nct03558087",
+          "title": "Gemcitabine, Cisplatin, Plus Nivolumab in Patients With Muscle-invasive Bladder Cancer With Selective Bladder Sparing",
+          "type": "auto-discovered",
+          "n": 76,
+          "url": "https://clinicaltrials.gov/study/NCT03558087",
+          "discovered_at": "2026-06-06T17:33:27Z",
+          "relevance_score": 28,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT03558087",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-gemcitabine-cisplatin-plus-nivolumab-in-patients-with-muscle.md"
+        },
+        {
+          "id": "nct07356791",
+          "title": "Phase II Prospective Cohort Study of Intravesical Recombinant Human Type 5 Adenovirus Injection for Treatment of High-Risk Non-Muscle Invasive Bladder Cancer: Evaluating Efficacy and Safety",
+          "type": "auto-discovered",
+          "n": 18,
+          "url": "https://clinicaltrials.gov/study/NCT07356791",
+          "discovered_at": "2026-06-06T17:33:27Z",
+          "relevance_score": 28,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT07356791",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-phase-ii-prospective-cohort-study-of-intravesical-recombinan.md"
+        },
+        {
+          "id": "nct07296705",
+          "title": "Neoadjuvant Zanidatamab + Tislelizumab + Chemotherapy for Selective Bladder Preservation in HER2-Positive MIBC",
+          "type": "auto-discovered",
+          "n": 25,
+          "url": "https://clinicaltrials.gov/study/NCT07296705",
+          "discovered_at": "2026-06-06T17:33:27Z",
+          "relevance_score": 28,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT07296705",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-neoadjuvant-zanidatamab-tislelizumab-chemotherapy-for-select.md"
+        },
+        {
+          "id": "nct06537154",
+          "title": "NEO-BLAST: Neoadjuvant Therapy for Bladder Cancer Followed by Active Surveillance vs Treatment",
+          "type": "auto-discovered",
+          "n": 688,
+          "url": "https://clinicaltrials.gov/study/NCT06537154",
+          "discovered_at": "2026-06-06T17:33:27Z",
+          "relevance_score": 28,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT06537154",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-neo-blast-neoadjuvant-therapy-for-bladder-cancer-followed-by.md"
+        },
+        {
+          "id": "pmid-41217011",
+          "title": "Prognostic Significance of Achieving the Radical Cystectomy-Pentafecta After Neoadjuvant Chemotherapy and Robot-Assisted Radical Cystectomy.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41217011/",
+          "discovered_at": "2026-06-06T17:33:27Z",
+          "relevance_score": 25,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "41217011",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-prognostic-significance-of-achieving-the-radical-cystectomy-.md"
+        },
+        {
+          "id": "pmid-41724648",
+          "title": "Optimal Management of Muscle-invasive Bladder Cancer: Recommendations from the International Bladder Cancer Group.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41724648/",
+          "discovered_at": "2026-06-06T17:33:27Z",
+          "relevance_score": 23,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "41724648",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-optimal-management-of-muscle-invasive-bladder-cancer-recomme.md"
+        }
+      ],
+      "trial_refresh": [
+        {
+          "nct_id": "NCT05239624",
+          "action": "unchanged",
+          "status": "RECRUITING"
+        },
+        {
+          "nct_id": "NCT04700124",
+          "action": "unchanged",
+          "status": "COMPLETED"
+        },
+        {
+          "nct_id": "NCT03924895",
+          "action": "unchanged",
+          "status": "ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "nct_id": "NCT04223856",
+          "action": "unchanged",
+          "status": "ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "nct_id": "NCT03732677",
+          "action": "unchanged",
+          "status": "ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "nct_id": "NCT02632409",
+          "action": "unchanged",
+          "status": "ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "nct_id": "NCT03244384",
+          "action": "unchanged",
+          "status": "ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "nct_id": "NCT03288545",
+          "action": "unchanged",
+          "status": "TERMINATED"
+        },
+        {
+          "nct_id": "NCT02736266",
+          "action": "unchanged",
+          "status": "COMPLETED"
+        }
+      ],
+      "summary": "Validated 20 trials. Found 7 new candidates, added 7 to papers_index (needs_review). Refreshed 9 watched NCT IDs."
+    },
+    {
+      "type": "full_scan",
+      "started_at": "2026-06-06T16:35:20Z",
+      "finished_at": "2026-06-06T16:35:26Z",
+      "validation": {
+        "ok": true,
+        "trial_count": 20,
+        "paper_count": 15,
+        "issue_count": 6,
+        "issues": [
+          {
+            "severity": "info",
+            "trial": "ev-103-k",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "checkmate-274",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "ambassador",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "checkmate-901-ln-only",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "javelin-100",
+            "message": "Has NCT but no source_url"
+          },
+          {
+            "severity": "info",
+            "trial": "checkmate-901",
+            "message": "Has NCT but no source_url"
+          }
+        ],
+        "checked_at": "2026-06-06T16:35:20Z"
+      },
+      "searched_queries": [
+        "muscle invasive bladder cancer node positive neoadjuvant",
+        "enfortumab vedotin pembrolizumab muscle invasive bladder perioperative",
+        "cN1 bladder cancer radical cystectomy chemotherapy",
+        "urothelial carcinoma clinical node positive M0 cystectomy",
+        "(muscle invasive bladder cancer[Title/Abstract]) AND (node positive[Title/Abstra..."
+      ],
+      "total_search_hits": 37,
+      "new_candidates": 17,
+      "added_to_papers_index": [
+        {
+          "id": "pmid-42154126",
+          "title": "Perioperative Treatment Patterns for Muscle-Invasive Bladder Cancer Patients Undergoing Radical Cystectomy in the Adjuvant Immunotherapy Era: A Retrospective Analysis of US Community Oncology Practice.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42154126/",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 48,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "42154126",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-perioperative-treatment-patterns-for-muscle-invasive-bladder.md"
+        },
+        {
+          "id": "pmid-41759397",
+          "title": "Combined and individual effects of neoadjuvant chemotherapy and lymph node dissection on survival in non-muscle-invasive bladder cancer undergoing radical cystectomy.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41759397/",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 48,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "41759397",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-combined-and-individual-effects-of-neoadjuvant-chemotherapy-.md"
+        },
+        {
+          "id": "nct06133517",
+          "title": "PeRioperative Immunotherapy Combined With Sacituzumab Govitecan in Muscle Invasive blAdder Cancer",
+          "type": "auto-discovered",
+          "n": 70,
+          "url": "https://clinicaltrials.gov/study/NCT06133517",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 43,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT06133517",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-perioperative-immunotherapy-combined-with-sacituzumab-govite.md"
+        },
+        {
+          "id": "nct07624201",
+          "title": "Trastuzumab Rezetecan and Adebrelimab as Neoadjuvant Therapy for HER2-Positive Muscle-Invasive Bladder Cancer",
+          "type": "auto-discovered",
+          "n": 58,
+          "url": "https://clinicaltrials.gov/study/NCT07624201",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 43,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT07624201",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-trastuzumab-rezetecan-and-adebrelimab-as-neoadjuvant-therapy.md"
+        },
+        {
+          "id": "nct05406713",
+          "title": "Pembrolizumab in Muscle-invasive Bladder Cancer",
+          "type": "auto-discovered",
+          "n": 46,
+          "url": "https://clinicaltrials.gov/study/NCT05406713",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 38,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT05406713",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-pembrolizumab-in-muscle-invasive-bladder-cancer.md"
+        },
+        {
+          "id": "pmid-42212670",
+          "title": "Addition of Intravesical Recombinant Bacillus Calmette-Guérin to Perioperative Chemoimmunotherapy in Muscle-Invasive Bladder Cancer: Primary Analysis of the Single-Arm Phase II Trial SAKK 06/19.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42212670/",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 38,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "42212670",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-addition-of-intravesical-recombinant-bacillus-calmette-gu-ri.md"
+        },
+        {
+          "id": "pmid-41954691",
+          "title": "Perioperative outcomes following open radical cystectomy in the setting of locally advanced bladder cancer.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41954691/",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 33,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "41954691",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-perioperative-outcomes-following-open-radical-cystectomy-in-.md"
+        },
+        {
+          "id": "pmid-41936674",
+          "title": "Comprehensive analysis of oncological outcomes of radical cystectomy for non-muscle invasive bladder cancer.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41936674/",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 33,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "41936674",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-comprehensive-analysis-of-oncological-outcomes-of-radical-cy.md"
+        },
+        {
+          "id": "pmid-41439156",
+          "title": "Consolidative Radical Cystectomy Following Neoadjuvant Tislelizumab Plus Gemcitabine and Cisplatin in Clinically Lymph Node-positive Bladder Cancer: A Prospective Study.",
+          "type": "auto-discovered",
+          "n": null,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41439156/",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 33,
+          "source": "pubmed",
+          "status": "needs_review",
+          "pmid": "41439156",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-consolidative-radical-cystectomy-following-neoadjuvant-tisle.md"
+        },
+        {
+          "id": "nct05839119",
+          "title": "Targeting Androgen Signaling in Urothelial Cell Carcinoma - Neoadjuvant",
+          "type": "auto-discovered",
+          "n": 2,
+          "url": "https://clinicaltrials.gov/study/NCT05839119",
+          "discovered_at": "2026-06-06T16:35:23Z",
+          "relevance_score": 28,
+          "source": "clinicaltrials.gov",
+          "status": "needs_review",
+          "nct_id": "NCT05839119",
+          "raw": "raw/bladder-cancer/2026-06-06-discovered-targeting-androgen-signaling-in-urothelial-cell-carcinoma-ne.md"
+        }
+      ],
+      "trial_refresh": [
+        {
+          "nct_id": "NCT05239624",
+          "action": "updated",
+          "fields": [
+            "status"
+          ],
+          "info": {
+            "nct_id": "NCT05239624",
+            "title": "Enfortumab Vedotin and Pembrolizumab in People With Bladder Cancer",
+            "status": "RECRUITING",
+            "enrollment": 23,
+            "phases": [
+              "PHASE2"
+            ],
+            "conditions": [
+              "Urothelial Carcinoma"
+            ],
+            "interventions": [
+              "Enfortumab vedotin",
+              "Pembrolizumab"
+            ],
+            "last_update": "2026-06-04",
+            "url": "https://clinicaltrials.gov/study/NCT05239624"
+          }
+        },
+        {
+          "nct_id": "NCT04700124",
+          "action": "updated",
+          "fields": [
+            "status"
+          ],
+          "info": {
+            "nct_id": "NCT04700124",
+            "title": "Perioperative Enfortumab Vedotin (EV) Plus Pembrolizumab (MK-3475) Versus Neoadjuvant Chemotherapy for Cisplatin-Eligible Muscle Invasive Bladder Cancer (MIBC) (MK-3475-B15/ KEYNOTE-B15 / EV-304)",
+            "status": "COMPLETED",
+            "enrollment": 808,
+            "phases": [
+              "PHASE3"
+            ],
+            "conditions": [
+              "Bladder Cancer"
+            ],
+            "interventions": [
+              "Pembrolizumab",
+              "Enfortumab vedotin (EV)",
+              "RC + PLND",
+              "Gemcitabine",
+              "Cisplatin"
+            ],
+            "last_update": "2026-02-05",
+            "url": "https://clinicaltrials.gov/study/NCT04700124"
+          }
+        },
+        {
+          "nct_id": "NCT03924895",
+          "action": "updated",
+          "fields": [
+            "status",
+            "total_n"
+          ],
+          "info": {
+            "nct_id": "NCT03924895",
+            "title": "Perioperative Pembrolizumab (MK-3475) Plus Cystectomy or Perioperative Pembrolizumab Plus Enfortumab Vedotin Plus Cystectomy Versus Cystectomy Alone in Participants Who Are Cisplatin-ineligible or Decline Cisplatin With Muscle-invasive Bladder Cancer (MK-3475-905/KEYNOTE-905/EV-303)",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 595,
+            "phases": [
+              "PHASE3"
+            ],
+            "conditions": [
+              "Urinary Bladder Cancer, Muscle-invasive"
+            ],
+            "interventions": [
+              "Pembrolizumab",
+              "Surgery (radical cystectomy (RC) plus Pelvic Lymph Node Dissection [PLND])",
+              "Enfortumab Vedotin"
+            ],
+            "last_update": "2025-08-28",
+            "url": "https://clinicaltrials.gov/study/NCT03924895"
+          }
+        },
+        {
+          "nct_id": "NCT04223856",
+          "action": "updated",
+          "fields": [
+            "status"
+          ],
+          "info": {
+            "nct_id": "NCT04223856",
+            "title": "Enfortumab Vedotin and Pembrolizumab vs. Chemotherapy Alone in Untreated Locally Advanced or Metastatic Urothelial Cancer",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 886,
+            "phases": [
+              "PHASE3"
+            ],
+            "conditions": [
+              "Urothelial Cancer"
+            ],
+            "interventions": [
+              "Enfortumab vedotin",
+              "Pembrolizumab",
+              "Cisplatin",
+              "Carboplatin",
+              "Gemcitabine"
+            ],
+            "last_update": "2026-05-29",
+            "url": "https://clinicaltrials.gov/study/NCT04223856"
+          }
+        },
+        {
+          "nct_id": "NCT03732677",
+          "action": "updated",
+          "fields": [
+            "status"
+          ],
+          "info": {
+            "nct_id": "NCT03732677",
+            "title": "Durvalumab+ Gemcitabine/Cisplatin (Neoadjuvant Treatment) and Durvalumab (Adjuvant Treatment) in Patients With MIBC",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 1063,
+            "phases": [
+              "PHASE3"
+            ],
+            "conditions": [
+              "Muscle Invasive Bladder Cancer"
+            ],
+            "interventions": [
+              "Durvalumab",
+              "Cisplatin",
+              "Gemcitabine"
+            ],
+            "last_update": "2026-03-13",
+            "url": "https://clinicaltrials.gov/study/NCT03732677"
+          }
+        },
+        {
+          "nct_id": "NCT02632409",
+          "action": "updated",
+          "fields": [
+            "status"
+          ],
+          "info": {
+            "nct_id": "NCT02632409",
+            "title": "An Investigational Immuno-therapy Study of Nivolumab, Compared to Placebo, in Patients With Bladder or Upper Urinary Tract Cancer, Following Surgery to Remove the Cancer",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 709,
+            "phases": [
+              "PHASE3"
+            ],
+            "conditions": [
+              "Various Advanced Cancer"
+            ],
+            "interventions": [
+              "Nivolumab",
+              "Placebo"
+            ],
+            "last_update": "2025-10-16",
+            "url": "https://clinicaltrials.gov/study/NCT02632409"
+          }
+        },
+        {
+          "nct_id": "NCT03244384",
+          "action": "updated",
+          "fields": [
+            "status",
+            "total_n"
+          ],
+          "info": {
+            "nct_id": "NCT03244384",
+            "title": "Testing MK-3475 (Pembrolizumab) After Surgery for Localized Muscle-Invasive Bladder Cancer and Locally Advanced Urothelial Cancer",
+            "status": "ACTIVE_NOT_RECRUITING",
+            "enrollment": 739,
+            "phases": [
+              "PHASE3"
+            ],
+            "conditions": [
+              "Localized Renal Pelvis and Ureter Urothelial Carcinoma",
+              "Locally Advanced Bladder Urothelial Carcinoma",
+              "Locally Advanced Renal Pelvis and Ureter Urothelial Carcinoma"
+            ],
+            "interventions": [
+              "Biospecimen Collection",
+              "Clinical Observation",
+              "Computed Tomography",
+              "CT Urography",
+              "Cystoscopy"
+            ],
+            "last_update": "2026-05-29",
+            "url": "https://clinicaltrials.gov/study/NCT03244384"
+          }
+        },
+        {
+          "nct_id": "NCT03288545",
+          "action": "updated",
+          "fields": [
+            "status",
+            "total_n"
+          ],
+          "info": {
+            "nct_id": "NCT03288545",
+            "title": "A Study of Enfortumab Vedotin Alone or With Other Therapies for Treatment of Urothelial Cancer",
+            "status": "TERMINATED",
+            "enrollment": 348,
+            "phases": [
+              "PHASE1",
+              "PHASE2"
+            ],
+            "conditions": [
+              "Carcinoma, Transitional Cell",
+              "Urinary Bladder Neoplasms",
+              "Urologic Neoplasms"
+            ],
+            "interventions": [
+              "enfortumab vedotin (EV)",
+              "pembrolizumab",
+              "cisplatin",
+              "carboplatin",
+              "gemcitabine"
+            ],
+            "last_update": "2026-03-24",
+            "url": "https://clinicaltrials.gov/study/NCT03288545"
+          }
+        },
+        {
+          "nct_id": "NCT02736266",
+          "action": "updated",
+          "fields": [
+            "status",
+            "total_n"
+          ],
+          "info": {
+            "nct_id": "NCT02736266",
+            "title": "Neoadjuvant Pembrolizumab for Muscle-invasive Urothelial Bladder Carcinoma",
+            "status": "COMPLETED",
+            "enrollment": 174,
+            "phases": [
+              "PHASE2"
+            ],
+            "conditions": [
+              "Urothelial Bladder Carcinoma"
+            ],
+            "interventions": [
+              "Pembrolizumab (MK-3475)"
+            ],
+            "last_update": "2023-07-18",
+            "url": "https://clinicaltrials.gov/study/NCT02736266"
+          }
+        }
+      ],
+      "summary": "Validated 20 trials. Found 17 new candidates, added 10 to papers_index (needs_review). Refreshed 9 watched NCT IDs."
+    }
+  ]
+}

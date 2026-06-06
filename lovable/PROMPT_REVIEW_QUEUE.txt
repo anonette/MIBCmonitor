@@ -1,0 +1,21 @@
+Add a dedicated **Review queue** page to the app (nav item with pending count badge).
+
+Use src/lib/agentApi.ts:
+- fetchReviewQueue() on page load
+- approvePaper(id) on "Approve — include"
+- rejectPaper(id, reason) on "Reject — exclude" (optional reason in a dialog)
+
+Each card from GET /api/pending shows:
+- title, relevance_score, source, nct_id/pmid, enrollment n
+- review.scope_verdict
+- review.pros (green bullets), review.cons (amber bullets)
+- external link to url
+- Border: green if strong_candidate/worth_review, amber if mixed, slate if likely_exclude
+
+After approve/reject: toast confirmation, reload fetchReviewQueue(), update pending badge.
+
+Scope banner: "Decide which auto-discovered studies belong in cN+ M0 perioperative MIBC evidence."
+
+Empty state: "No pending items — use Refresh evidence on Overview."
+
+Requires VITE_AGENT_API_URL + VITE_AGENT_API_KEY (user's PC agent + ngrok must be running).

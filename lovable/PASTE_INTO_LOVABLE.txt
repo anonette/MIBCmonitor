@@ -1,0 +1,140 @@
+Build a premium medical evidence explorer web app called "Node-Positive MIBC Evidence Explorer".
+
+=== SITE SCOPE (CRITICAL — READ FIRST) ===
+
+This website is for ONE patient category only:
+
+  REGIONALLY NODE-POSITIVE MIBC: cN1–cN3, cM0 (no distant metastases)
+  Treatment intent: systemic therapy first, then possible curative local treatment (cystectomy or radiation)
+
+It is NOT a general bladder cancer site. Do NOT build navigation or content for:
+- Localized MIBC without nodes (cN0 M0)
+- Bladder-preservation / trimodality therapy as primary focus
+- Post-cystectomy adjuvant-only pathways (except as related context)
+- Recurrent or metastatic (M1) first-line treatment (except clearly labeled cross-setting trials like EV-302)
+
+Every page must reinforce scope:
+- Persistent header subtitle: "Regionally node-positive MIBC · cN1–N3 M0 · systemic therapy before surgery"
+- Homepage hero: "For patients with muscle-invasive bladder cancer AND involved pelvic lymph nodes, but no distant spread"
+- Footer + disclaimer: "This tool does not cover localized (node-negative) MIBC, bladder-sparing protocols, or metastatic disease."
+
+Example profile within this category: pT2 high-grade, L1, PET-positive external iliac node, cN1 cM0 — perioperative systemic therapy before possible radical cystectomy.
+
+Dataset version 1.2 — 20 studies scored for node-positive / perioperative relevance.
+
+=== LIVE EVIDENCE AGENT (REQUIRED) ===
+
+The app MUST connect to a live backend API for refreshing evidence. Copy src/lib/agentApi.ts into the project.
+
+Environment variables (Lovable Settings):
+- VITE_AGENT_API_URL = user's ngrok/public agent URL (e.g. https://xxxx.ngrok-free.app)
+- VITE_AGENT_API_KEY = same secret as backend AGENT_API_KEY
+
+On Overview page, add prominent "Refresh evidence" button:
+1. On click: call runEvidenceSearch() from agentApi.ts
+2. Show spinner + poll getAgentStatus() every 2s via pollUntilDone()
+3. On complete: reload data with fetchLiveTrials() and fetchLivePapers() — use live JSON instead of static imports when available
+4. Show toast with agent.agent.message
+Also add "Refresh trial status" secondary button → refreshWatchedTrials().
+
+=== REVIEW QUEUE PAGE (REQUIRED — human approve/reject) ===
+
+Add nav item: **Review queue** (badge with pending count from getAgentStatus().counts.pending).
+
+This page is where the user decides which auto-discovered studies to INCLUDE in the evidence set.
+Scope reminder at top: cN+ M0 perioperative MIBC only.
+
+On load and after every action: call fetchReviewQueue() from agentApi.ts (GET /api/pending).
+
+Each queue item card shows:
+- title (item.title)
+- relevance_score badge
+- source badge (pubmed / clinicaltrials.gov)
+- nct_id or pmid if present
+- enrollment n if present
+- review.scope_verdict (assessment sentence)
+- review.pros as green bullets, review.cons as amber bullets
+- link to item.url (open in new tab)
+- Left border color by review.suggestion: strong_candidate/worth_review=green, mixed=amber, likely_exclude=slate
+
+Two buttons per card:
+- **Approve — include** → approvePaper(item.id) → toast "Approved" → remove from queue / show green "Included"
+- **Reject — exclude** → optional reason dialog → rejectPaper(item.id, reason) → toast "Rejected" → remove from queue
+
+Empty state: "No items pending — run Refresh evidence on Overview to search PubMed + ClinicalTrials.gov"
+
+Show live connection required banner if API unreachable (same as Overview).
+
+API:
+- GET /api/pending → array with title, url, review { scope_verdict, suggestion, pros, cons }, relevance_score
+- POST /api/approve {"paper_id":"..."}
+- POST /api/reject {"paper_id":"...", "reason":"optional"}
+
+Note: Approve marks paper trusted in papers_index.json on the user's PC. Does not auto-add to trials.json yet.
+
+Fallback: if VITE_AGENT_API_URL is unset, use static JSON imports from src/data/ and show banner "Connect live agent — set VITE_AGENT_API_URL".
+
+API endpoints (header X-API-Key on all except /api/health):
+- GET /api/health, /api/status, /api/trials, /api/papers, /api/pending
+- POST /api/search, /api/refresh, /api/approve {"paper_id":"..."}, /api/reject {"paper_id":"...", "reason":"..."}
+
+=== DATA SOURCE: LIVE LOCAL JSON (PREFERRED) ===
+
+Lovable cannot read c:\dev\cancer directly. Your local JSON is served by the agent API on your PC.
+
+On EVERY app load:
+1. If VITE_AGENT_API_URL is set, call fetchAllLiveData() from agentApi.ts
+2. Use that response for trials, papers, interpretations, patient profile — NOT stale bundled files
+3. On "Refresh evidence", call runEvidenceSearch() then fetchAllLiveData() again
+
+fetchAllLiveData() hits:
+- GET /api/trials
+- GET /api/papers
+- GET /api/interpretations
+- GET /api/patient-profile
+
+User must keep running on PC: python scripts/agent_server.py + ngrok http 8765
+
+=== STATIC DATA (fallback only when API unreachable) ===
+
+Upload to src/data/: patient_profile.json, trials.json, interpretations.json, papers_index.json, patients_like_you.json, glossary_pathway.json
+Use static imports ONLY if live API fails or VITE_AGENT_API_URL is unset.
+
+API also serves: GET /api/patients-like-you, GET /api/glossary-pathway
+
+=== PATIENT MATCH DATA (in every trial) ===
+
+Each trial in trials.json has patient_match object:
+- match_type, staging_basis, n_like_profile, pct_of_trial
+- certainty + certainty_label (badge: high/moderate/low)
+- what_we_know[], what_we_dont_know[]
+- outcomes_in_subgroup: pcr, pn0_rate, efs_hr, os_hr, orr
+
+Each trial also has subgroup_outcomes panel for detail page.
+
+Show certainty badges everywhere: high=green, moderate=amber, low=slate.
+Show match_type badges: by_design, published_subgroup, wrong_setting, wrong_timing, retrospective_cn_plus, none.
+
+CRITICAL DATA: EV-304/KEYNOTE-B15 (n=808, ASCO GU 2026) — perioperative EV+pembro vs GC in cisplatin-eligible MIBC including cN1 M0. EFS HR 0.53, pCR 55.8% vs 32.5%.
+
+DESIGN: Clean medical UI (Flatiron/OncoKB style). White #FAFBFC, teal #0F766E, Inter, no gradients.
+
+9 PAGES (all scoped to node-positive M0 only):
+1. OVERVIEW — scope banner, profile chips, stat cards, **HERO: "Patients like you" table/chart** from patients_like_you.json (or fetchPatientsLikeYou()), columns: Study, Total N, Patients like you, %, Certainty badge, Match type badge, Key outcome. Sort by n_like_profile. Bar chart of matching patients. Cisplatin toggle. Refresh evidence + Review queue link.
+2. REVIEW QUEUE — full approve/reject workflow (see above) — REQUIRED
+3. TRIAL EXPLORER — sortable table with columns: Study, Total N, **N like you**, certainty badge, fit tier, match_type badge. Filters by match_type and certainty.
+4. TRIAL DETAIL — **Subgroup outcomes panel** (trial.subgroup_outcomes): headline, n_like_profile, certainty, what_we_know, what_we_dont_know, outcomes grid (pCR/pN0/EFS/OS/ORR). Match meter. Efficacy tabs. Limitations. Wrong-setting warning banner if match_type=wrong_setting or wrong_timing.
+5. GLOSSARY & PATHWAY — from glossary_pathway.json (or fetchGlossaryPathway()): vertical pathway steps + searchable glossary terms. Scoped to cN+ M0 only.
+6. VISUAL DASHBOARD — Recharts: patient counts, fit scores, ORR, HR forest, pCR, pie, pathway
+7. INTERPRETATION & ARGUMENT BUILDER — accordion sections from interpretations.json
+8. TUMOR BOARD — expandable checklist from interpretations.tumor_board_questions (12 questions by category). Export/print button.
+9. COMPARISON TOOL — side-by-side 2-4 trials with patient_match row at top
+
+KEY RULES:
+- Site = node-positive M0 only; never present as a general MIBC resource
+- Distinguish perioperative cN1 cM0 from metastatic LN-only (EV-302) — label wrong-setting trials prominently
+- NIAGARA cN1 n=58 NS. SWOG 8710 had 0 cN1
+- Educational disclaimer on every page
+
+Tech: React + TypeScript + Tailwind + shadcn/ui + Recharts + React Router + Zustand.
+Build order: Overview + Review queue (live agent) first, then trial table, charts, argument builder.

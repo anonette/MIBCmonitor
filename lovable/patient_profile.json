@@ -1,0 +1,48 @@
+{
+  "id": "target-patient",
+  "website_category": "regionally_node_positive_mibc",
+  "website_scope": {
+    "title": "Regionally node-positive MIBC (cN1–N3, cM0)",
+    "includes": "Muscle-invasive bladder cancer with involved pelvic lymph nodes and no distant metastases. Systemic therapy before possible cystectomy or radiation.",
+    "excludes": [
+      "Localized node-negative MIBC (cN0 M0)",
+      "Primary bladder-preservation / trimodality therapy",
+      "Metastatic (M1) disease as primary focus",
+      "NMIBC (non-muscle-invasive bladder cancer)"
+    ],
+    "clinical_label": "Regionally node-positive MIBC: cN1 cM0, curative-intent systemic therapy first"
+  },
+  "label": "Target clinical profile",
+  "histology": "Muscle-invasive urothelial carcinoma, high grade",
+  "pathology_turbt": {
+    "pt_stage": "pT2",
+    "grade": "high grade",
+    "lvsi": "L1 (lymphovascular invasion present)"
+  },
+  "clinical_stage": {
+    "t": "cT2",
+    "n": "cN1",
+    "m": "cM0",
+    "node_detail": "PET-positive external iliac lymph node"
+  },
+  "treatment_intent": "Perioperative systemic therapy before possible radical cystectomy",
+  "geography_context": "Czech oncology — compare against EAU/NCCN cisplatin NAC standard",
+  "key_questions": [
+    "Is perioperative EV+pembrolizumab justified vs standard cisplatin NAC?",
+    "How many trial patients actually match cN1 cM0 perioperative MIBC?",
+    "What is the approved alternative (NIAGARA) and its cN1 subgroup data?",
+    "What adjuvant options apply if surgery still shows pN+?"
+  ],
+  "cisplatin_scenarios": {
+    "eligible": {
+      "standard": "Neoadjuvant gemcitabine/cisplatin or ddMVAC → RC (SWOG 8710 evidence base, N0 RCTs)",
+      "approved_io": "NIAGARA: perioperative durvalumab + GC → RC + adjuvant durvalumab",
+      "investigational_ev_pembro": "EV-ECLIPSE (phase 2); KEYNOTE-B15/EV-304 (pending)"
+    },
+    "ineligible": {
+      "standard": "KEYNOTE-905: perioperative EV+pembro → RC (phase 3 positive)",
+      "node_focused": "EV-ECLIPSE (phase 2, node-positive design)",
+      "avoid": "Carboplatin NAC (EAU: do not offer)"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+priority,study_id,nct_id,phase,setting,total_n,cn1_or_cn_plus_n,match_pct,fit_tier,fit_score,treatment,key_outcome,limitation_for_patient,status,source_url
+1,EV-304 / KEYNOTE-B15,NCT04700124,3,Perioperative EV+pembro vs GC (cisplatin-eligible MIBC),808,~40 est,~5 est,A,96,EV+pembro vs GC,2-y EFS 79.4% vs 66.2% HR 0.53; pCR 55.8% vs 32.5%,cN1 subgroup n not yet published; FDA review pending,Published ASCO GU 2026,https://www.asco.org/abstracts-presentations/216863
+1,EV-ECLIPSE,NCT05239624,2,Neoadjuvant EV+pembro → RC (node-positive MIBC),23,23,100,A,98,EV+pembrolizumab,pCR primary; no published results,Phase 2; not SOC,Recruiting,https://clinicaltrials.gov/study/NCT05239624
+2,EV-302 / KEYNOTE-A39,NCT04223856,3,1L locally advanced/metastatic UC,886,207,23,B-,55,EV+pembro vs platinum chemo,LN-only ORR 77.5%; PFS HR 0.40; OS HR 0.46,Metastatic setting not perioperative,Published,https://www.esmoopen.com/article/S2059-7029(25)01413-9/fulltext
+3,NIAGARA,NCT03732677,3,Perioperative durva+GC → RC+adj durva,1063,58,5.5,B,72,Durvalumab+GC vs GC,EFS HR 0.68; cN1 EFS HR 0.75 (NS),Not EV+pembro; cN1 underpowered,FDA approved 2025,https://www.nejm.org/doi/full/10.1056/NEJMoa2408154
+4,KEYNOTE-905 / EV-303,NCT03924895,3,Perioperative EV+pembro (cisplatin-ineligible),344,17,4.9,B-,58,EV+pembro vs RC alone,EFS HR 0.40; pCR 57.1%,Cis-ineligible only; tiny cN1,FDA approved cis-inel 2025,https://pubmed.ncbi.nlm.nih.gov/41707170/
+4,Zargar-Shoshtar 2016,,Retro,cN1-N3 induction chemo → RC,304,304,100,D,62,MVAC/GC NAC,pN0 48%; cN1 pN0 56%; pCR 14.5%,Retrospective; chemo not EV+pembro,Published,https://www.auajournals.org/doi/10.1016/j.juro.2015.02.2296
+4,Hermans cN+ population,,Retro,cN+ MIBC NAC vs upfront RC,659,659,100,D,58,Cisplatin NAC,cN1 3-y OS 66% NAC vs 37% RC; HR 0.47,Population retrospective,Published,https://tau.amegroups.org/article/view/42296/html
+5,SWOG 8710,,3,NAC MVAC → RC vs RC alone,307,0,0,C,15,MVAC+cystectomy,5-y OS benefit N0 MIBC,No cN+ enrolled,Published,https://www.nejm.org/doi/full/10.1056/NEJMoa022148
+5,BA06 / EORTC 30894,,3,NAC CMV,N0 MIBC,976,0,0,C,15,CMV neoadjuvant,NAC benefit N0,cN+ not enrolled,Published,https://uroweb.org/guidelines/muscle-invasive-and-metastatic-bladder-cancer/chapter/disease-management
+5,NAC meta-analyses,,MA,MIBC RCTs + retrospectives,3005,variable,variable,D,35,Cisplatin NAC,OS HR ~0.82-0.87,Indirect cN+ data,Published,https://pmc.ncbi.nlm.nih.gov/articles/PMC9656528/
+5,cN+ radiologic predictors,,Retro,cN+ induction chemo,130,130,100,D,55,Induction chemo,pN0 40.8% after chemo vs 11% surgery alone,Single-center series,Published,https://www.sciencedirect.com/science/article/abs/pii/S1078143920303860
+5,NCDB cN+ NAC,,Retro,cTanyN1-3M0 NAC+RC,491,491,100,D,52,NAC+RC,ypN0 35%; 5-y OS 34%,Registry retrospective,Published,https://pmc.ncbi.nlm.nih.gov/articles/PMC11617270/
+6,EV-103 Cohort K,NCT03288545,1b/2,1L la/mUC cis-ineligible,76,0,0,C,20,EV+pembro,cORR 64.5%,Metastatic,Published,https://pubmed.ncbi.nlm.nih.gov/37369081/
+6,PURE-01,NCT02736266,2,Neoadjuvant pembro → RC,155,0,0,C,25,Pembrolizumab,5-y OS 77%; ypN+ OS 41.9%,cN0 predominant,Published,https://pubmed.ncbi.nlm.nih.gov/41633898/
+6,ABACUS,,2,Neoadjuvant atezolizumab N0,95,0,0,C,18,Atezolizumab,pCR 31%,N0 only cis-inel,Published,https://pubmed.ncbi.nlm.nih.gov/35577646/
+7,CheckMate 274,NCT02632409,3,Adjuvant nivolumab post-RC,709,143,20,C-adj,30,Nivolumab,DFS HR 0.70,Post-surgery,Published,https://www.nejm.org/doi/full/10.1056/NEJMoa2034442
+7,AMBASSADOR,NCT03244384,3,Adjuvant pembrolizumab post-RC,702,variable,variable,C-adj,28,Pembrolizumab,DFS improved,Adjuvant only,Published,https://ascopost.com/issues/march-25-2024/adjuvant-pembrolizumab-a-new-option-for-high-risk-muscle-invasive-urothelial-cancer/
+—,CheckMate 901 LN-only,NCT03036098,3,1L nivo+GC metastatic,608,110,18,C,22,Nivo+GC,LN-only PFS HR 0.38,Metastatic,Published,https://pmc.ncbi.nlm.nih.gov/articles/PMC12779424/
+—,JAVELIN 100,NCT02603432,3,Maintenance avelumab,700,0,0,C,10,Avelumab,OS benefit maintenance,Wrong setting,Published,https://ascopost.com/
